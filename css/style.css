@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-feature-settings: "palt";
+  font-feature-settings: "palt";
+  font-size: 14px;
+  line-height: 26px;
+  color: #45494b;
+  margin: 0; }
+
+nav {
+  width: 100%; }
+  nav .nav-area {
+    padding: 1%;
+    height: 52px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px; }
+    nav .nav-area .nav-content {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      nav .nav-area .nav-content .title {
+        flex-basis: 90%;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        font-size: 16px; }
+      nav .nav-area .nav-content .logout {
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        font-size: 12px; }
+
+.login-section {
+  max-width: 500px;
+  margin: 0 auto; }
+  .login-section .login-area {
+    padding: 60px 10px; }
+    .login-section .login-area .form-section {
+      padding-top: 30px;
+      padding-left: 50px;
+      padding-right: 50px; }
+      .login-section .login-area .form-section .input-text {
+        font-size: 14px; }
+        .login-section .login-area .form-section .input-text.input-pad {
+          padding-top: 20px; }
+      .login-section .login-area .form-section .input-field input {
+        padding-left: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+        height: calc(2.875rem + 2px);
+        border-radius: .3rem; }
+      .login-section .login-area .form-section .forgot-pass {
+        padding-top: 20px;
+        text-align: center; }
+        .login-section .login-area .form-section .forgot-pass a {
+          color: #1a237e;
+          text-decoration: none; }
+      .login-section .login-area .form-section .btn-area {
+        padding-top: 40px; }
+        .login-section .login-area .form-section .btn-area .btn {
+          border: 1px solid #f4f4f7;
+          background: #1a237e;
+          color: white;
+          cursor: default;
+          display: block;
+          width: 100%;
+          padding: .5rem 1rem;
+          font-size: 1.25rem;
+          line-height: 1.5; }
+        .login-section .login-area .form-section .btn-area button:disabled,
+        .login-section .login-area .form-section .btn-area button[disabled] {
+          border: 1px solid #f4f4f7;
+          background-color: #f4f4f7;
+          color: #666666; }
+      .login-section .login-area .form-section .reg-text {
+        padding-top: 20px;
+        text-align: center; }
+        .login-section .login-area .form-section .reg-text a {
+          color: #1a237e;
+          text-decoration: none; }
+
+#dashboard {
+  background: #eee; }
+
+.container-area {
+  padding-top: 30px;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto; }
+  .container-area .sidebar {
+    flex-basis: 25%; }
+    .container-area .sidebar .sidebar-admin {
+      padding: 5px;
+      background: white;
+      -webkit-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      box-shadow: 0px 1px 11px -6px #b8b8b8; }
+      .container-area .sidebar .sidebar-admin .logo-area {
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .container-area .sidebar .sidebar-admin .logo-area .logo {
+          flex-basis: 20%; }
+          .container-area .sidebar .sidebar-admin .logo-area .logo img {
+            width: 100%; }
+        .container-area .sidebar .sidebar-admin .logo-area .name {
+          font-size: 10px;
+          line-height: 1.5;
+          flex-basis: 80%; }
+          .container-area .sidebar .sidebar-admin .logo-area .name .c_name {
+            font-size: 12px;
+            font-weight: 700; }
+    .container-area .sidebar .sidebar-menu {
+      margin-top: 10px;
+      background: white;
+      -webkit-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      box-shadow: 0px 1px 11px -6px #b8b8b8; }
+      .container-area .sidebar .sidebar-menu .sidebar-title {
+        border-left: 3px solid #45494b;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e2e2;
+        font-weight: 700;
+        font-size: 14px; }
+      .container-area .sidebar .sidebar-menu .menu-area {
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        .container-area .sidebar .sidebar-menu .menu-area .menu-title {
+          font-size: 12px;
+          flex-basis: 70%;
+          text-align: left; }
+        .container-area .sidebar .sidebar-menu .menu-area .menu-icon {
+          flex-basis: 30%;
+          text-align: right; }
+          .container-area .sidebar .sidebar-menu .menu-area .menu-icon span {
+            margin-right: 5px; }
+            .container-area .sidebar .sidebar-menu .menu-area .menu-icon span a {
+              color: unset; }
+  .container-area .area-content {
+    margin-left: 10px;
+    flex-basis: 50%;
+    background: white;
+    -webkit-box-shadow: 0px 1px 11px -6px #b8b8b8;
+    -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
+    box-shadow: 0px 1px 11px -6px #b8b8b8;
+    padding: 10px;
+    padding-bottom: 30px; }
+    .container-area .area-content .add-emp {
+      font-size: 14px;
+      font-weight: 700; }
+    .container-area .area-content .add-employee-form {
+      padding-top: 10px;
+      max-width: 400px;
+      margin: 0 auto; }
+      .container-area .area-content .add-employee-form form .form-label {
+        font-size: 10px; }
+        .container-area .area-content .add-employee-form form .form-label.pad {
+          margin-top: 10px; }
+      .container-area .area-content .add-employee-form form .form-input input {
+        padding-left: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+        height: calc(2.475rem + 2px);
+        border-radius: .3rem; }
+      .container-area .area-content .add-employee-form form .form-button {
+        margin-top: 20px;
+        text-align: center; }
+        .container-area .area-content .add-employee-form form .form-button .btn-add {
+          border: 1px solid #f4f4f7;
+          background: #f4f4f7;
+          color: black;
+          cursor: default;
+          display: block;
+          width: 50%;
+          margin: 0 auto;
+          padding: .6rem 1rem;
+          font-size: .5rem;
+          line-height: 1.5; }
+  .container-area .area-event {
+    margin-left: 10px;
+    flex-basis: 25%; }
+    .container-area .area-event .calendar {
+      background: white;
+      -webkit-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      box-shadow: 0px 1px 11px -6px #b8b8b8;
+      padding: 10px; }
+      .container-area .area-event .calendar table {
+        width: 100%; }
+        .container-area .area-event .calendar table tr td {
+          text-align: center;
+          font-size: 12px; }
+          .container-area .area-event .calendar table tr td a {
+            color: unset;
+            text-decoration: none; }
+    .container-area .area-event .up-events {
+      margin-top: 10px;
+      background: white;
+      -webkit-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      box-shadow: 0px 1px 11px -6px #b8b8b8;
+      padding: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 30px; }
+      .container-area .area-event .up-events .events-title {
+        font-size: 13px;
+        font-weight: 700; }
+      .container-area .area-event .up-events .events-body .date {
+        padding-top: 5px;
+        font-weight: 700;
+        font-size: 12px; }
+      .container-area .area-event .up-events .events-body .desc {
+        line-height: 1;
+        padding-left: 10px;
+        font-size: 12px; }
+
+/*# sourceMappingURL=style.css.map */
