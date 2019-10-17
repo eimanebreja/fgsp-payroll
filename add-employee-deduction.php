@@ -34,7 +34,7 @@ $user_row = mysqli_fetch_array($result_user);
                         </div>
                         <div class="name">
                             <div class="c_name">Feemo Global Solutions Philippines</div>
-                            <div><?php echo $user_row['user_name']; ?></div>
+                            <div>@<?php echo $user_row['user_name']; ?></div>
                         </div>
                     </div>
                 </div>
@@ -82,60 +82,79 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
             </div>
             <div class="area-content">
-                <div class="employee-list">
-                    <div class="add-emp">
-                        Employee
-                    </div>
-
-                    <div class="emp-list">
-                        <div class="no head">
-                            EMP NO
+                <div class="add-emp">
+                    Add Employee Deduction
+                </div>
+                <div class="add-employee-form">
+                    <form method="POST" action="add-deduc-query.php">
+                        <div class="form-label pad">
+                            Employee :
                         </div>
-                        <div class="name head">
-                            NAME
-                        </div>
-                        <div class="date head">
-                            DATE HIRED
-                        </div>
-                        <div class="salary head">
-                            BASIC SALARY
-                        </div>
-                        <div class="action head">
-                            ACTION
-                        </div>
-                    </div>
-                    <div class="emp-list">
-
-                        <?php
-            include_once "dbcon.php";
-            $result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
+                        <div class="form-input">
+                            <?php
+                include_once "dbcon.php";
+                $result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
             ?>
-                        <?php
-            $i = 1;
-            while ($employee_row = mysqli_fetch_array($result_employee)) {$id = $employee_row['emp_id'];?>
-                        <div class="no">
-                            <?php echo $employee_row['emp_no']; ?>
+                            <select name="emp_no">
+                                <option value="" disabled selected>SELECT EMPLOYEE</option>
+                                <?php
+                    while ($emp_row = mysqli_fetch_array($result_employee)) {?>
+                                <option value="<?php echo $emp_row['emp_no']; ?>"><?php echo $emp_row['emp_name']; ?>
+                                </option>
+                                <?php }?>
+                            </select>
                         </div>
-                        <div class="name">
-                            <?php echo $employee_row['emp_name']; ?>
+                        <div class="form-label pad">
+                            Late :
                         </div>
-                        <div class="date">
-                            <?php echo $employee_row['emp_dhired']; ?>
+                        <div class="form-input">
+                            <input type="text" name="late" placeholder="Enter late deduction..." />
                         </div>
-                        <div class="salary">
-                            <?php echo $employee_row['earn_salary']; ?>
+                        <div class="form-label pad">
+                            Undertime :
                         </div>
-                        <div class="action">
-                            <span><a data-target="edit-employee" href="edit-employee.php"> <i
-                                        class="fa fa-pencil-square edit" aria-hidden="true"></i></a></span>
-                            <span><a href="#"><i class="fa fa-minus-square trash" aria-hidden="true"></i></a></span>
+                        <div class="form-input">
+                            <input type="text" name="undertime" placeholder="Enter undertime deduction..." />
+                        </div>
+                        <div class="form-label pad">
+                            Absent :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="absent" placeholder="Enter absent deduction..." />
+                        </div>
 
+                        <div class="form-label pad">
+                            HDMF :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="pagibig" placeholder="Enter HDMF deduction..." />
                         </div>
 
-                        <?php } ?>
+                        <div class="form-label pad">
+                            SSS :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="sss" placeholder="Enter SSS deduction..." />
+                        </div>
 
-                    </div>
+                        <div class="form-label pad">
+                            PHILHEALTH :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="philhealth" placeholder="Enter PHILHEALTH deduction..." />
+                        </div>
 
+                        <div class="form-label pad">
+                            Tax :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="tax" placeholder="Enter TAX deduction..." />
+                        </div>
+
+                        <div class="form-button">
+                            <button class="btn-add" name="add_deduc">SUBMIT</button>
+                        </div>
+                    </form>
 
                 </div>
 

@@ -175,6 +175,11 @@ nav {
         border: 1px solid #ced4da;
         height: calc(2.475rem + 2px);
         border-radius: .3rem; }
+      .container-area .area-content .add-employee-form form .form-input select {
+        width: 100%;
+        border: 1px solid #ced4da;
+        height: calc(2.475rem + 2px);
+        border-radius: .3rem; }
       .container-area .area-content .add-employee-form form .form-button {
         margin-top: 20px;
         text-align: center; }
@@ -189,6 +194,74 @@ nav {
           padding: .6rem 1rem;
           font-size: .5rem;
           line-height: 1.5; }
+    .container-area .area-content .employee-list .emp-list {
+      padding-top: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .container-area .area-content .employee-list .emp-list .head {
+        padding-top: 10px;
+        font-weight: 700;
+        font-size: 14px;
+        border-bottom: 1px solid #e2e2e2; }
+      .container-area .area-content .employee-list .emp-list .no {
+        flex-basis: 15%;
+        font-size: 12px; }
+      .container-area .area-content .employee-list .emp-list .name {
+        flex-basis: 30%;
+        font-size: 12px; }
+      .container-area .area-content .employee-list .emp-list .date {
+        flex-basis: 15%;
+        font-size: 12px; }
+      .container-area .area-content .employee-list .emp-list .salary {
+        flex-basis: 20%;
+        font-size: 12px; }
+      .container-area .area-content .employee-list .emp-list .action {
+        flex-basis: 20%;
+        font-size: 12px; }
+        .container-area .area-content .employee-list .emp-list .action span {
+          margin-left: 5px; }
+          .container-area .area-content .employee-list .emp-list .action span a {
+            text-decoration: none;
+            color: unset; }
+            .container-area .area-content .employee-list .emp-list .action span a i {
+              font-size: 15px; }
+              .container-area .area-content .employee-list .emp-list .action span a i.trash {
+                color: red; }
+              .container-area .area-content .employee-list .emp-list .action span a i.edit {
+                color: #1a237e; }
+    .container-area .area-content .earning-sec {
+      display: flex;
+      flex-direction: row; }
+      .container-area .area-content .earning-sec .head {
+        padding-top: 10px;
+        font-weight: 700;
+        font-size: 12px;
+        border-bottom: 1px solid #e2e2e2; }
+      .container-area .area-content .earning-sec .name {
+        flex-basis: 50%;
+        font-size: 12px; }
+        .container-area .area-content .earning-sec .name a {
+          color: #1a237e; }
+      .container-area .area-content .earning-sec .total {
+        font-size: 12px;
+        flex-basis: 40%; }
+    .container-area .area-content .payroll-sec .payroll-content .payroll-head {
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-head .name {
+        flex-basis: 35%;
+        font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-head .salary {
+        flex-basis: 25%;
+        font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-head .deduction {
+        flex-basis: 25%;
+        font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-head .action {
+        flex-basis: 15%;
+        font-size: 10px; }
   .container-area .area-event {
     margin-left: 10px;
     flex-basis: 25%; }

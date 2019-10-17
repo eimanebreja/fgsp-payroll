@@ -3,6 +3,8 @@
 
 include_once "dbcon.php";
 
+$get_id = $_GET['id'];
+$result_emp_deduc = mysqli_query($mysqli, "SELECT * FROM tbl_deduction LEFT JOIN tbl_employee on tbl_deduction.emp_no = tbl_employee.emp_no WHERE tbl_deduction.emp_no = '$get_id'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -82,63 +84,90 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
             </div>
             <div class="area-content">
-                <div class="employee-list">
-                    <div class="add-emp">
-                        Employee
-                    </div>
-
-                    <div class="emp-list">
-                        <div class="no head">
-                            EMP NO
-                        </div>
-                        <div class="name head">
-                            NAME
-                        </div>
-                        <div class="date head">
-                            DATE HIRED
-                        </div>
-                        <div class="salary head">
-                            BASIC SALARY
-                        </div>
-                        <div class="action head">
-                            ACTION
-                        </div>
-                    </div>
-                    <div class="emp-list">
-
+                <div class="add-emp">
+                    Edit Earning
+                </div>
+                <div class="add-employee-form">
+                    <form method="POST" action="edit-deduction-query.php">
                         <?php
-            include_once "dbcon.php";
-            $result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
-            ?>
-                        <?php
-            $i = 1;
-            while ($employee_row = mysqli_fetch_array($result_employee)) {$id = $employee_row['emp_id'];?>
-                        <div class="no">
-                            <?php echo $employee_row['emp_no']; ?>
-                        </div>
-                        <div class="name">
-                            <?php echo $employee_row['emp_name']; ?>
-                        </div>
-                        <div class="date">
-                            <?php echo $employee_row['emp_dhired']; ?>
-                        </div>
-                        <div class="salary">
-                            <?php echo $employee_row['earn_salary']; ?>
-                        </div>
-                        <div class="action">
-                            <span><a data-target="edit-employee" href="edit-employee.php"> <i
-                                        class="fa fa-pencil-square edit" aria-hidden="true"></i></a></span>
-                            <span><a href="#"><i class="fa fa-minus-square trash" aria-hidden="true"></i></a></span>
+$i = 1;
+while ($emp_deduc_row = mysqli_fetch_array($result_emp_deduc)) {
+    $emp_no = $emp_deduc_row['emp_no'];
 
+    ?>
+                        <div class="form-label pad">
+                            Employee :
+                        </div>
+                        <div class="form-input">
+                            <input name="emp_no" type="hidden" class="validate"
+                                value="<?php echo $emp_deduc_row['emp_no']; ?>">
+                            <input type="text" disabled name="emp_name"
+                                value="<?php echo $emp_deduc_row['emp_name']; ?>" placeholder=" Enter employee..." />
                         </div>
 
+                        <div class="form-label pad">
+                            Late :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="late" value="<?php echo $emp_deduc_row['deduc_late']; ?>"
+                                placeholder="Enter late deduction..." />
+                        </div>
+                        <div class="form-label pad">
+                            Undertime :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="undertime" value="<?php echo $emp_deduc_row['deduc_undertime']; ?>"
+                                placeholder="Enter undertime deduction..." />
+                        </div>
+                        <div class="form-label pad">
+                            Absent :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="absent" value="<?php echo $emp_deduc_row['deduc_absent']; ?>"
+                                placeholder="Enter absent deduction..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            HDMF :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="pagibig" value="<?php echo $emp_deduc_row['deduc_pagibig']; ?>"
+                                placeholder="Enter HDMF deduction..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            SSS :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="sss" value="<?php echo $emp_deduc_row['deduc_sss']; ?>"
+                                placeholder="Enter SSS deduction..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            PHILHEALTH :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="philhealth"
+                                value="<?php echo $emp_deduc_row['deduc_philhealth']; ?>"
+                                placeholder="Enter PHILHEALTH deduction..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            Tax :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="tax" value="<?php echo $emp_deduc_row['deduc_tax']; ?>"
+                                placeholder="Enter TAX deduction..." />
+                        </div>
+
+
+                        <div class="form-button">
+                            <button class="btn-add" name="edit_deduc">SUBMIT</button>
+                        </div>
                         <?php } ?>
-
-                    </div>
-
+                    </form>
 
                 </div>
-
             </div>
 
 

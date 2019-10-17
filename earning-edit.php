@@ -3,6 +3,8 @@
 
 include_once "dbcon.php";
 
+$get_id = $_GET['id'];
+$result_emp_earn = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no WHERE tbl_earnings.emp_no = '$get_id'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -82,63 +84,73 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
             </div>
             <div class="area-content">
-                <div class="employee-list">
-                    <div class="add-emp">
-                        Employee
-                    </div>
-
-                    <div class="emp-list">
-                        <div class="no head">
-                            EMP NO
-                        </div>
-                        <div class="name head">
-                            NAME
-                        </div>
-                        <div class="date head">
-                            DATE HIRED
-                        </div>
-                        <div class="salary head">
-                            BASIC SALARY
-                        </div>
-                        <div class="action head">
-                            ACTION
-                        </div>
-                    </div>
-                    <div class="emp-list">
-
+                <div class="add-emp">
+                    Edit Earning
+                </div>
+                <div class="add-employee-form">
+                    <form method="POST" action="edit-earnings-query.php">
                         <?php
-            include_once "dbcon.php";
-            $result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
-            ?>
-                        <?php
-            $i = 1;
-            while ($employee_row = mysqli_fetch_array($result_employee)) {$id = $employee_row['emp_id'];?>
-                        <div class="no">
-                            <?php echo $employee_row['emp_no']; ?>
-                        </div>
-                        <div class="name">
-                            <?php echo $employee_row['emp_name']; ?>
-                        </div>
-                        <div class="date">
-                            <?php echo $employee_row['emp_dhired']; ?>
-                        </div>
-                        <div class="salary">
-                            <?php echo $employee_row['earn_salary']; ?>
-                        </div>
-                        <div class="action">
-                            <span><a data-target="edit-employee" href="edit-employee.php"> <i
-                                        class="fa fa-pencil-square edit" aria-hidden="true"></i></a></span>
-                            <span><a href="#"><i class="fa fa-minus-square trash" aria-hidden="true"></i></a></span>
+                            $i = 1;
+                            while ($emp_earn_row = mysqli_fetch_array($result_emp_earn)) {
+                                $emp_no = $emp_earn_row['emp_no'];
 
+                                ?>
+                        <div class="form-label pad">
+                            Employee :
+                        </div>
+                        <div class="form-input">
+                            <input name="emp_no" type="hidden" class="validate"
+                                value="<?php echo $emp_earn_row['emp_no']; ?>">
+                            <input type="text" disabled name="emp_name" value="<?php echo $emp_earn_row['emp_name']; ?>"
+                                placeholder=" Enter employee..." />
                         </div>
 
+                        <div class="form-label pad">
+                            Basic Salary :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="salary" value="<?php echo $emp_earn_row['earn_salary']; ?>"
+                                placeholder="Enter allowance..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            Allowance :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="allowance" value="<?php echo $emp_earn_row['earn_allowance']; ?>"
+                                placeholder="Enter allowance..." />
+                        </div>
+                        <div class="form-label pad">
+                            Overtime :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="overtime" value="<?php echo $emp_earn_row['earn_overtime']; ?>"
+                                placeholder="Enter overtime..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            Incentives :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="incentives" value="<?php echo $emp_earn_row['earn_incentives']; ?>"
+                                placeholder="Enter incentives..." />
+                        </div>
+
+                        <div class="form-label pad">
+                            Reimbursement :
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="reimburse" value="<?php echo $emp_earn_row['earn_reimburse']; ?>"
+                                placeholder="Enter reimbursement..." />
+                        </div>
+
+                        <div class="form-button">
+                            <button class="btn-add" name="edit_earn">SUBMIT</button>
+                        </div>
                         <?php } ?>
-
-                    </div>
-
+                    </form>
 
                 </div>
-
             </div>
 
 

@@ -82,63 +82,28 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
             </div>
             <div class="area-content">
-                <div class="employee-list">
+                <div class="payroll-sec">
                     <div class="add-emp">
-                        Employee
+                        Payroll
                     </div>
 
-                    <div class="emp-list">
-                        <div class="no head">
-                            EMP NO
-                        </div>
-                        <div class="name head">
-                            NAME
-                        </div>
-                        <div class="date head">
-                            DATE HIRED
-                        </div>
-                        <div class="salary head">
-                            BASIC SALARY
-                        </div>
-                        <div class="action head">
-                            ACTION
+                    <div class="payroll-content">
+                        <div class="payroll-head">
+                            <div class="name">
+                                NAME
+                            </div>
+                            <div class="salary">
+                                GROSS PAY
+                            </div>
+                            <div class="deduction">
+                                TOTAL DEDUCTION
+                            </div>
+                            <div class="action">
+                                ACTION
+                            </div>
                         </div>
                     </div>
-                    <div class="emp-list">
-
-                        <?php
-            include_once "dbcon.php";
-            $result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
-            ?>
-                        <?php
-            $i = 1;
-            while ($employee_row = mysqli_fetch_array($result_employee)) {$id = $employee_row['emp_id'];?>
-                        <div class="no">
-                            <?php echo $employee_row['emp_no']; ?>
-                        </div>
-                        <div class="name">
-                            <?php echo $employee_row['emp_name']; ?>
-                        </div>
-                        <div class="date">
-                            <?php echo $employee_row['emp_dhired']; ?>
-                        </div>
-                        <div class="salary">
-                            <?php echo $employee_row['earn_salary']; ?>
-                        </div>
-                        <div class="action">
-                            <span><a data-target="edit-employee" href="edit-employee.php"> <i
-                                        class="fa fa-pencil-square edit" aria-hidden="true"></i></a></span>
-                            <span><a href="#"><i class="fa fa-minus-square trash" aria-hidden="true"></i></a></span>
-
-                        </div>
-
-                        <?php } ?>
-
-                    </div>
-
-
                 </div>
-
             </div>
 
 

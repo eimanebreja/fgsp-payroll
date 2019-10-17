@@ -3,8 +3,6 @@
 
 include_once "dbcon.php";
 
-
-
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -36,7 +34,7 @@ $user_row = mysqli_fetch_array($result_user);
                         </div>
                         <div class="name">
                             <div class="c_name">Feemo Global Solutions Philippines</div>
-                            <div>@admin</div>
+                            <div><?php echo $user_row['user_name']; ?></div>
                         </div>
                     </div>
                 </div>
@@ -46,7 +44,7 @@ $user_row = mysqli_fetch_array($result_user);
                         Menu
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee</div>
+                        <div class="menu-title">Employee List</div>
                         <div class="menu-icon">
                             <span><a data-target="list-employee" href="list-employee.php"><i class="fa fa-list"
                                         aria-hidden="true"></i></a></span>
@@ -54,13 +52,31 @@ $user_row = mysqli_fetch_array($result_user);
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Employee Earnings</div>
+                        <div class="menu-icon">
+                            <span><a data-target="employee-earning" href="employee-earning.php"><i class="fa fa-list"
+                                        aria-hidden="true"></i></a></span>
+                            <span><a data-target="add-employee-earning" href="add-employee-earning.php"><i
+                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+
+                    <div class="menu-area">
+                        <div class="menu-title">Employee Deduction</div>
+                        <div class="menu-icon">
+                            <span><a data-target="employee-deduction" href="employee-deduction.php"><i
+                                        class="fa fa-list" aria-hidden="true"></i></a></span>
+                            <span><a data-target="add-employee-deduction" href="add-employee-deduction.php"><i
+                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
 
                     <div class="menu-area">
                         <div class="menu-title">Payroll</div>
                         <div class="menu-icon">
-                            <!-- <span><a href="add-employee.php"><i class="fa fa-plus-circle"
+                            <span><a data-target="payroll" href="payroll.php"><i class="fa fa-external-link"
                                         aria-hidden="true"></i></a></span>
-                            <span><a href="list-employee.php"><i class="fa fa-list" aria-hidden="true"></i></a></span> -->
                         </div>
                     </div>
                 </div>
@@ -181,7 +197,7 @@ $user_row = mysqli_fetch_array($result_user);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/payroll.js"></script>
 
-    <script>
+    <!-- <script>
     $(document).ready(function() {
         // Set trigger and container variables
         var trigger = $('.menu-area .menu-icon span a'),
@@ -200,7 +216,7 @@ $user_row = mysqli_fetch_array($result_user);
             return false;
         });
     });
-    </script>
+    </script> -->
 
 </body>
 
