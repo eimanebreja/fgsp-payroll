@@ -33,7 +33,7 @@ $user_row = mysqli_fetch_array($result_user);
                             <img src="image/fgsp_logo.png" alt="">
                         </div>
                         <div class="name">
-                            <div class="c_name">Feemo Global Solutions Philippines</div>
+                            <div class="c_name"><a href="dashboard.php">Feemo Global Solutions Philippines</a></div>
                             <div>@<?php echo $user_row['user_name']; ?></div>
                         </div>
                     </div>

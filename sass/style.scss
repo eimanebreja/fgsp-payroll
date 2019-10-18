@@ -170,6 +170,11 @@ nav {
                     line-height: 1.5;
                     flex-basis: 80%;
 
+                    a {
+                        color: unset;
+                        text-decoration: none;
+                    }
+
                     .c_name {
                         font-size: 12px;
                         font-weight: 700;
@@ -302,6 +307,7 @@ nav {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                flex-wrap: wrap;
 
                 .head {
                     padding-top: 10px;
@@ -312,13 +318,13 @@ nav {
 
                 .no {
                     flex-basis: 15%;
-                    font-size: 12px;
+                    font-size: 11px;
 
                 }
 
                 .name {
                     flex-basis: 30%;
-                    font-size: 12px;
+                    font-size: 11px;
 
                 }
 
@@ -365,6 +371,7 @@ nav {
         .earning-sec {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
 
             .head {
                 padding-top: 10px;

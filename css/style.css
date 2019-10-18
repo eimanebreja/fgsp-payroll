@@ -116,6 +116,9 @@ nav {
           font-size: 10px;
           line-height: 1.5;
           flex-basis: 80%; }
+          .container-area .sidebar .sidebar-admin .logo-area .name a {
+            color: unset;
+            text-decoration: none; }
           .container-area .sidebar .sidebar-admin .logo-area .name .c_name {
             font-size: 12px;
             font-weight: 700; }
@@ -198,7 +201,8 @@ nav {
       padding-top: 5px;
       display: flex;
       flex-direction: row;
-      align-items: center; }
+      align-items: center;
+      flex-wrap: wrap; }
       .container-area .area-content .employee-list .emp-list .head {
         padding-top: 10px;
         font-weight: 700;
@@ -206,10 +210,10 @@ nav {
         border-bottom: 1px solid #e2e2e2; }
       .container-area .area-content .employee-list .emp-list .no {
         flex-basis: 15%;
-        font-size: 12px; }
+        font-size: 11px; }
       .container-area .area-content .employee-list .emp-list .name {
         flex-basis: 30%;
-        font-size: 12px; }
+        font-size: 11px; }
       .container-area .area-content .employee-list .emp-list .date {
         flex-basis: 15%;
         font-size: 12px; }
@@ -232,7 +236,8 @@ nav {
                 color: #1a237e; }
     .container-area .area-content .earning-sec {
       display: flex;
-      flex-direction: row; }
+      flex-direction: row;
+      flex-wrap: wrap; }
       .container-area .area-content .earning-sec .head {
         padding-top: 10px;
         font-weight: 700;
