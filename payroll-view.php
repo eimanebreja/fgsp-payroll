@@ -6,6 +6,7 @@ include_once "dbcon.php";
 $get_id = $_GET['id'];
 $result_salary = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_earnings on tbl_salary.earn_total = tbl_earnings.earn_total LEFT JOIN tbl_deduction on tbl_salary.deduc_total = tbl_deduction.deduc_total WHERE tbl_salary.emp_no = '$get_id'");
 $result_date = mysqli_query($mysqli, "SELECT * FROM tbl_date");
+$result_date_to = mysqli_query($mysqli, "SELECT * FROM tbl_date");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -24,14 +25,23 @@ $user_row = mysqli_fetch_array($result_user);
 </head>
 
 <body id="dashboard">
+    <div class="nav-hide">
+        <?php include 'nav.php'; ?>
+    </div>
 
-    <?php include 'nav.php'; ?>
+
+    <div class="button-print">
+        <button onClick="window.print()"> <i class="fa fa-print" aria-hidden="true"></i> PRINT</button>
+    </div>
 
     <section>
-        <div class="container-area">
-            <?php
+        <?php
             $i = 1;
-            while ($payroll_row = mysqli_fetch_array($result_salary)) {$id = $payroll_row['emp_no'];?>
+            while ($payroll_row = mysqli_fetch_array($result_salary)) {$id = $payroll_row['emp_no'];
+                $int_reim = $payroll_row['earn_incentives'] + $payroll_row['earn_reimburse'];
+                $late_absnt = $payroll_row['deduc_late'] + $payroll_row['deduc_absent'] + $payroll_row['deduc_undertime'];
+                $net_pay = $payroll_row['earn_total'] - $payroll_row['deduc_total'];  ?>
+        <div class="container-area">
             <div class="payroll-view">
                 <div class="logo">
                     <img src="image/fgsp_logo2.png" alt="">
@@ -40,7 +50,7 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="info-area">
                         <div class="info-flex">
                             <div class="name">
-                                Employee Name : <?php echo $payroll_row['emp_name']; ?>
+                                Employee Name : <span><?php echo $payroll_row['emp_name']; ?> </span>
                             </div>
                             <div class="position">
                                 Designation : <?php echo $payroll_row['emp_position']; ?>
@@ -61,13 +71,263 @@ $user_row = mysqli_fetch_array($result_user);
                     </div>
 
                 </div>
-            </div>
-            <?php } ?>
 
+                <div class="payroll-earn-cont">
+                    <div class="desc">
+                        BASIC PAY
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_salary']; ?>
+                    </div>
+                    <div class="desc">
+                        INCENTIVES/REIMBURSEMENT
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $int_reim; ?>
+                    </div>
+                    <div class="desc">
+                        ALLOWANCE
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_allowance']; ?>
+                    </div>
+
+                    <div class="desc">
+                        OVERTIME
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_overtime']; ?>
+                    </div>
+
+                    <div class="desc">
+                        GROSS PAY
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <span> <?php echo $payroll_row['earn_total']; ?> </span>
+                    </div>
+                </div>
+                <div class="deduc-sec">
+                    DEDUCTIONS
+                </div>
+                <div class="payroll-earn-cont">
+                    <div class="desc">
+                        LATE/ABSENT/UNDERTIME
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $late_absnt; ?>
+                    </div>
+                    <div class="desc">
+                        SSS
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_sss']; ?>
+                    </div>
+                    <div class="desc">
+                        PHIC
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_philhealth']; ?>
+                    </div>
+
+                    <div class="desc">
+                        HDMF
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_pagibig']; ?>
+                    </div>
+                    <div class="desc">
+                        W-TAX
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_tax']; ?>
+                    </div>
+
+
+                </div>
+                <div class="net">
+                    <div class="pay">
+                        <div class="desc">
+                            NETPAY
+                        </div>
+                        <div class="desc-info">
+                            <span> &#8369; <?php echo $net_pay; ?> </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signature">
+                    <div class="sig-cont">
+                        <div class="official">
+                            EMPLOYEE SIGNATURE
+                        </div>
+                        <div class="official">
+                            NOTED BY: RANI REGALADO
+
+                        </div>
+                        <div class="official">
+                            PREPARED BY: JACLYN KATE CARTASANO
+                        </div>
+                        <div class="official">
+                            &nbsp;
+                        </div>
+                        <div class="official">
+                            <span> TREASURER </span>
+                        </div>
+                        <div class="official">
+                            <span>EXECUTIVE ASSISTANT </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <!-- <button onClick="window.print()">Print this page</button> -->
+
+        <div class="container-area">
+            <div class="payroll-view">
+                <div class="logo">
+                    <img src="image/fgsp_logo2.png" alt="">
+                </div>
+                <div class="employee-info">
+                    <div class="info-area">
+                        <div class="info-flex">
+                            <div class="name">
+                                Employee Name : <span><?php echo $payroll_row['emp_name']; ?> </span>
+                            </div>
+                            <div class="position">
+                                Designation : <?php echo $payroll_row['emp_position']; ?>
+                            </div>
+                        </div>
+                        <div class="info-flex">
+                            <?php
+            $i = 1;
+            while ($date_rows = mysqli_fetch_array($result_date_to)) {$id = $date_rows['date_id'];?>
+                            <div class="name">
+                                Payroll Schedule : <?php echo $date_rows['payroll_sched']; ?>
+                            </div>
+                            <div class="position">
+                                Cut off : <?php echo $date_rows['cutoff_sched']; ?>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="payroll-earn-cont">
+                    <div class="desc">
+                        BASIC PAY
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_salary']; ?>
+                    </div>
+                    <div class="desc">
+                        INCENTIVES/REIMBURSEMENT
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $int_reim; ?>
+                    </div>
+                    <div class="desc">
+                        ALLOWANCE
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_allowance']; ?>
+                    </div>
+
+                    <div class="desc">
+                        OVERTIME
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_overtime']; ?>
+                    </div>
+
+                    <div class="desc">
+                        GROSS PAY
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <span> <?php echo $payroll_row['earn_total']; ?> </span>
+                    </div>
+                </div>
+                <div class="deduc-sec">
+                    DEDUCTIONS
+                </div>
+                <div class="payroll-earn-cont">
+                    <div class="desc">
+                        LATE/ABSENT/UNDERTIME
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $late_absnt; ?>
+                    </div>
+                    <div class="desc">
+                        SSS
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_sss']; ?>
+                    </div>
+                    <div class="desc">
+                        PHIC
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_philhealth']; ?>
+                    </div>
+
+                    <div class="desc">
+                        HDMF
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_pagibig']; ?>
+                    </div>
+                    <div class="desc">
+                        W-TAX
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_tax']; ?>
+                    </div>
+
+
+                </div>
+                <div class="net">
+                    <div class="pay">
+                        <div class="desc">
+                            NETPAY
+                        </div>
+                        <div class="desc-info">
+                            <span> &#8369; <?php echo $net_pay; ?> </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signature">
+                    <div class="sig-cont">
+                        <div class="official">
+                            EMPLOYEE SIGNATURE
+                        </div>
+                        <div class="official">
+                            NOTED BY: RANI REGALADO
+
+                        </div>
+                        <div class="official">
+                            PREPARED BY: JACLYN KATE CARTASANO
+                        </div>
+                        <div class="official">
+                            &nbsp;
+                        </div>
+                        <div class="official">
+                            <span> TREASURER </span>
+                        </div>
+                        <div class="official">
+                            <span>EXECUTIVE ASSISTANT </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <?php } ?>
     </section>
+
+
+
+
 
 
 

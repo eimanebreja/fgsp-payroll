@@ -112,21 +112,23 @@ $user_row = mysqli_fetch_array($result_user);
             $i = 1;
             while ($salary_row = mysqli_fetch_array($result_salary)) {
                 $id = $salary_row['emp_no']; 
-                $net_pay = $salary_row['earn_total'] - $salary_row['deduc_total']; ?>
+                $net_pay = $salary_row['earn_total'] - $salary_row['deduc_total']; 
+               
+                ?>
                         <div class="payroll-body">
                             <div class="name">
                                 <?php echo $salary_row['emp_name']; ?>
                             </div>
                             <div class="salary">
-                                <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">
+                                <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">&#8369;
                                     <?php echo $salary_row['earn_total']; ?> </a>
                             </div>
                             <div class="deduction">
-                                <a id="<?php echo $id; ?>" href="deduction-edit.php<?php echo '?id=' . $id; ?>">
+                                <a id="<?php echo $id; ?>" href="deduction-edit.php<?php echo '?id=' . $id; ?>">&#8369;
                                     <?php echo $salary_row['deduc_total']; ?></a>
                             </div>
                             <div class="net">
-                                <?php echo $net_pay; ?>
+                                &#8369; <?php echo $net_pay; ?>
                             </div>
                             <div class="action">
                                 <a id="<?php echo $id; ?>" href="payroll-view.php<?php echo '?id=' . $id; ?>"> VIEW </a>

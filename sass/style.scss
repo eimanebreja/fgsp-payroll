@@ -563,19 +563,20 @@ nav {
         padding: 10px;
         width: 100%;
 
+
         .logo {
             display: flex;
             justify-content: center;
             align-items: center;
 
             img {
-                width: 5%;
+                width: 3%;
             }
         }
 
         .employee-info {
             margin-top: 10px;
-            padding: 5px 10px;
+            padding: 10px 10px 5px;
             background: #eaebea;
 
             .info-area {
@@ -592,11 +593,17 @@ nav {
                     flex-direction: column;
 
                     .name {
-                        font-size: 12px;
+                        font-size: 8px;
+                        line-height: 1;
+
+                        span {
+                            font-weight: 700;
+                            text-transform: uppercase;
+                        }
                     }
 
                     .position {
-                        font-size: 12px;
+                        font-size: 8px;
                     }
                 }
 
@@ -604,7 +611,282 @@ nav {
 
 
         }
+
+        .payroll-earn-cont {
+            padding-top: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .desc {
+                margin-left: 40px;
+                flex-basis: 43%;
+                font-size: 8px;
+                font-weight: 700;
+                line-height: 1.5;
+            }
+
+            .desc-info {
+                margin-left: 40px;
+                flex-basis: 43%;
+                font-size: 8px;
+                line-height: 1.5;
+
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .deduc-sec {
+            margin-top: 10px;
+            text-align: center;
+            padding: 5px 10px;
+            background: #eaebea;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .net {
+            background: #eaebea;
+
+            .pay {
+                max-width: 800px;
+                margin: 0 auto;
+                margin-top: 10px;
+                padding: 5px 10px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .desc {
+                    margin-left: 30px;
+                    flex-basis: 43%;
+                    font-size: 8px;
+                    font-weight: 700;
+                    line-height: 1.5;
+                }
+
+                .desc-info {
+                    margin-left: 40px;
+                    flex-basis: 43%;
+                    font-size: 8px;
+                    line-height: 1.5;
+
+                    span {
+                        font-weight: 700;
+                    }
+                }
+
+            }
+
+        }
+
+        .signature {
+            padding-top: 40px;
+
+            .sig-cont {
+                max-width: 800px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+
+                .official {
+                    line-height: 1.5;
+                    text-align: center;
+                    flex-basis: 32%;
+                    font-size: 9px;
+
+                    span {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.button-print {
+    margin-top: 20px;
+    margin-right: 30px;
+    text-align: right;
+
+    button {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        height: 30px;
+        line-height: 1;
+    }
+}
+
+
+@media print {
+    body {
+        &#dashboard {
+            background: white;
+        }
     }
 
+    .button-print {
+        display: none;
+    }
 
+    .nav-hide {
+        display: none;
+    }
+
+    .payroll-view {
+        background: white;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid black;
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 20%;
+            }
+        }
+
+        .employee-info {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #eaebea;
+
+            .info-area {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+
+
+                .info-flex {
+                    margin-left: 40px;
+                    flex-basis: 45%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .name {
+                        font-size: 5pt;
+
+                        span {
+                            font-weight: 700;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    .position {
+                        font-size: 5px;
+                    }
+                }
+
+            }
+
+
+        }
+
+        .payroll-earn-cont {
+            padding-top: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .desc {
+                margin-left: 40px;
+                flex-basis: 30%;
+                font-size: 12px;
+                font-weight: 700;
+            }
+
+            .desc-info {
+                margin-left: 40px;
+                flex-basis: 30%;
+                font-size: 12px;
+
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .deduc-sec {
+            margin-top: 10px;
+            text-align: center;
+            padding: 5px 10px;
+            background: #eaebea;
+            font-size: 12px;
+        }
+
+        .net {
+            background: #eaebea;
+
+
+
+            .pay {
+                max-width: 800px;
+                margin: 0 auto;
+                margin-top: 10px;
+                padding: 5px 10px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .desc {
+                    margin-left: 30px;
+                    flex-basis: 45%;
+                    font-size: 12px;
+                    font-weight: 700;
+                }
+
+                .desc-info {
+                    margin-left: 40px;
+                    flex-basis: 45%;
+                    font-size: 12px;
+
+                    span {
+                        font-weight: 700;
+                    }
+                }
+
+            }
+
+        }
+
+        .signature {
+            padding-top: 40px;
+
+            .sig-cont {
+                max-width: 800px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+
+                .official {
+                    line-height: 1.5;
+                    text-align: center;
+                    flex-basis: 32%;
+                    font-size: 12px;
+
+                    span {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+    }
 }

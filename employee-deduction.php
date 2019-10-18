@@ -108,7 +108,7 @@ $user_row = mysqli_fetch_array($result_user);
                                 <?php echo $deduc_row['emp_name']; ?> </a>
                         </div>
                         <div class="total">
-                            <?php echo $deduc_row['deduc_total']; ?>
+                            &#8369; <?php echo $deduc_row['deduc_total']; ?>
                         </div>
                         <?php } ?>
                     </div>

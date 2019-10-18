@@ -108,7 +108,7 @@ $user_row = mysqli_fetch_array($result_user);
                                 <?php echo $earn_row['emp_name']; ?> </a>
                         </div>
                         <div class="total">
-                            <?php echo $earn_row['earn_total']; ?>
+                            &#8369; <?php echo $earn_row['earn_total']; ?>
                         </div>
                         <?php } ?>
                     </div>

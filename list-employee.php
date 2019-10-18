@@ -121,7 +121,7 @@ $user_row = mysqli_fetch_array($result_user);
                             <?php echo $employee_row['emp_dhired']; ?>
                         </div>
                         <div class="salary">
-                            <?php echo $employee_row['earn_salary']; ?>
+                            &#8369; <?php echo $employee_row['earn_salary']; ?>
                         </div>
                         <div class="action">
                             <span><a data-target="edit-employee" href="edit-employee.php"> <i
