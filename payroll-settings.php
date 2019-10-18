@@ -3,6 +3,8 @@
 
 include_once "dbcon.php";
 
+
+$result_date = mysqli_query($mysqli, "SELECT * FROM tbl_date");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -83,63 +85,37 @@ $user_row = mysqli_fetch_array($result_user);
             </div>
             <div class="area-content">
                 <div class="add-emp">
-                    Add Employee
+                    Payroll Settings
                 </div>
                 <div class="add-employee-form">
-                    <form method="POST" action="add-employee-query.php">
+                    <form method="POST" action="edit-settings-query.php">
+                        <?php
+                            $i = 1;
+                            while ($date_row = mysqli_fetch_array($result_date)) {
+                                $id = $date_row['date_id'];
+
+                                ?>
                         <div class="form-label">
-                            Employee Number :
+                            Payroll Schedule :
                         </div>
                         <div class="form-input">
-                            <?php
-                include_once "dbcon.php";
-                $result_employee = mysqli_query($mysqli, "SELECT LPAD(emp_no, 3, '0') AS code FROM tbl_employee ORDER BY emp_id DESC LIMIT 1");
-                $i = 1;
-                while ($emp_row = mysqli_fetch_array($result_employee)) {
-                $id = $emp_row['code'];
-                $code_sum = $id + 1;
-                $codes = str_pad($code_sum, 3, "0", STR_PAD_LEFT);
-                ?>
-                            <input type="text" value="<?php echo $codes; ?>" name="emp_no"
-                                placeholder="Enter employee id..." />
-                            <?php }?>
+                            <input type="hidden" value="<?php echo $date_row['date_id']; ?>" name="date_id"
+                                placeholder="Enter payroll schedule..." />
+                            <input type="text" value="<?php echo $date_row['payroll_sched']; ?>" name="payroll_sched"
+                                placeholder="Enter payroll schedule..." />
                         </div>
                         <div class="form-label pad">
-                            Lastname :
+                            Cut-Off Date :
                         </div>
                         <div class="form-input">
-                            <input type="text" name="lname" placeholder="Enter lastname..." />
-                        </div>
-                        <div class="form-label pad">
-                            Firstname :
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="fname" placeholder="Enter firstname..." />
-                        </div>
-                        <div class="form-label pad">
-                            Middlename :
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="mname" placeholder="Enter middlename..." />
-                        </div>
-
-                        <div class="form-label pad">
-                            Position :
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="position" placeholder="Enter Position..." />
-                        </div>
-
-                        <div class="form-label pad">
-                            Date Hired :
-                        </div>
-                        <div class="form-input">
-                            <input type="date" name="hire" placeholder="Enter firstname..." />
+                            <input type="text" name="cutoff" value="<?php echo $date_row['cutoff_sched']; ?>"
+                                placeholder="Enter lastname..." />
                         </div>
 
                         <div class="form-button">
-                            <button class="btn-add" name="add_emp">SUBMIT</button>
+                            <button class="btn-add" name="edit_payroll">SUBMIT</button>
                         </div>
+                        <?php } ?>
                     </form>
 
                 </div>
@@ -257,26 +233,6 @@ $user_row = mysqli_fetch_array($result_user);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/payroll.js"></script>
 
-    <!-- <script>
-    $(document).ready(function() {
-        // Set trigger and container variables
-        var trigger = $('.menu-area .menu-icon span a'),
-            container = $('.area-content');
-
-        // Fire on click
-        trigger.on('click', function() {
-            // Set $this for re-use. Set target from data attribute
-            var $this = $(this),
-                target = $this.data('target');
-
-            // Load target page into container
-            container.load(target + '.php');
-
-            // Stop normal link behavior
-            return false;
-        });
-    });
-    </script> -->
 
 </body>
 

@@ -246,20 +246,54 @@ nav {
       .container-area .area-content .earning-sec .total {
         font-size: 12px;
         flex-basis: 40%; }
+    .container-area .area-content .payroll-sec .settings {
+      text-align: right; }
+      .container-area .area-content .payroll-sec .settings a {
+        color: unset;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none; }
     .container-area .area-content .payroll-sec .payroll-content .payroll-head {
       display: flex;
       flex-direction: row;
-      align-items: center; }
+      align-items: center;
+      border-bottom: 1px solid #e2e2e2; }
       .container-area .area-content .payroll-sec .payroll-content .payroll-head .name {
         flex-basis: 35%;
         font-size: 10px; }
       .container-area .area-content .payroll-sec .payroll-content .payroll-head .salary {
-        flex-basis: 25%;
+        flex-basis: 20%;
         font-size: 10px; }
       .container-area .area-content .payroll-sec .payroll-content .payroll-head .deduction {
-        flex-basis: 25%;
+        flex-basis: 20%;
+        font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-head .net {
+        flex-basis: 20%;
         font-size: 10px; }
       .container-area .area-content .payroll-sec .payroll-content .payroll-head .action {
+        flex-basis: 15%;
+        font-size: 10px; }
+    .container-area .area-content .payroll-sec .payroll-content .payroll-body {
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-body .name {
+        flex-basis: 35%;
+        font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-body .salary {
+        flex-basis: 20%;
+        font-size: 10px; }
+        .container-area .area-content .payroll-sec .payroll-content .payroll-body .salary a {
+          text-decoration: none; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-body .deduction {
+        flex-basis: 20%;
+        font-size: 10px; }
+        .container-area .area-content .payroll-sec .payroll-content .payroll-body .deduction a {
+          text-decoration: none; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-body .net {
+        flex-basis: 20%;
+        font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-body .action {
         flex-basis: 15%;
         font-size: 10px; }
   .container-area .area-event {
@@ -299,5 +333,33 @@ nav {
         line-height: 1;
         padding-left: 10px;
         font-size: 12px; }
+  .container-area .payroll-view {
+    background: white;
+    padding: 10px;
+    width: 100%; }
+    .container-area .payroll-view .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .container-area .payroll-view .logo img {
+        width: 5%; }
+    .container-area .payroll-view .employee-info {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background: #eaebea; }
+      .container-area .payroll-view .employee-info .info-area {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row; }
+        .container-area .payroll-view .employee-info .info-area .info-flex {
+          margin-left: 40px;
+          flex-basis: 50%;
+          display: flex;
+          flex-direction: column; }
+          .container-area .payroll-view .employee-info .info-area .info-flex .name {
+            font-size: 12px; }
+          .container-area .payroll-view .employee-info .info-area .info-flex .position {
+            font-size: 12px; }
 
 /*# sourceMappingURL=style.css.map */

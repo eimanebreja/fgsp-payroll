@@ -391,11 +391,25 @@ nav {
         }
 
         .payroll-sec {
+
+            .settings {
+                text-align: right;
+
+                a {
+                    color: unset;
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-decoration: none;
+                }
+            }
+
             .payroll-content {
                 .payroll-head {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    border-bottom: 1px solid #e2e2e2;
+
 
                     .name {
                         flex-basis: 35%;
@@ -404,13 +418,64 @@ nav {
                     }
 
                     .salary {
-                        flex-basis: 25%;
+                        flex-basis: 20%;
                         font-size: 10px;
 
                     }
 
                     .deduction {
-                        flex-basis: 25%;
+                        flex-basis: 20%;
+                        font-size: 10px;
+
+                    }
+
+                    .net {
+                        flex-basis: 20%;
+                        font-size: 10px;
+
+                    }
+
+                    .action {
+                        flex-basis: 15%;
+                        font-size: 10px;
+                    }
+                }
+
+                .payroll-body {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+
+
+                    .name {
+                        flex-basis: 35%;
+                        font-size: 10px;
+
+                    }
+
+                    .salary {
+                        flex-basis: 20%;
+                        font-size: 10px;
+
+                        a {
+                            text-decoration: none;
+                        }
+
+                    }
+
+                    .deduction {
+                        flex-basis: 20%;
+                        font-size: 10px;
+
+                        a {
+                            text-decoration: none;
+                        }
+
+                    }
+
+                    .net {
+                        flex-basis: 20%;
                         font-size: 10px;
 
                     }
@@ -490,6 +555,55 @@ nav {
         }
 
 
+    }
+
+
+    .payroll-view {
+        background: white;
+        padding: 10px;
+        width: 100%;
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 5%;
+            }
+        }
+
+        .employee-info {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #eaebea;
+
+            .info-area {
+                max-width: 800px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+
+
+                .info-flex {
+                    margin-left: 40px;
+                    flex-basis: 50%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .name {
+                        font-size: 12px;
+                    }
+
+                    .position {
+                        font-size: 12px;
+                    }
+                }
+
+            }
+
+
+        }
     }
 
 

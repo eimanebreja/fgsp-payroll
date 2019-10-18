@@ -3,6 +3,7 @@
 
 include_once "dbcon.php";
 
+$result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -106,10 +107,7 @@ $user_row = mysqli_fetch_array($result_user);
                     </div>
                     <div class="emp-list">
 
-                        <?php
-            include_once "dbcon.php";
-            $result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
-            ?>
+
                         <?php
             $i = 1;
             while ($employee_row = mysqli_fetch_array($result_employee)) {$id = $employee_row['emp_id'];?>
