@@ -1,13 +1,55 @@
-<?php include 'session.php';?>
+<form method="POST" id="save" action="save.php">
+                            <div class="form-label">
+                                Payroll Schedule :
+                            </div>
+                            <div class="form-input">
+                                <input type="text" name="payroll_sched" placeholder="Enter payroll schedule..." />
+                            </div>
+                            <div class="form-label pad">
+                                Cut-Off Date :
+                            </div>
+                            <div class="form-input">
+                                <input type="text" name="cutoff" placeholder="Enter cut off dates..." />
+                            </div>
+                            <hr>
+                            <label class="container top">SELECT ALL EMPLOYEE
+                                <input onclick="checkAll(this)" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <?php  
+                                while ($emp_salary_row = mysqli_fetch_array($add_emp_salary)) {
+                                    $id = $emp_salary_row['emp_id']; 
+                                    ?>
+                            <label class="container"> <?php echo $emp_salary_row['emp_name']; ?>
+                                <input type="checkbox" name="subject[]"
+                                    value="<?php echo $emp_salary_row['emp_no']; ?>">
+                                <span class="checkmark"></span>
+                            </label>
+                            <?php } ?>
+
+                            <div class="form-button">
+                                <button id="submit" class="btn-add" name="add">SUBMIT</button>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <?php include 'session.php';?>
 <?php
 
 include_once "dbcon.php";
-
-$result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending'");
+$add_emp_salary = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
-$result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +63,14 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
 </head>
+
 <body id="dashboard">
 
     <?php include 'nav.php'; ?>
 
     <section>
         <div class="container-area">
-        <div class="sidebar">
+            <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -42,122 +85,98 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
 
                 <div class="sidebar-menu">
                     <div class="sidebar-title">
-                        EMPLOYEE
+                        Menu
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">List/Add Employee</div>
+                        <div class="menu-title">Payroll</div>
                         <div class="menu-icon">
-                            <span><a  href="list-employee.php"><i class="fa fa-list"
+                            <span><a data-target="list-employee" href="list-employee.php"><i class="fa fa-list"
                                         aria-hidden="true"></i></a></span>
-                            <span><a href="add-employee.php"><i class="fa fa-plus-circle"
+                            <span><a data-target="add-employee" href="add-payroll.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Add Employee Earnings</div>
+                        <div class="menu-title">Employee List</div>
                         <div class="menu-icon">
-                            <span><a href="add-employee-earning.php"><i
+                            <span><a data-target="list-employee" href="list-employee.php"><i class="fa fa-list"
+                                        aria-hidden="true"></i></a></span>
+                            <span><a data-target="add-employee" href="add-employee.php"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Employee Earnings</div>
+                        <div class="menu-icon">
+                            <span><a data-target="employee-earning" href="employee-earning.php"><i class="fa fa-list"
+                                        aria-hidden="true"></i></a></span>
+                            <span><a data-target="add-employee-earning" href="add-employee-earning.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Add Employee Deduction</div>
+                        <div class="menu-title">Employee Deduction</div>
                         <div class="menu-icon">
-                         
-                            <span><a href="add-employee-deduction.php"><i
+                            <span><a data-target="employee-deduction" href="employee-deduction.php"><i
+                                        class="fa fa-list" aria-hidden="true"></i></a></span>
+                            <span><a data-target="add-employee-deduction" href="add-employee-deduction.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                    <div class="sidebar-title">
-                        PAYROLL
-                    </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Add Payroll</div>
+                        <div class="menu-title">Payroll</div>
                         <div class="menu-icon">
-                            <span><a href="add-payroll.php"><i class="fa fa-plus-circle"
-                                        aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-                   
-                    <div class="menu-area">
-                        <div class="menu-title">Pending Payroll</div>
-                        <div class="menu-icon">
-                            <span><a href="payroll.php"><i class="fa fa-external-link"
-                                        aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-                    <div class="menu-area">
-                        <div class="menu-title">Approved Payroll</div>
-                        <div class="menu-icon">
-                            <span><a href="approved-payroll.php"><i class="fa fa-external-link"
-                                        aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-                    <div class="menu-area">
-                        <div class="menu-title">Payroll Transaction</div>
-                        <div class="menu-icon">
-                            <span><a href="payroll-transaction.php"><i class="fa fa-external-link"
+                            <span><a data-target="payroll" href="payroll.php"><i class="fa fa-external-link"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="area-content">
-                <div class="payroll-sec">
-                    <div class="add-emp">
-                        Payroll
+                <div class="payroll-add">
+                    <div class="add-emp head">
+                        Add Payroll
                     </div>
-                  
-                    <div class="payroll-content">
-                        <div class="payroll-head">
-                            <div class="name">
-                                NAME
+                    <div class="note">
+                        <span> Note : </span> If the employee are not exist in the list. Go to <a
+                            href="add-employee.php"> here </a> to add a new employee.
+                    </div>
+                    <div class="employ-list">
+                        <form method="POST" id="save" action="save.php">
+                            <div class="form-label">
+                                Payroll Schedule :
                             </div>
-                            <div class="salary">
-                                GROSS PAY
+                            <div class="form-input">
+                                <input type="text" name="payroll_sched" placeholder="Enter payroll schedule..." />
                             </div>
-                            <div class="deduction">
-                                TOTAL DEDUCTION
+                            <div class="form-label pad">
+                                Cut-Off Date :
                             </div>
-                            <div class="net">
-                                NET PAY
+                            <div class="form-input">
+                                <input type="text" name="cutoff" placeholder="Enter cut off dates..." />
                             </div>
-                            <div class="action">
-                                ACTION
+                            <hr>
+                            <label class="container top">SELECT ALL EMPLOYEE
+                                <input onclick="checkAll(this)" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <?php  
+                                while ($emp_salary_row = mysqli_fetch_array($add_emp_salary)) {
+                                    $id = $emp_salary_row['emp_id']; 
+                                    ?>
+                            <label class="container"> <?php echo $emp_salary_row['emp_name']; ?>
+                                <input type="checkbox" name="subject[]"
+                                    value="<?php echo $emp_salary_row['emp_no']; ?>">
+                                <span class="checkmark"></span>
+                            </label>
+                            <?php } ?>
+
+                            <div class="form-button">
+                                <button id="submit" class="btn-add" name="add">SUBMIT</button>
                             </div>
-                        </div>
-                        <?php
-                
-                        while ($salary_row = mysqli_fetch_array($result_salaries)) {
-                            $id = $salary_row['over_id']; 
-                            $earn_total = $salary_row['earn_total']; 
-                            $deduc_total = $salary_row['deduc_total']; 
-                            $net_pay = $salary_row['earn_total'] - $salary_row['deduc_total']; 
-                        
-                            ?>
-                        <div class="payroll-body">
-                            <div class="name">
-                                <?php echo $salary_row['emp_name']; ?>
-                            </div>
-                            <div class="salary">
-                                <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo $earn_total; ?> </a>
-                            </div>
-                            <div class="deduction">
-                                <a id="<?php echo $id; ?>" href="deduction-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo  $deduc_total; ?></a>
-                            </div>
-                            <div class="net">
-                                &#8369; <?php echo $net_pay; ?>
-                            </div>
-                            <div class="action">
-                             <a id="<?php echo $id; ?>" href="approval-query.php<?php echo '?id=' . $id; ?>">
-                                    CHECK</a>
-                            </div>
-                        </div>
-                        <?php } ?>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -270,32 +289,47 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
 
 
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/payroll.js"></script>
 
-    <!-- <script>
+    <script>
+    function checkAll(bx) {
+        var cbs = document.getElementsByTagName('input');
+        for (var i = 0; i < cbs.length; i++) {
+            if (cbs[i].type == 'checkbox') {
+                cbs[i].checked = bx.checked;
+            }
+        }
+    }
+    </script>
+
+    <script>
     $(document).ready(function() {
-        // Set trigger and container variables
-        var trigger = $('.menu-area .menu-icon span a'),
-            container = $('.area-content');
 
-        // Fire on click
-        trigger.on('click', function() {
-            // Set $this for re-use. Set target from data attribute
-            var $this = $(this),
-                target = $this.data('target');
-
-            // Load target page into container
-            container.load(target + '.php');
-
-            // Stop normal link behavior
-            return false;
+        $('#submit').click(function() {
+            $.ajax({
+                async: true,
+                url: "save.php",
+                method: "POST",
+                data: $('#save').serialize(),
+                success: function(rt) {
+                    alert(rt);
+                    $('#save')[0].reset();
+                }
+            });
         });
-    });
-    </script> -->
 
+    });
+    </script>
 
 </body>
 
 </html>
+
+
+employee-earnings
+employee-deduction
+
+9:20
+10:16
+10:36

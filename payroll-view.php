@@ -4,9 +4,9 @@
 include_once "dbcon.php";
 
 $get_id = $_GET['id'];
-$result_salary = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_earnings on tbl_salary.earn_total = tbl_earnings.earn_total LEFT JOIN tbl_deduction on tbl_salary.deduc_total = tbl_deduction.deduc_total WHERE tbl_salary.emp_no = '$get_id'");
-$result_date = mysqli_query($mysqli, "SELECT * FROM tbl_date");
-$result_date_to = mysqli_query($mysqli, "SELECT * FROM tbl_date");
+$result_salary = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_overview on tbl_salary.over_id = tbl_overview.over_id WHERE tbl_salary.over_id = '$get_id'");
+// $result_date = mysqli_query($mysqli, "SELECT * FROM tbl_date LEFT JOIN tbl_salary on tbl_date.payroll_sched = tbl_salary.payroll_sched WHERE tbl_salary.over_id = '$get_id'");
+// $result_date_to = mysqli_query($mysqli, "SELECT * FROM tbl_date LEFT JOIN tbl_salary on tbl_date.payroll_sched = tbl_salary.payroll_sched WHERE tbl_salary.over_id = '$get_id'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -57,16 +57,14 @@ $user_row = mysqli_fetch_array($result_user);
                             </div>
                         </div>
                         <div class="info-flex">
-                            <?php
-            $i = 1;
-            while ($date_row = mysqli_fetch_array($result_date)) {$id = $date_row['date_id'];?>
+                 
                             <div class="name">
-                                Payroll Schedule : <?php echo $date_row['payroll_sched']; ?>
+                                Payroll Schedule : <?php echo $payroll_row['payroll_sched']; ?>
                             </div>
                             <div class="position">
-                                Cut off : <?php echo $date_row['cutoff_sched']; ?>
+                                Cut off : <?php echo $payroll_row['cutoff_sched']; ?>
                             </div>
-                            <?php } ?>
+                          
                         </div>
                     </div>
 
@@ -198,16 +196,14 @@ $user_row = mysqli_fetch_array($result_user);
                             </div>
                         </div>
                         <div class="info-flex">
-                            <?php
-            $i = 1;
-            while ($date_rows = mysqli_fetch_array($result_date_to)) {$id = $date_rows['date_id'];?>
+                       
                             <div class="name">
-                                Payroll Schedule : <?php echo $date_rows['payroll_sched']; ?>
+                                Payroll Schedule : <?php echo $payroll_row['payroll_sched']; ?>
                             </div>
                             <div class="position">
-                                Cut off : <?php echo $date_rows['cutoff_sched']; ?>
+                                Cut off : <?php echo $payroll_row['cutoff_sched']; ?>
                             </div>
-                            <?php } ?>
+                          
                         </div>
                     </div>
 

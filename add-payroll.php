@@ -2,13 +2,14 @@
 <?php
 
 include_once "dbcon.php";
-
-$result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending'");
+$overview_salary = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_overview on tbl_salary.over_id = tbl_overview.over_id");
+$earning_salary = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_earnings on tbl_salary.earn_total = tbl_earnings.earn_total");
+$deduction_salary = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_deduction on tbl_salary.deduc_total = tbl_deduction.deduc_total");
+$add_emp_salary = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
-$result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +21,11 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
 </head>
-<body id="dashboard">
+
+<body>
 
     <?php include 'nav.php'; ?>
 
@@ -105,59 +109,86 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                 </div>
             </div>
             <div class="area-content">
-                <div class="payroll-sec">
-                    <div class="add-emp">
-                        Payroll
+                <div class="payroll-add">
+                    <div class="add-emp head">
+                        Add Payroll
                     </div>
-                  
-                    <div class="payroll-content">
-                        <div class="payroll-head">
-                            <div class="name">
-                                NAME
+                    <div class="note">
+                        <span> Note : </span> If the employee are not exist in the list. Go to <a
+                            href="add-employee.php"> here </a> to add a new employee.
+                    </div>
+                    <div class="employ-list">
+                         <form method="POST" id="save" action="save.php">
+                            <div class="form-label">
+                                Payroll Schedule :
                             </div>
-                            <div class="salary">
-                                GROSS PAY
+                            <div class="form-input">
+                                <input type="text" id="datepicker" name="payroll_scheds" placeholder="Enter payroll schedule..." />
                             </div>
-                            <div class="deduction">
-                                TOTAL DEDUCTION
+                            <div class="form-label pad">
+                                Cut-Off Date :
                             </div>
-                            <div class="net">
-                                NET PAY
+                            <div class="form-input">
+                                <input type="text" name="cutoff" placeholder="Enter cut off date..." />
                             </div>
-                            <div class="action">
-                                ACTION
-                            </div>
-                        </div>
-                        <?php
+                            <?php  
+                                while ($over_row = mysqli_fetch_array($overview_salary)) {
+                                    $earn_total = $over_row['earn_total']; 
+                                    $earn_salary = $over_row['earn_salary']; 
+                                    $earn_allowance = $over_row['earn_allowance']; 
+                                    $earn_overtime = $over_row['earn_overtime']; 
+                                    $earn_incentives = $over_row['earn_incentives']; 
+                                    $earn_reimburse = $over_row['earn_reimburse']; 
+                                    $deduc_total = $over_row['deduc_total']; 
+                                    $deduc_late = $over_row['deduc_late']; 
+                                    $deduc_absent = $over_row['deduc_absent']; 
+                                    $deduc_pagibig = $over_row['deduc_pagibig']; 
+                                    $deduc_sss = $over_row['deduc_sss']; 
+                                    $deduc_philhealth = $over_row['deduc_philhealth']; 
+                                    $deduc_undertime = $over_row['deduc_undertime']; 
+                                    $deduc_tax = $over_row['deduc_tax']; 
+            
+                                    ?>
+                            <div class="form-input">
+                                <input type="hidden" name="earn_total[]"  value="<?php echo $earn_total; ?>" placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_salary[]"  value="<?php echo $earn_salary; ?>" placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_allowance[]"  value="<?php echo $earn_allowance; ?>" placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_overtime[]"  value="<?php echo $earn_overtime; ?>" placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_incentives[]"  value="<?php echo $earn_incentives; ?>" placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_reimburse[]"  value="<?php echo $earn_reimburse; ?>" placeholder="Enter earn..." />
+              
                 
-                        while ($salary_row = mysqli_fetch_array($result_salaries)) {
-                            $id = $salary_row['over_id']; 
-                            $earn_total = $salary_row['earn_total']; 
-                            $deduc_total = $salary_row['deduc_total']; 
-                            $net_pay = $salary_row['earn_total'] - $salary_row['deduc_total']; 
-                        
-                            ?>
-                        <div class="payroll-body">
-                            <div class="name">
-                                <?php echo $salary_row['emp_name']; ?>
+                                <input type="hidden" name="deduc_total[]"  value="<?php echo $deduc_total; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_late[]"  value="<?php echo $deduc_late; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_absent[]"  value="<?php echo $deduc_absent; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_pagibig[]"  value="<?php echo $deduc_pagibig; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_sss[]"  value="<?php echo $deduc_sss; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_philhealth[]"  value="<?php echo $deduc_philhealth; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_undertime[]"  value="<?php echo $deduc_undertime; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_tax[]"  value="<?php echo $deduc_tax; ?>" placeholder="Enter deduc..." />
                             </div>
-                            <div class="salary">
-                                <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo $earn_total; ?> </a>
+                             <?php } ?>
+                            <hr>
+                            <label class="container top">SELECT ALL EMPLOYEE
+                                <input onclick="checkAll(this)" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <?php  
+                                while ($emp_salary_row = mysqli_fetch_array($add_emp_salary)) {
+                                 
+                                    ?>
+                            <label class="container"> <?php echo $emp_salary_row['emp_name']; ?>
+                                <input type="checkbox" name="employee[]"
+                                    value="<?php echo $emp_salary_row['emp_no']; ?>">
+                                <span class="checkmark"></span>
+                            </label>
+                            <?php } ?>
+
+                            <div class="form-button">
+                                <button id="submit" class="btn-add" name="add">SUBMIT</button>
                             </div>
-                            <div class="deduction">
-                                <a id="<?php echo $id; ?>" href="deduction-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo  $deduc_total; ?></a>
-                            </div>
-                            <div class="net">
-                                &#8369; <?php echo $net_pay; ?>
-                            </div>
-                            <div class="action">
-                             <a id="<?php echo $id; ?>" href="approval-query.php<?php echo '?id=' . $id; ?>">
-                                    CHECK</a>
-                            </div>
-                        </div>
-                        <?php } ?>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -267,33 +298,53 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
         </div>
     </section>
 
+    <script>
 
+        $(document).ready(function() {
 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/payroll.js"></script>
-
-    <!-- <script>
-    $(document).ready(function() {
-        // Set trigger and container variables
-        var trigger = $('.menu-area .menu-icon span a'),
-            container = $('.area-content');
-
-        // Fire on click
-        trigger.on('click', function() {
-            // Set $this for re-use. Set target from data attribute
-            var $this = $(this),
-                target = $this.data('target');
-
-            // Load target page into container
-            container.load(target + '.php');
-
-            // Stop normal link behavior
-            return false;
+        $('#submit').click(function() {
+            $.ajax({
+                async: true,
+                url: "save.php",
+                method: "POST",
+                data: $('#save').serialize(),
+                success: function(rt) {
+                    alert(rt);
+                    $('#save')[0].reset();
+                }
+            });
         });
-    });
-    </script> -->
+
+        });
+
+</script>
+   
+    <script src="js/payroll.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+    function checkAll(bx) {
+        var cbs = document.getElementsByTagName('input');
+        for (var i = 0; i < cbs.length; i++) {
+            if (cbs[i].type == 'checkbox') {
+                cbs[i].checked = bx.checked;
+            }
+        }
+    }
+    </script>
+
+
+  
+
+<script>
+  $( function() {
+    $('input[id$=datepicker]').datepicker({
+    dateFormat: 'MM d, yy'
+});
+  } );
+
+  </script>
 
 
 </body>

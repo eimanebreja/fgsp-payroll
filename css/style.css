@@ -129,10 +129,12 @@ nav {
       -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
       box-shadow: 0px 1px 11px -6px #b8b8b8; }
       .container-area .sidebar .sidebar-menu .sidebar-title {
+        margin-top: 10px;
         border-left: 3px solid #45494b;
         padding-top: 10px;
         padding-left: 10px;
         padding-bottom: 10px;
+        border-top: 1px solid #e2e2e2;
         border-bottom: 1px solid #e2e2e2;
         font-weight: 700;
         font-size: 14px; }
@@ -152,6 +154,68 @@ nav {
             margin-right: 5px; }
             .container-area .sidebar .sidebar-menu .menu-area .menu-icon span a {
               color: unset; }
+  .container-area .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4); }
+    .container-area .modal .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      /* 15% from the top and centered */
+      padding: 0px;
+      border: 1px solid #888;
+      width: 50%;
+      /* Could be more or less, depending on screen size */ }
+      .container-area .modal .modal-content .modal-header {
+        background: #1a237e;
+        height: 50px; }
+        .container-area .modal .modal-content .modal-header .header-title {
+          padding: 10px;
+          line-height: 1;
+          text-align: center;
+          color: white;
+          font-size: 25px; }
+        .container-area .modal .modal-content .modal-header .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold; }
+          .container-area .modal .modal-content .modal-header .close:hover {
+            color: #eee;
+            text-decoration: none;
+            cursor: pointer; }
+          .container-area .modal .modal-content .modal-header .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer; }
+      .container-area .modal .modal-content .modal-body {
+        padding: 20px; }
+        .container-area .modal .modal-content .modal-body .modal-content {
+          font-size: 17px; }
+      .container-area .modal .modal-content .modal-footer {
+        padding: 10px;
+        border-top: 1px solid #eee;
+        height: 50px; }
+        .container-area .modal .modal-content .modal-footer .modal-ft-cont {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end; }
+          .container-area .modal .modal-content .modal-footer .modal-ft-cont .btn-danger {
+            padding: 10px 20px;
+            background: #008a00;
+            font-size: 12px;
+            color: white;
+            border-radius: 2px;
+            line-height: 1;
+            text-decoration: none; }
   .container-area .area-content {
     margin-left: 10px;
     flex-basis: 50%;
@@ -164,6 +228,96 @@ nav {
     .container-area .area-content .add-emp {
       font-size: 14px;
       font-weight: 700; }
+    .container-area .area-content .payroll-add .note {
+      font-size: 12px; }
+      .container-area .area-content .payroll-add .note span {
+        font-weight: 700; }
+      .container-area .area-content .payroll-add .note a {
+        font-weight: 700;
+        color: #1a237e; }
+    .container-area .area-content .payroll-add .employ-list {
+      padding-top: 10px;
+      max-width: 300px;
+      margin: 0 auto; }
+      .container-area .area-content .payroll-add .employ-list form {
+        font-size: 12px; }
+        .container-area .area-content .payroll-add .employ-list form .form-label {
+          font-size: 10px; }
+          .container-area .area-content .payroll-add .employ-list form .form-label.pad {
+            margin-top: 10px; }
+        .container-area .area-content .payroll-add .employ-list form .form-input input {
+          padding-left: 10px;
+          width: 100%;
+          border: 1px solid #ced4da;
+          height: calc(2rem + 2px);
+          border-radius: .3rem; }
+        .container-area .area-content .payroll-add .employ-list form .form-button {
+          margin-top: 20px;
+          text-align: center; }
+          .container-area .area-content .payroll-add .employ-list form .form-button .btn-add {
+            border: 1px solid #f4f4f7;
+            background: #f4f4f7;
+            color: black;
+            cursor: default;
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+            padding: .6rem 1rem;
+            font-size: .5rem;
+            line-height: 1.5; }
+        .container-area .area-content .payroll-add .employ-list form hr {
+          margin-top: 20px;
+          border: .5px solid #ccc; }
+        .container-area .area-content .payroll-add .employ-list form .container {
+          margin-top: 0px;
+          display: block;
+          position: relative;
+          padding-left: 25px;
+          margin-bottom: 2px;
+          cursor: pointer;
+          font-size: 12px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none; }
+          .container-area .area-content .payroll-add .employ-list form .container.top {
+            margin-top: 20px;
+            font-weight: 700; }
+          .container-area .area-content .payroll-add .employ-list form .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0; }
+          .container-area .area-content .payroll-add .employ-list form .container .checkmark {
+            position: absolute;
+            top: 4px;
+            left: 0;
+            height: 17px;
+            width: 17px;
+            background-color: white;
+            border: 1px solid #ccc; }
+        .container-area .area-content .payroll-add .employ-list form .container:hover input ~ .checkmark {
+          background-color: white;
+          border: 1px solid #ccc; }
+        .container-area .area-content .payroll-add .employ-list form .container input:checked ~ .checkmark {
+          background-color: #1a237e; }
+        .container-area .area-content .payroll-add .employ-list form .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none; }
+        .container-area .area-content .payroll-add .employ-list form .container input:checked ~ .checkmark:after {
+          display: block; }
+        .container-area .area-content .payroll-add .employ-list form .container .checkmark:after {
+          left: 6px;
+          top: 3px;
+          width: 2px;
+          height: 6px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
     .container-area .area-content .add-employee-form {
       padding-top: 10px;
       max-width: 400px;
@@ -212,16 +366,16 @@ nav {
         flex-basis: 15%;
         font-size: 11px; }
       .container-area .area-content .employee-list .emp-list .name {
-        flex-basis: 30%;
+        flex-basis: 35%;
         font-size: 11px; }
       .container-area .area-content .employee-list .emp-list .date {
-        flex-basis: 15%;
+        flex-basis: 20%;
         font-size: 12px; }
       .container-area .area-content .employee-list .emp-list .salary {
         flex-basis: 20%;
         font-size: 12px; }
       .container-area .area-content .employee-list .emp-list .action {
-        flex-basis: 20%;
+        flex-basis: 25%;
         font-size: 12px; }
         .container-area .area-content .employee-list .emp-list .action span {
           margin-left: 5px; }
@@ -296,11 +450,45 @@ nav {
         .container-area .area-content .payroll-sec .payroll-content .payroll-body .deduction a {
           text-decoration: none; }
       .container-area .area-content .payroll-sec .payroll-content .payroll-body .net {
-        flex-basis: 20%;
-        font-size: 10px; }
-      .container-area .area-content .payroll-sec .payroll-content .payroll-body .action {
         flex-basis: 15%;
         font-size: 10px; }
+      .container-area .area-content .payroll-sec .payroll-content .payroll-body .action {
+        flex-basis: 20%;
+        font-size: 10px; }
+        .container-area .area-content .payroll-sec .payroll-content .payroll-body .action a {
+          padding-right: 5px;
+          padding-left: 5px; }
+        .container-area .area-content .payroll-sec .payroll-content .payroll-body .action .btn {
+          background: #1a237e;
+          border-radius: 2px;
+          padding: 2px 15px;
+          color: white;
+          font-size: 10px;
+          text-decoration: none; }
+        .container-area .area-content .payroll-sec .payroll-content .payroll-body .action .view {
+          color: green;
+          border-right: 2px solid #eee; }
+        .container-area .area-content .payroll-sec .payroll-content .payroll-body .action .remove {
+          color: red; }
+    .container-area .area-content .payroll-sec .transac-cnt {
+      padding: 10px; }
+      .container-area .area-content .payroll-sec .transac-cnt .title {
+        font-size: 13px;
+        margin-bottom: 10px; }
+      .container-area .area-content .payroll-sec .transac-cnt .cont-date {
+        font-size: 12px;
+        padding-left: 20px; }
+        .container-area .area-content .payroll-sec .transac-cnt .cont-date a {
+          text-decoration: none;
+          color: #1a237e; }
+          .container-area .area-content .payroll-sec .transac-cnt .cont-date a span {
+            padding-right: 5px; }
+    .container-area .area-content .trans-area {
+      padding-top: 20px; }
+      .container-area .area-content .trans-area .transac-list {
+        font-size: 12px; }
+        .container-area .area-content .trans-area .transac-list span {
+          padding-right: 2px; }
   .container-area .area-event {
     margin-left: 10px;
     flex-basis: 25%; }

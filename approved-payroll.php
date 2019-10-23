@@ -3,7 +3,8 @@
 
 include_once "dbcon.php";
 
-$result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending'");
+// $result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Approved'");
+$result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_overview on tbl_salary.over_id = tbl_overview.over_id WHERE tbl_salary.salary_status='Approved' AND tbl_salary.transac_status='0'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
@@ -109,7 +110,6 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                     <div class="add-emp">
                         Payroll
                     </div>
-                  
                     <div class="payroll-content">
                         <div class="payroll-head">
                             <div class="name">
@@ -153,8 +153,10 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                                 &#8369; <?php echo $net_pay; ?>
                             </div>
                             <div class="action">
-                             <a id="<?php echo $id; ?>" href="approval-query.php<?php echo '?id=' . $id; ?>">
-                                    CHECK</a>
+                             <a  class="view" id="<?php echo $id; ?>" href="payroll-view.php<?php echo '?id=' . $id; ?>">
+                                    VIEW</a>
+                            <a  class="remove" id="<?php echo $id; ?>" href="remove-query.php<?php echo '?id=' . $id; ?>">
+                            REMOVE</a>
                             </div>
                         </div>
                         <?php } ?>
@@ -294,7 +296,6 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
         });
     });
     </script> -->
-
 
 </body>
 

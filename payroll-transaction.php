@@ -3,11 +3,10 @@
 
 include_once "dbcon.php";
 
-$result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending'");
+
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
-$result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
-
+$result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) FROM tbl_salary LEFT JOIN tbl_overview ON tbl_overview.over_id = tbl_salary.over_id LEFT JOIN tbl_employee ON tbl_employee.emp_no = tbl_salary.emp_no");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,57 +106,20 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
             <div class="area-content">
                 <div class="payroll-sec">
                     <div class="add-emp">
-                        Payroll
+                        Payroll Transaction
                     </div>
-                  
-                    <div class="payroll-content">
-                        <div class="payroll-head">
-                            <div class="name">
-                                NAME
-                            </div>
-                            <div class="salary">
-                                GROSS PAY
-                            </div>
-                            <div class="deduction">
-                                TOTAL DEDUCTION
-                            </div>
-                            <div class="net">
-                                NET PAY
-                            </div>
-                            <div class="action">
-                                ACTION
-                            </div>
-                        </div>
-                        <?php
-                
-                        while ($salary_row = mysqli_fetch_array($result_salaries)) {
-                            $id = $salary_row['over_id']; 
-                            $earn_total = $salary_row['earn_total']; 
-                            $deduc_total = $salary_row['deduc_total']; 
-                            $net_pay = $salary_row['earn_total'] - $salary_row['deduc_total']; 
-                        
+                    <div class="transac-cnt">
+                           <div class="title">
+                              PAYROLL SCHEDULE
+                           </div>  
+                           <?php
+                            while ($date_row = mysqli_fetch_array($result_date)) {
+                            $date = $date_row['payroll_sched']; 
                             ?>
-                        <div class="payroll-body">
-                            <div class="name">
-                                <?php echo $salary_row['emp_name']; ?>
-                            </div>
-                            <div class="salary">
-                                <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo $earn_total; ?> </a>
-                            </div>
-                            <div class="deduction">
-                                <a id="<?php echo $id; ?>" href="deduction-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo  $deduc_total; ?></a>
-                            </div>
-                            <div class="net">
-                                &#8369; <?php echo $net_pay; ?>
-                            </div>
-                            <div class="action">
-                             <a id="<?php echo $id; ?>" href="approval-query.php<?php echo '?id=' . $id; ?>">
-                                    CHECK</a>
-                            </div>
-                        </div>
-                        <?php } ?>
+                           <div class="cont-date">
+                                <a id="<?php echo $date; ?>" href="transaction-view.php<?php echo '?date=' . $date; ?>"> <span><i class="fa fa-calendar" aria-hidden="true"></i></span> <?php echo $date_row['payroll_sched']; ?> </a>
+                           </div>
+                      <?php } ?>
                     </div>
                 </div>
             </div>

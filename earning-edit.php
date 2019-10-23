@@ -4,7 +4,7 @@
 include_once "dbcon.php";
 
 $get_id = $_GET['id'];
-$result_emp_earn = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no WHERE tbl_earnings.emp_no = '$get_id'");
+$result_emp_earn = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.over_id = '$get_id'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 
@@ -28,56 +28,78 @@ $user_row = mysqli_fetch_array($result_user);
 
     <section>
         <div class="container-area">
-            <div class="sidebar">
+        <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
                             <img src="image/fgsp_logo.png" alt="">
                         </div>
                         <div class="name">
-                            <div class="c_name">Feemo Global Solutions Philippines</div>
-                            <div><?php echo $user_row['user_name']; ?></div>
+                            <div class="c_name"><a href="dashboard.php">Feemo Global Solutions Philippines</a></div>
+                            <div>@<?php echo $user_row['user_name']; ?></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="sidebar-menu">
                     <div class="sidebar-title">
-                        Menu
+                        EMPLOYEE
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee List</div>
+                        <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a data-target="list-employee" href="list-employee.php"><i class="fa fa-list"
+                            <span><a  href="list-employee.php"><i class="fa fa-list"
                                         aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee" href="add-employee.php"><i class="fa fa-plus-circle"
+                            <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee Earnings</div>
+                        <div class="menu-title">Add Employee Earnings</div>
                         <div class="menu-icon">
-                            <span><a data-target="employee-earning" href="employee-earning.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee-earning" href="add-employee-earning.php"><i
+                            <span><a href="add-employee-earning.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Employee Deduction</div>
+                        <div class="menu-title">Add Employee Deduction</div>
                         <div class="menu-icon">
-                            <span><a data-target="employee-deduction" href="employee-deduction.php"><i
-                                        class="fa fa-list" aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee-deduction" href="add-employee-deduction.php"><i
+                         
+                            <span><a href="add-employee-deduction.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
+                    <div class="sidebar-title">
+                        PAYROLL
+                    </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Payroll</div>
+                        <div class="menu-title">Add Payroll</div>
                         <div class="menu-icon">
-                            <span><a data-target="payroll" href="payroll.php"><i class="fa fa-external-link"
+                            <span><a href="add-payroll.php"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                   
+                    <div class="menu-area">
+                        <div class="menu-title">Pending Payroll</div>
+                        <div class="menu-icon">
+                            <span><a href="payroll.php"><i class="fa fa-external-link"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Approved Payroll</div>
+                        <div class="menu-icon">
+                            <span><a href="approved-payroll.php"><i class="fa fa-external-link"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Payroll Transaction</div>
+                        <div class="menu-icon">
+                            <span><a href="payroll-transaction.php"><i class="fa fa-external-link"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
@@ -92,6 +114,7 @@ $user_row = mysqli_fetch_array($result_user);
                         <?php
                             $i = 1;
                             while ($emp_earn_row = mysqli_fetch_array($result_emp_earn)) {
+                                $over_id = $emp_earn_row['over_id'];
                                 $emp_no = $emp_earn_row['emp_no'];
 
                                 ?>
@@ -99,8 +122,8 @@ $user_row = mysqli_fetch_array($result_user);
                             Employee :
                         </div>
                         <div class="form-input">
-                            <input name="emp_no" type="hidden" class="validate"
-                                value="<?php echo $emp_earn_row['emp_no']; ?>">
+                            <input name="over_id" type="hidden" class="validate"
+                                value="<?php echo $emp_earn_row['over_id']; ?>">
                             <input type="text" disabled name="emp_name" value="<?php echo $emp_earn_row['emp_name']; ?>"
                                 placeholder=" Enter employee..." />
                         </div>

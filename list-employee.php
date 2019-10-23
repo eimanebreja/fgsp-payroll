@@ -3,8 +3,9 @@
 
 include_once "dbcon.php";
 
-$result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
+$result_employee = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no  order by emp_id DESC");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
+$result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
 $user_row = mysqli_fetch_array($result_user);
 
 ?>
@@ -27,7 +28,7 @@ $user_row = mysqli_fetch_array($result_user);
 
     <section>
         <div class="container-area">
-            <div class="sidebar">
+           <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -42,41 +43,63 @@ $user_row = mysqli_fetch_array($result_user);
 
                 <div class="sidebar-menu">
                     <div class="sidebar-title">
-                        Menu
+                        EMPLOYEE
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee List</div>
+                        <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a data-target="list-employee" href="list-employee.php"><i class="fa fa-list"
+                            <span><a  href="list-employee.php"><i class="fa fa-list"
                                         aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee" href="add-employee.php"><i class="fa fa-plus-circle"
+                            <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee Earnings</div>
+                        <div class="menu-title">Add Employee Earnings</div>
                         <div class="menu-icon">
-                            <span><a data-target="employee-earning" href="employee-earning.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee-earning" href="add-employee-earning.php"><i
+                            <span><a href="add-employee-earning.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Employee Deduction</div>
+                        <div class="menu-title">Add Employee Deduction</div>
                         <div class="menu-icon">
-                            <span><a data-target="employee-deduction" href="employee-deduction.php"><i
-                                        class="fa fa-list" aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee-deduction" href="add-employee-deduction.php"><i
+                         
+                            <span><a href="add-employee-deduction.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
+                    <div class="sidebar-title">
+                        PAYROLL
+                    </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Payroll</div>
+                        <div class="menu-title">Add Payroll</div>
                         <div class="menu-icon">
-                            <span><a data-target="payroll" href="payroll.php"><i class="fa fa-external-link"
+                            <span><a href="add-payroll.php"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                   
+                    <div class="menu-area">
+                        <div class="menu-title">Pending Payroll</div>
+                        <div class="menu-icon">
+                            <span><a href="payroll.php"><i class="fa fa-external-link"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Approved Payroll</div>
+                        <div class="menu-icon">
+                            <span><a href="approved-payroll.php"><i class="fa fa-external-link"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Payroll Transaction</div>
+                        <div class="menu-icon">
+                            <span><a href="payroll-transaction.php"><i class="fa fa-external-link"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
@@ -98,9 +121,7 @@ $user_row = mysqli_fetch_array($result_user);
                         <div class="date head">
                             DATE HIRED
                         </div>
-                        <div class="salary head">
-                            BASIC SALARY
-                        </div>
+                    
                         <div class="action head">
                             ACTION
                         </div>
@@ -110,7 +131,7 @@ $user_row = mysqli_fetch_array($result_user);
 
                         <?php
             $i = 1;
-            while ($employee_row = mysqli_fetch_array($result_employee)) {$id = $employee_row['emp_id'];?>
+            while ($employee_row = mysqli_fetch_array($result_emp)) {$id = $employee_row['emp_id'];?>
                         <div class="no">
                             <?php echo $employee_row['emp_no']; ?>
                         </div>
@@ -120,9 +141,7 @@ $user_row = mysqli_fetch_array($result_user);
                         <div class="date">
                             <?php echo $employee_row['emp_dhired']; ?>
                         </div>
-                        <div class="salary">
-                            &#8369; <?php echo $employee_row['earn_salary']; ?>
-                        </div>
+                 
                         <div class="action">
                             <span><a data-target="edit-employee" href="edit-employee.php"> <i
                                         class="fa fa-pencil-square edit" aria-hidden="true"></i></a></span>

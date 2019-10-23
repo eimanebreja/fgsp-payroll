@@ -191,10 +191,12 @@ nav {
             box-shadow: 0px 1px 11px -6px rgba(184, 184, 184, 1);
 
             .sidebar-title {
+                margin-top:10px;
                 border-left: 3px solid #45494b;
                 padding-top: 10px;
                 padding-left: 10px;
                 padding-bottom: 10px;
+                border-top: 1px solid #e2e2e2;
                 border-bottom: 1px solid #e2e2e2;
                 font-weight: 700;
                 font-size: 14px;
@@ -230,6 +232,87 @@ nav {
         }
     }
 
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1;
+        padding-top: 100px; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height:100%; 
+         overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 15% from the top and centered */
+            padding: 0px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */
+
+            .modal-header {
+                background: #1a237e;
+                height: 50px;
+
+                .header-title {
+                    padding: 10px;
+                    line-height: 1;
+                    text-align: center;
+                    color: white;
+                    font-size: 25px;
+                }
+                  .close {
+                    color: #aaa;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+
+                    &:hover {
+                        color: #eee;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+
+                    &:focus {
+                        color: black;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .modal-body {
+                padding: 20px;
+                .modal-content {
+                    font-size: 17px;
+                }
+            } 
+            .modal-footer {
+                padding: 10px;
+                border-top: 1px solid #eee;
+                height: 50px;
+                .modal-ft-cont {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+
+                    .btn-danger {
+                        padding: 10px 20px;
+                        background: #008a00;
+                        font-size: 12px;
+                        color: white;
+                        border-radius: 2px;
+                        line-height: 1;
+                        text-decoration: none;
+                    }
+                }
+            }  
+        }
+
+
+    }
+
     .area-content {
         margin-left: 10px;
         flex-basis: 50%;
@@ -243,6 +326,146 @@ nav {
         .add-emp {
             font-size: 14px;
             font-weight: 700;
+        }
+
+        .payroll-add {
+            .note {
+                font-size: 12px;
+
+                span {
+                    font-weight: 700;
+                }
+
+                a {
+                    font-weight: 700;
+                    color: #1a237e;
+                }
+            }
+
+            .employ-list {
+                padding-top: 10px;
+                max-width: 300px;
+                margin: 0 auto;
+
+                form {
+                    font-size: 12px;
+
+                    .form-label {
+                        font-size: 10px;
+
+                        &.pad {
+                            margin-top: 10px;
+                        }
+                    }
+
+                    .form-input {
+
+                        input {
+                            padding-left: 10px;
+                            width: 100%;
+                            border: 1px solid #ced4da;
+                            height: calc(2rem + 2px);
+                            border-radius: .3rem;
+                        }
+
+                    }
+
+                    .form-button {
+                        margin-top: 20px;
+                        text-align: center;
+
+                        .btn-add {
+                            border: 1px solid #f4f4f7;
+                            background: #f4f4f7;
+                            color: black;
+                            cursor: default;
+                            display: block;
+                            width: 50%;
+                            margin: 0 auto;
+                            padding: .6rem 1rem;
+                            font-size: .5rem;
+                            line-height: 1.5;
+
+                        }
+
+                    }
+
+                    hr {
+                        margin-top: 20px;
+                        border: .5px solid #ccc;
+                    }
+
+                    .container {
+                        margin-top: 0px;
+                        display: block;
+                        position: relative;
+                        padding-left: 25px;
+                        margin-bottom: 2px;
+                        cursor: pointer;
+                        font-size: 12px;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+
+                        &.top {
+                            margin-top: 20px;
+                            font-weight: 700;
+                        }
+
+                        input {
+
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                            height: 0;
+                            width: 0;
+                        }
+
+                        .checkmark {
+                            position: absolute;
+                            top: 4px;
+                            left: 0;
+                            height: 17px;
+                            width: 17px;
+                            background-color: white;
+                            border: 1px solid #ccc;
+                        }
+
+                    }
+
+                    .container:hover input~.checkmark {
+                        background-color: white;
+                        border: 1px solid #ccc;
+                    }
+
+                    .container input:checked~.checkmark {
+                        background-color: #1a237e;
+                    }
+
+                    .checkmark:after {
+                        content: "";
+                        position: absolute;
+                        display: none;
+                    }
+
+                    .container input:checked~.checkmark:after {
+                        display: block;
+                    }
+
+                    .container .checkmark:after {
+                        left: 6px;
+                        top: 3px;
+                        width: 2px;
+                        height: 6px;
+                        border: solid white;
+                        border-width: 0 2px 2px 0;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                    }
+                }
+            }
         }
 
         .add-employee-form {
@@ -323,13 +546,13 @@ nav {
                 }
 
                 .name {
-                    flex-basis: 30%;
+                    flex-basis: 35%;
                     font-size: 11px;
 
                 }
 
                 .date {
-                    flex-basis: 15%;
+                    flex-basis: 20%;
                     font-size: 12px;
                 }
 
@@ -339,7 +562,7 @@ nav {
                 }
 
                 .action {
-                    flex-basis: 20%;
+                    flex-basis: 25%;
                     font-size: 12px;
 
                     span {
@@ -482,14 +705,40 @@ nav {
                     }
 
                     .net {
-                        flex-basis: 20%;
+                        flex-basis: 15%;
                         font-size: 10px;
 
                     }
 
                     .action {
-                        flex-basis: 15%;
+                        flex-basis: 20%;
                         font-size: 10px;
+
+                        a {
+                            padding-right:5px;
+                            padding-left: 5px;
+                        }
+
+                        .btn {
+                            background: #1a237e;
+                            border-radius: 2px;
+                            padding: 2px 15px;
+                            color: white;
+                            font-size: 10px;
+                            text-decoration: none;
+                        }
+
+                        .view {
+                            color: green;
+                            border-right: 2px solid #eee;
+                         
+                        }
+
+                        .remove {
+                            color: red;
+                        }
+
+                  
                     }
                 }
 
@@ -497,6 +746,39 @@ nav {
 
             }
 
+            .transac-cnt {
+                padding: 10px;   
+                .title {
+                    font-size: 13px;
+                     margin-bottom: 10px;
+                }
+                .cont-date {
+                    font-size: 12px;
+                    padding-left: 20px;
+                  
+
+                    a {
+                        text-decoration: none;
+                        color: #1a237e;
+
+                        span {
+                            padding-right: 5px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .trans-area {
+            padding-top: 20px;
+
+            .transac-list {
+                font-size: 12px;
+                span {
+                    padding-right: 2px;       
+                }
+            }
         }
     }
 

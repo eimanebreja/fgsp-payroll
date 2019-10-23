@@ -98,7 +98,7 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="earning-sec">
                         <?php
             include_once "dbcon.php";
-            $result_deduc = mysqli_query($mysqli, "SELECT * FROM tbl_deduction LEFT JOIN tbl_employee on tbl_deduction.emp_no = tbl_employee.emp_no order by emp_id DESC");
+            $result_deduc = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending' order by emp_id DESC");
             ?>
                         <?php
             $i = 1;

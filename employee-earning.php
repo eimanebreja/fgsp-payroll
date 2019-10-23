@@ -98,11 +98,11 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="earning-sec">
                         <?php
             include_once "dbcon.php";
-            $result_earn = mysqli_query($mysqli, "SELECT * FROM tbl_earnings LEFT JOIN tbl_employee on tbl_earnings.emp_no = tbl_employee.emp_no  order by emp_id DESC");
+            $result_earn = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending'  order by emp_id DESC");
             ?>
                         <?php
             $i = 1;
-            while ($earn_row = mysqli_fetch_array($result_earn)) {$id = $earn_row['emp_no'];?>
+            while ($earn_row = mysqli_fetch_array($result_earn)) {$id = $earn_row['over_id'];?>
                         <div class="name">
                             <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">
                                 <?php echo $earn_row['emp_name']; ?> </a>

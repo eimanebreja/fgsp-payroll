@@ -3,10 +3,12 @@
 
 include_once "dbcon.php";
 
-$result_salaries = mysqli_query($mysqli, "SELECT * FROM tbl_overview LEFT JOIN tbl_employee on tbl_overview.emp_no = tbl_employee.emp_no WHERE tbl_overview.salary_status='Pending'");
+$get_id = $_GET['date'];
+$transac_date = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_overview on tbl_salary.over_id = tbl_overview.over_id LEFT JOIN tbl_date on tbl_salary.payroll_sched = tbl_date.payroll_sched WHERE tbl_salary.payroll_sched = '$get_id'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
+$result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) FROM tbl_salary LEFT JOIN tbl_overview ON tbl_overview.over_id = tbl_salary.over_id LEFT JOIN tbl_employee ON tbl_employee.emp_no = tbl_salary.emp_no WHERE tbl_salary.payroll_sched = '$get_id'");
+
 $user_row = mysqli_fetch_array($result_user);
-$result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
 
 ?>
 <!DOCTYPE html>
@@ -21,6 +23,7 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
 </head>
+
 <body id="dashboard">
 
     <?php include 'nav.php'; ?>
@@ -105,61 +108,28 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                 </div>
             </div>
             <div class="area-content">
-                <div class="payroll-sec">
-                    <div class="add-emp">
-                        Payroll
-                    </div>
+            <?php         
+                while ($date_row = mysqli_fetch_array($result_date)) {
                   
-                    <div class="payroll-content">
-                        <div class="payroll-head">
-                            <div class="name">
-                                NAME
-                            </div>
-                            <div class="salary">
-                                GROSS PAY
-                            </div>
-                            <div class="deduction">
-                                TOTAL DEDUCTION
-                            </div>
-                            <div class="net">
-                                NET PAY
-                            </div>
-                            <div class="action">
-                                ACTION
-                            </div>
-                        </div>
-                        <?php
-                
-                        while ($salary_row = mysqli_fetch_array($result_salaries)) {
-                            $id = $salary_row['over_id']; 
-                            $earn_total = $salary_row['earn_total']; 
-                            $deduc_total = $salary_row['deduc_total']; 
-                            $net_pay = $salary_row['earn_total'] - $salary_row['deduc_total']; 
-                        
-                            ?>
-                        <div class="payroll-body">
-                            <div class="name">
-                                <?php echo $salary_row['emp_name']; ?>
-                            </div>
-                            <div class="salary">
-                                <a id="<?php echo $id; ?>" href="earning-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo $earn_total; ?> </a>
-                            </div>
-                            <div class="deduction">
-                                <a id="<?php echo $id; ?>" href="deduction-edit.php<?php echo '?id=' . $id; ?>">&#8369;
-                                    <?php echo  $deduc_total; ?></a>
-                            </div>
-                            <div class="net">
-                                &#8369; <?php echo $net_pay; ?>
-                            </div>
-                            <div class="action">
-                             <a id="<?php echo $id; ?>" href="approval-query.php<?php echo '?id=' . $id; ?>">
-                                    CHECK</a>
-                            </div>
-                        </div>
-                        <?php } ?>
-                    </div>
+                    ?>
+                <div class="add-emp">  
+                   Payroll Transaction in  <?php echo $date_row['payroll_sched']; ?>
                 </div>
+                <?php } ?>
+
+                <div class="trans-area">
+                    <?php 
+                    $no=1; 
+                    while ($paydate_row = mysqli_fetch_array($transac_date)) {
+                        $id = $paydate_row['over_id']; 
+                        ?>
+                        <div class="transac-list">
+                            <span> <?php echo "$no" ?>.</span>
+                            <a id="<?php echo $id; ?>" href="payroll-view.php<?php echo '?id=' . $id; ?>"> <?php echo $paydate_row['emp_name']; ?> </a>
+                        </div>
+                    <?php $no++; } ?> 
+                </div>
+           
             </div>
 
 
@@ -294,7 +264,6 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
         });
     });
     </script> -->
-
 
 </body>
 

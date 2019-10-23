@@ -18,6 +18,7 @@ $user_row = mysqli_fetch_array($result_user);
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body id="dashboard">
@@ -26,7 +27,7 @@ $user_row = mysqli_fetch_array($result_user);
 
     <section>
         <div class="container-area">
-            <div class="sidebar">
+        <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -41,41 +42,63 @@ $user_row = mysqli_fetch_array($result_user);
 
                 <div class="sidebar-menu">
                     <div class="sidebar-title">
-                        Menu
+                        EMPLOYEE
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee List</div>
+                        <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a data-target="list-employee" href="list-employee.php"><i class="fa fa-list"
+                            <span><a  href="list-employee.php"><i class="fa fa-list"
                                         aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee" href="add-employee.php"><i class="fa fa-plus-circle"
+                            <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                     <div class="menu-area">
-                        <div class="menu-title">Employee Earnings</div>
+                        <div class="menu-title">Add Employee Earnings</div>
                         <div class="menu-icon">
-                            <span><a data-target="employee-earning" href="employee-earning.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee-earning" href="add-employee-earning.php"><i
+                            <span><a href="add-employee-earning.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Employee Deduction</div>
+                        <div class="menu-title">Add Employee Deduction</div>
                         <div class="menu-icon">
-                            <span><a data-target="employee-deduction" href="employee-deduction.php"><i
-                                        class="fa fa-list" aria-hidden="true"></i></a></span>
-                            <span><a data-target="add-employee-deduction" href="add-employee-deduction.php"><i
+                         
+                            <span><a href="add-employee-deduction.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
+                    <div class="sidebar-title">
+                        PAYROLL
+                    </div>
 
                     <div class="menu-area">
-                        <div class="menu-title">Payroll</div>
+                        <div class="menu-title">Add Payroll</div>
                         <div class="menu-icon">
-                            <span><a data-target="payroll" href="payroll.php"><i class="fa fa-external-link"
+                            <span><a href="add-payroll.php"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                   
+                    <div class="menu-area">
+                        <div class="menu-title">Pending Payroll</div>
+                        <div class="menu-icon">
+                            <span><a href="payroll.php"><i class="fa fa-external-link"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Approved Payroll</div>
+                        <div class="menu-icon">
+                            <span><a href="approved-payroll.php"><i class="fa fa-external-link"
+                                        aria-hidden="true"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="menu-area">
+                        <div class="menu-title">Payroll Transaction</div>
+                        <div class="menu-icon">
+                            <span><a href="payroll-transaction.php"><i class="fa fa-external-link"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
@@ -87,19 +110,31 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
                 <div class="add-employee-form">
                     <form method="POST" action="add-employee-query.php">
+                             <div class="form-label">
+                                Payroll Schedule :
+                            </div>
+                            <div class="form-input">
+                                <input type="text" name="payroll_scheds" id="datepicker" placeholder="Enter payroll schedule..." />
+                            </div>  
+                            <div class="form-label">
+                                Cutoff Schedule :
+                            </div>
+                            <div class="form-input">
+                                <input type="text" name="cutoff_sched" placeholder="Enter cutoff schedule..." />
+                            </div>    
                         <div class="form-label">
                             Employee Number :
                         </div>
                         <div class="form-input">
                             <?php
-                include_once "dbcon.php";
-                $result_employee = mysqli_query($mysqli, "SELECT LPAD(emp_no, 3, '0') AS code FROM tbl_employee ORDER BY emp_id DESC LIMIT 1");
-                $i = 1;
-                while ($emp_row = mysqli_fetch_array($result_employee)) {
-                $id = $emp_row['code'];
-                $code_sum = $id + 1;
-                $codes = str_pad($code_sum, 3, "0", STR_PAD_LEFT);
-                ?>
+                            include_once "dbcon.php";
+                            $result_employee = mysqli_query($mysqli, "SELECT LPAD(emp_no, 3, '0') AS code FROM tbl_employee ORDER BY emp_id DESC LIMIT 1");
+                            $i = 1;
+                            while ($emp_row = mysqli_fetch_array($result_employee)) {
+                            $id = $emp_row['code'];
+                            $code_sum = $id + 1;
+                            $codes = str_pad($code_sum, 3, "0", STR_PAD_LEFT);
+                            ?>
                             <input type="text" value="<?php echo $codes; ?>" name="emp_no"
                                 placeholder="Enter employee id..." />
                             <?php }?>
@@ -134,14 +169,13 @@ $user_row = mysqli_fetch_array($result_user);
                             Date Hired :
                         </div>
                         <div class="form-input">
-                            <input type="date" name="hire" placeholder="Enter firstname..." />
+                            <input type="text" id="hired" name="hire" placeholder="Enter date hired..." />
                         </div>
 
                         <div class="form-button">
                             <button class="btn-add" name="add_emp">SUBMIT</button>
                         </div>
                     </form>
-
                 </div>
             </div>
 
@@ -256,6 +290,20 @@ $user_row = mysqli_fetch_array($result_user);
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/payroll.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+  $( function() {
+    $('input[id$=datepicker]').datepicker({
+    dateFormat: 'MM d, yy'
+});
+  } );
+  $( function() {
+    $('input[id$=hired]').datepicker({
+    dateFormat: 'MM d, yy'
+});
+  } );
+  </script>
 
     <!-- <script>
     $(document).ready(function() {
