@@ -4,7 +4,7 @@
 include_once "dbcon.php";
 
 $get_id = $_GET['date'];
-$transac_date = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_overview on tbl_salary.over_id = tbl_overview.over_id LEFT JOIN tbl_date on tbl_salary.payroll_sched = tbl_date.payroll_sched WHERE tbl_salary.payroll_sched = '$get_id'");
+$transac_date = mysqli_query($mysqli, "SELECT * FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_no LEFT JOIN tbl_overview on tbl_salary.over_id = tbl_overview.over_id WHERE tbl_salary.payroll_sched = '$get_id'");
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) FROM tbl_salary LEFT JOIN tbl_overview ON tbl_overview.over_id = tbl_salary.over_id LEFT JOIN tbl_employee ON tbl_employee.emp_no = tbl_salary.emp_no WHERE tbl_salary.payroll_sched = '$get_id'");
 
