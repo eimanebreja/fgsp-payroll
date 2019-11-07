@@ -6,7 +6,7 @@ include_once "dbcon.php";
 
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
-$result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) FROM tbl_salary LEFT JOIN tbl_overview ON tbl_overview.over_id = tbl_salary.over_id LEFT JOIN tbl_employee ON tbl_employee.emp_no = tbl_salary.emp_no");
+$result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) FROM tbl_salary LEFT JOIN tbl_overview ON tbl_overview.over_id = tbl_salary.over_id LEFT JOIN tbl_employee ON tbl_employee.emp_no = tbl_salary.emp_no ORDER BY tbl_salary.payroll_sched DESC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +20,14 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
 </head>
+
 <body id="dashboard">
 
     <?php include 'nav.php'; ?>
 
     <section>
         <div class="container-area">
-        <div class="sidebar">
+            <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -46,28 +47,12 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
                     <div class="menu-area">
                         <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a  href="list-employee.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
+                            <span><a href="list-employee.php"><i class="fa fa-list" aria-hidden="true"></i></a></span>
                             <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                    <div class="menu-area">
-                        <div class="menu-title">Add Employee Earnings</div>
-                        <div class="menu-icon">
-                            <span><a href="add-employee-earning.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
 
-                    <div class="menu-area">
-                        <div class="menu-title">Add Employee Deduction</div>
-                        <div class="menu-icon">
-                         
-                            <span><a href="add-employee-deduction.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
                     <div class="sidebar-title">
                         PAYROLL
                     </div>
@@ -79,7 +64,7 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                   
+
                     <div class="menu-area">
                         <div class="menu-title">Pending Payroll</div>
                         <div class="menu-icon">
@@ -109,17 +94,19 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
                         Payroll Transaction
                     </div>
                     <div class="transac-cnt">
-                           <div class="title">
-                              PAYROLL SCHEDULE
-                           </div>  
-                           <?php
+                        <div class="title">
+                            PAYROLL SCHEDULE
+                        </div>
+                        <?php
                             while ($date_row = mysqli_fetch_array($result_date)) {
                             $date = $date_row['payroll_sched']; 
                             ?>
-                           <div class="cont-date">
-                                <a id="<?php echo $date; ?>" href="transaction-view.php<?php echo '?date=' . $date; ?>"> <span><i class="fa fa-calendar" aria-hidden="true"></i></span> <?php echo $date_row['payroll_sched']; ?> </a>
-                           </div>
-                      <?php } ?>
+                        <div class="cont-date">
+                            <a id="<?php echo $date; ?>" href="transaction-view.php<?php echo '?date=' . $date; ?>">
+                                <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                <?php echo $date_row['payroll_sched']; ?> </a>
+                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -204,32 +191,9 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
                     </table>
                 </div>
 
-                <div class="up-events">
-                    <div class="events-title">
-                        Upcoming Events <?php  echo date("d"); ?>
-                    </div>
-                    <div class="events-body">
-
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-
-
 
 
 

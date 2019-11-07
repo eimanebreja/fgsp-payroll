@@ -21,8 +21,8 @@ $user_row = mysqli_fetch_array($result_user);
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 </head>
 
 <body>
@@ -31,7 +31,7 @@ $user_row = mysqli_fetch_array($result_user);
 
     <section>
         <div class="container-area">
-        <div class="sidebar">
+            <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -51,28 +51,27 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="menu-area">
                         <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a  href="list-employee.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
+                            <span><a href="list-employee.php"><i class="fa fa-list" aria-hidden="true"></i></a></span>
                             <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                    <div class="menu-area">
+                    <!-- <div class="menu-area">
                         <div class="menu-title">Add Employee Earnings</div>
                         <div class="menu-icon">
-                            <span><a href="add-employee-earning.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+                            <span><a href="add-employee-earning.php"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i></a></span>
                         </div>
                     </div>
 
                     <div class="menu-area">
                         <div class="menu-title">Add Employee Deduction</div>
                         <div class="menu-icon">
-                         
-                            <span><a href="add-employee-deduction.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+
+                            <span><a href="add-employee-deduction.php"><i class="fa fa-plus-circle"
+                                        aria-hidden="true"></i></a></span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="sidebar-title">
                         PAYROLL
                     </div>
@@ -84,7 +83,7 @@ $user_row = mysqli_fetch_array($result_user);
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                   
+
                     <div class="menu-area">
                         <div class="menu-title">Pending Payroll</div>
                         <div class="menu-icon">
@@ -114,16 +113,17 @@ $user_row = mysqli_fetch_array($result_user);
                         Add Payroll
                     </div>
                     <div class="note">
-                        <span> Note : </span> If the employee are not exist in the list. Go to <a
-                            href="add-employee.php"> here </a> to add a new employee.
+                        <span> Note : </span> If the employee is not on the list, Go to <a href="add-employee.php"> here
+                        </a> to add a new employee.
                     </div>
                     <div class="employ-list">
-                         <form method="POST" id="save" action="save.php">
+                        <form method="POST" id="login" action="save.php">
                             <div class="form-label">
                                 Payroll Schedule :
                             </div>
                             <div class="form-input">
-                                <input type="text" id="datepicker" name="payroll_scheds" placeholder="Enter payroll schedule..." />
+                                <input type="text" id="datepicker" name="payroll_scheds"
+                                    placeholder="Enter payroll schedule..." />
                             </div>
                             <div class="form-label pad">
                                 Cut-Off Date :
@@ -150,24 +150,38 @@ $user_row = mysqli_fetch_array($result_user);
             
                                     ?>
                             <div class="form-input">
-                                <input type="hidden" name="earn_total[]"  value="<?php echo $earn_total; ?>" placeholder="Enter earn..." />
-                                <input type="hidden" name="earn_salary[]"  value="<?php echo $earn_salary; ?>" placeholder="Enter earn..." />
-                                <input type="hidden" name="earn_allowance[]"  value="<?php echo $earn_allowance; ?>" placeholder="Enter earn..." />
-                                <input type="hidden" name="earn_overtime[]"  value="<?php echo $earn_overtime; ?>" placeholder="Enter earn..." />
-                                <input type="hidden" name="earn_incentives[]"  value="<?php echo $earn_incentives; ?>" placeholder="Enter earn..." />
-                                <input type="hidden" name="earn_reimburse[]"  value="<?php echo $earn_reimburse; ?>" placeholder="Enter earn..." />
-              
-                
-                                <input type="hidden" name="deduc_total[]"  value="<?php echo $deduc_total; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_late[]"  value="<?php echo $deduc_late; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_absent[]"  value="<?php echo $deduc_absent; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_pagibig[]"  value="<?php echo $deduc_pagibig; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_sss[]"  value="<?php echo $deduc_sss; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_philhealth[]"  value="<?php echo $deduc_philhealth; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_undertime[]"  value="<?php echo $deduc_undertime; ?>" placeholder="Enter deduc..." />
-                                <input type="hidden" name="deduc_tax[]"  value="<?php echo $deduc_tax; ?>" placeholder="Enter deduc..." />
+                                <input type="hidden" name="earn_total[]" value="<?php echo $earn_total; ?>"
+                                    placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_salary[]" value="<?php echo $earn_salary; ?>"
+                                    placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_allowance[]" value="<?php echo $earn_allowance; ?>"
+                                    placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_overtime[]" value="<?php echo $earn_overtime; ?>"
+                                    placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_incentives[]" value="<?php echo $earn_incentives; ?>"
+                                    placeholder="Enter earn..." />
+                                <input type="hidden" name="earn_reimburse[]" value="<?php echo $earn_reimburse; ?>"
+                                    placeholder="Enter earn..." />
+
+
+                                <input type="hidden" name="deduc_total[]" value="<?php echo $deduc_total; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_late[]" value="<?php echo $deduc_late; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_absent[]" value="<?php echo $deduc_absent; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_pagibig[]" value="<?php echo $deduc_pagibig; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_sss[]" value="<?php echo $deduc_sss; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_philhealth[]" value="<?php echo $deduc_philhealth; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_undertime[]" value="<?php echo $deduc_undertime; ?>"
+                                    placeholder="Enter deduc..." />
+                                <input type="hidden" name="deduc_tax[]" value="<?php echo $deduc_tax; ?>"
+                                    placeholder="Enter deduc..." />
                             </div>
-                             <?php } ?>
+                            <?php } ?>
                             <hr>
                             <label class="container top">SELECT ALL EMPLOYEE
                                 <input onclick="checkAll(this)" type="checkbox">
@@ -185,7 +199,7 @@ $user_row = mysqli_fetch_array($result_user);
                             <?php } ?>
 
                             <div class="form-button">
-                                <button id="submit" class="btn-add" name="add">SUBMIT</button>
+                                <button id="submit" type="submit" class="btn-add" name="add">SUBMIT</button>
                             </div>
                         </form>
 
@@ -273,34 +287,12 @@ $user_row = mysqli_fetch_array($result_user);
                     </table>
                 </div>
 
-                <div class="up-events">
-                    <div class="events-title">
-                        Upcoming Events <?php  echo date("d"); ?>
-                    </div>
-                    <div class="events-body">
-
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <script>
-
-        $(document).ready(function() {
+    $(document).ready(function() {
 
         $('#submit').click(function() {
             $.ajax({
@@ -315,13 +307,12 @@ $user_row = mysqli_fetch_array($result_user);
             });
         });
 
-        });
+    });
+    </script>
 
-</script>
-   
     <script src="js/payroll.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
     function checkAll(bx) {
@@ -334,17 +325,31 @@ $user_row = mysqli_fetch_array($result_user);
     }
     </script>
 
+    <script>
+    $(function() {
+        $('input[id$=datepicker]').datepicker({
+            dateFormat: 'MM d, yy'
+        });
+    });
+    </script>
 
-  
+    <script>
+    var form = document.getElementById("save");
+    login.addEventListener("submit", function(e) {
+        var valid = true;
+        var inputs = login.querySelectorAll("input");
+        [].forEach.call(inputs, function(input) {
+            if (input.value === "") {
+                valid = false;
+                input.classList.add("error");
+            }
+        });
 
-<script>
-  $( function() {
-    $('input[id$=datepicker]').datepicker({
-    dateFormat: 'MM d, yy'
-});
-  } );
+        if (!valid)
+            e.preventDefault();
+    });
+    </script>
 
-  </script>
 
 
 </body>

@@ -15,6 +15,9 @@ body {
   color: #45494b;
   margin: 0; }
 
+.makeRed {
+  border: 1px solid red; }
+
 nav {
   width: 100%; }
   nav .nav-area {
@@ -251,6 +254,16 @@ nav {
           border: 1px solid #ced4da;
           height: calc(2rem + 2px);
           border-radius: .3rem; }
+        .container-area .area-content .payroll-add .employ-list form .form-input input[type=text],
+        .container-area .area-content .payroll-add .employ-list form .form-input input[type=password],
+        .container-area .area-content .payroll-add .employ-list form .form-input input[type=email] {
+          padding-left: 10px;
+          width: 100%;
+          border: 1px solid #ced4da;
+          height: calc(2rem + 2px);
+          border-radius: .3rem; }
+        .container-area .area-content .payroll-add .employ-list form .form-input input[type=text].error {
+          border: 1px solid red; }
         .container-area .area-content .payroll-add .employ-list form .form-button {
           margin-top: 20px;
           text-align: center; }
@@ -332,6 +345,16 @@ nav {
         border: 1px solid #ced4da;
         height: calc(2.475rem + 2px);
         border-radius: .3rem; }
+      .container-area .area-content .add-employee-form form .form-input input[type=text],
+      .container-area .area-content .add-employee-form form .form-input input[type=password],
+      .container-area .area-content .add-employee-form form .form-input input[type=email] {
+        padding-left: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+        height: calc(2.475rem + 2px);
+        border-radius: .3rem; }
+      .container-area .area-content .add-employee-form form .form-input input[type=text].error {
+        border: 1px solid red; }
       .container-area .area-content .add-employee-form form .form-input select {
         width: 100%;
         border: 1px solid #ced4da;

@@ -28,7 +28,7 @@ $user_row = mysqli_fetch_array($result_user);
 
     <section>
         <div class="container-area">
-           <div class="sidebar">
+            <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -48,13 +48,12 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="menu-area">
                         <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a  href="list-employee.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
+                            <span><a href="list-employee.php"><i class="fa fa-list" aria-hidden="true"></i></a></span>
                             <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                    <div class="menu-area">
+                    <!-- <div class="menu-area">
                         <div class="menu-title">Add Employee Earnings</div>
                         <div class="menu-icon">
                             <span><a href="add-employee-earning.php"><i
@@ -69,7 +68,7 @@ $user_row = mysqli_fetch_array($result_user);
                             <span><a href="add-employee-deduction.php"><i
                                         class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="sidebar-title">
                         PAYROLL
                     </div>
@@ -81,7 +80,7 @@ $user_row = mysqli_fetch_array($result_user);
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                   
+
                     <div class="menu-area">
                         <div class="menu-title">Pending Payroll</div>
                         <div class="menu-icon">
@@ -121,7 +120,7 @@ $user_row = mysqli_fetch_array($result_user);
                         <div class="date head">
                             DATE HIRED
                         </div>
-                    
+
                         <div class="action head">
                             ACTION
                         </div>
@@ -141,7 +140,7 @@ $user_row = mysqli_fetch_array($result_user);
                         <div class="date">
                             <?php echo $employee_row['emp_dhired']; ?>
                         </div>
-                 
+
                         <div class="action">
                             <span><a data-target="edit-employee" href="edit-employee.php"> <i
                                         class="fa fa-pencil-square edit" aria-hidden="true"></i></a></span>

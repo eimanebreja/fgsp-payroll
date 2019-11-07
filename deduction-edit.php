@@ -28,7 +28,7 @@ $user_row = mysqli_fetch_array($result_user);
 
     <section>
         <div class="container-area">
-        <div class="sidebar">
+            <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -48,26 +48,9 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="menu-area">
                         <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a  href="list-employee.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
+                            <span><a href="list-employee.php"><i class="fa fa-list" aria-hidden="true"></i></a></span>
                             <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-                    <div class="menu-area">
-                        <div class="menu-title">Add Employee Earnings</div>
-                        <div class="menu-icon">
-                            <span><a href="add-employee-earning.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-
-                    <div class="menu-area">
-                        <div class="menu-title">Add Employee Deduction</div>
-                        <div class="menu-icon">
-                         
-                            <span><a href="add-employee-deduction.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                     <div class="sidebar-title">
@@ -81,7 +64,7 @@ $user_row = mysqli_fetch_array($result_user);
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                   
+
                     <div class="menu-area">
                         <div class="menu-title">Pending Payroll</div>
                         <div class="menu-icon">
@@ -107,7 +90,7 @@ $user_row = mysqli_fetch_array($result_user);
             </div>
             <div class="area-content">
                 <div class="add-emp">
-                    Edit Earning
+                    Update Employee Deduction
                 </div>
                 <div class="add-employee-form">
                     <form method="POST" action="edit-deduction-query.php">
@@ -272,27 +255,7 @@ while ($emp_deduc_row = mysqli_fetch_array($result_emp_deduc)) {
                     </table>
                 </div>
 
-                <div class="up-events">
-                    <div class="events-title">
-                        Upcoming Events <?php  echo date("d"); ?>
-                    </div>
-                    <div class="events-body">
 
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

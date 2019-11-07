@@ -57,14 +57,14 @@ $user_row = mysqli_fetch_array($result_user);
                             </div>
                         </div>
                         <div class="info-flex">
-                 
+
                             <div class="name">
                                 Payroll Schedule : <?php echo $payroll_row['payroll_sched']; ?>
                             </div>
                             <div class="position">
                                 Cut off : <?php echo $payroll_row['cutoff_sched']; ?>
                             </div>
-                          
+
                         </div>
                     </div>
 
@@ -78,10 +78,16 @@ $user_row = mysqli_fetch_array($result_user);
                         &#8369; <?php echo $payroll_row['earn_salary']; ?>
                     </div>
                     <div class="desc">
-                        INCENTIVES/REIMBURSEMENT
+                        INCENTIVES
                     </div>
                     <div class="desc-info">
-                        &#8369; <?php echo $int_reim; ?>
+                        &#8369; <?php echo $payroll_row['earn_incentives']; ?>
+                    </div>
+                    <div class="desc">
+                        REIMBURSEMENT
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_reimburse']; ?>
                     </div>
                     <div class="desc">
                         ALLOWANCE
@@ -89,7 +95,6 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="desc-info">
                         &#8369; <?php echo $payroll_row['earn_allowance']; ?>
                     </div>
-
                     <div class="desc">
                         OVERTIME
                     </div>
@@ -109,10 +114,22 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
                 <div class="payroll-earn-cont">
                     <div class="desc">
-                        LATE/ABSENT/UNDERTIME
+                        LATE
                     </div>
                     <div class="desc-info">
-                        - &#8369; <?php echo $late_absnt; ?>
+                        - &#8369; <?php echo $payroll_row['deduc_late']; ?>
+                    </div>
+                    <div class="desc">
+                        ABSENT
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_absent']; ?>
+                    </div>
+                    <div class="desc">
+                        UNDERTIME
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_undertime']; ?>
                     </div>
                     <div class="desc">
                         SSS
@@ -196,14 +213,14 @@ $user_row = mysqli_fetch_array($result_user);
                             </div>
                         </div>
                         <div class="info-flex">
-                       
+
                             <div class="name">
                                 Payroll Schedule : <?php echo $payroll_row['payroll_sched']; ?>
                             </div>
                             <div class="position">
                                 Cut off : <?php echo $payroll_row['cutoff_sched']; ?>
                             </div>
-                          
+
                         </div>
                     </div>
 
@@ -217,10 +234,16 @@ $user_row = mysqli_fetch_array($result_user);
                         &#8369; <?php echo $payroll_row['earn_salary']; ?>
                     </div>
                     <div class="desc">
-                        INCENTIVES/REIMBURSEMENT
+                        INCENTIVES
                     </div>
                     <div class="desc-info">
-                        &#8369; <?php echo $int_reim; ?>
+                        &#8369; <?php echo $payroll_row['earn_incentives']; ?>
+                    </div>
+                    <div class="desc">
+                        REIMBURSEMENT
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_reimburse']; ?>
                     </div>
                     <div class="desc">
                         ALLOWANCE
@@ -248,10 +271,22 @@ $user_row = mysqli_fetch_array($result_user);
                 </div>
                 <div class="payroll-earn-cont">
                     <div class="desc">
-                        LATE/ABSENT/UNDERTIME
+                        LATE
                     </div>
                     <div class="desc-info">
-                        - &#8369; <?php echo $late_absnt; ?>
+                        - &#8369; <?php echo $payroll_row['deduc_late']; ?>
+                    </div>
+                    <div class="desc">
+                        ABSENT
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_absent']; ?>
+                    </div>
+                    <div class="desc">
+                        UNDERTIME
+                    </div>
+                    <div class="desc-info">
+                        - &#8369; <?php echo $payroll_row['deduc_undertime']; ?>
                     </div>
                     <div class="desc">
                         SSS

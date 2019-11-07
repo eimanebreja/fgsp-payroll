@@ -22,13 +22,14 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
         rel="stylesheet" media="screen,projection" />
 </head>
+
 <body id="dashboard">
 
     <?php include 'nav.php'; ?>
 
     <section>
         <div class="container-area">
-        <div class="sidebar">
+            <div class="sidebar">
                 <div class="sidebar-admin">
                     <div class="logo-area">
                         <div class="logo">
@@ -48,26 +49,9 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                     <div class="menu-area">
                         <div class="menu-title">List/Add Employee</div>
                         <div class="menu-icon">
-                            <span><a  href="list-employee.php"><i class="fa fa-list"
-                                        aria-hidden="true"></i></a></span>
+                            <span><a href="list-employee.php"><i class="fa fa-list" aria-hidden="true"></i></a></span>
                             <span><a href="add-employee.php"><i class="fa fa-plus-circle"
                                         aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-                    <div class="menu-area">
-                        <div class="menu-title">Add Employee Earnings</div>
-                        <div class="menu-icon">
-                            <span><a href="add-employee-earning.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
-                        </div>
-                    </div>
-
-                    <div class="menu-area">
-                        <div class="menu-title">Add Employee Deduction</div>
-                        <div class="menu-icon">
-                         
-                            <span><a href="add-employee-deduction.php"><i
-                                        class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
                         </div>
                     </div>
                     <div class="sidebar-title">
@@ -81,7 +65,7 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                                         aria-hidden="true"></i></a></span>
                         </div>
                     </div>
-                   
+
                     <div class="menu-area">
                         <div class="menu-title">Pending Payroll</div>
                         <div class="menu-icon">
@@ -108,7 +92,7 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
             <div class="area-content">
                 <div class="payroll-sec">
                     <div class="add-emp">
-                        Payroll
+                        Approved Payroll
                     </div>
                     <div class="payroll-content">
                         <div class="payroll-head">
@@ -153,10 +137,12 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                                 &#8369; <?php echo $net_pay; ?>
                             </div>
                             <div class="action">
-                             <a  class="view" id="<?php echo $id; ?>" href="payroll-view.php<?php echo '?id=' . $id; ?>">
+                                <a class="view" id="<?php echo $id; ?>"
+                                    href="payroll-view.php<?php echo '?id=' . $id; ?>">
                                     VIEW</a>
-                            <a  class="remove" id="<?php echo $id; ?>" href="remove-query.php<?php echo '?id=' . $id; ?>">
-                            REMOVE</a>
+                                <a class="remove" id="<?php echo $id; ?>"
+                                    href="remove-query.php<?php echo '?id=' . $id; ?>">
+                                    REMOVE</a>
                             </div>
                         </div>
                         <?php } ?>
@@ -244,27 +230,7 @@ $result_emp = mysqli_query($mysqli, "SELECT * FROM tbl_employee");
                     </table>
                 </div>
 
-                <div class="up-events">
-                    <div class="events-title">
-                        Upcoming Events <?php  echo date("d"); ?>
-                    </div>
-                    <div class="events-body">
 
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-
-                        <div class="date">
-                            October 31, 2019
-                        </div>
-                        <div class="desc">
-                            - Hollowen Party
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
