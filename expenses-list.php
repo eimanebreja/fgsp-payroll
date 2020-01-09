@@ -3,10 +3,10 @@
 
 include_once "dbcon.php";
 
-
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
-$result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) FROM tbl_salary LEFT JOIN tbl_overview ON tbl_overview.over_id = tbl_salary.over_id LEFT JOIN tbl_employee ON tbl_employee.emp_no = tbl_salary.emp_no ORDER BY tbl_salary.payroll_sched DESC");
+$result_month_date = mysqli_query($mysqli, "SELECT DISTINCT(expenses_month) FROM tbl_expenses ORDER BY expenses_id DESC ");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,36 +29,37 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
         <div class="container-area">
             <?php include('left-sidenav.php') ?>
             <div class="area-content">
-                <div class="payroll-sec">
-                    <div class="add-emp">
-                        Payroll Transaction
-                    </div>
-                    <div class="transac-cnt">
-                        <div class="title">
-                            PAYROLL SCHEDULE
-                        </div>
+                <div class="expense-title">
+                    Monthly Expenses
+                </div>
+                <div class="expenses-monthly">
+                    <ul>
                         <?php
-                            while ($date_row = mysqli_fetch_array($result_date)) {
-                            $date = $date_row['payroll_sched']; 
+                            while ($month_row = mysqli_fetch_array($result_month_date)) {
+                            $months = $month_row['expenses_month']; 
                             ?>
-                        <div class="cont-date">
-                            <a id="<?php echo $date; ?>" href="transaction-view.php<?php echo '?date=' . $date; ?>">
-                                <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                <?php echo $date_row['payroll_sched']; ?> </a>
-                            <a id="<?php echo $date; ?>"
-                                href="transaction-view-report.php<?php echo '?date=' . $date; ?>">
-                                <span>
-                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                </span>
-                                REPORT</a>
-                        </div>
+                        <li class="month-report"><a id="<?php echo $months; ?>"
+                                href="expenses-list-view.php<?php echo '?months=' . $months; ?>">
+                                <span><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                <?php echo $month_row['expenses_month']; ?></a>
+
+                            <a class="print-anchor" id="<?php echo $months; ?>"
+                                href="expenses-list-report.php<?php echo '?months=' . $months; ?>">
+                                <span><i class="fa fa-eye" aria-hidden="true"></i></span></a>
+                        </li>
                         <?php } ?>
-                    </div>
+                    </ul>
+
                 </div>
             </div>
+
+
             <?php include('right-sidenav.php') ?>
+
         </div>
     </section>
+
+
 
 
 
@@ -85,7 +86,6 @@ $result_date = mysqli_query($mysqli, "SELECT DISTINCT(tbl_salary.payroll_sched) 
         });
     });
     </script> -->
-
 
 </body>
 

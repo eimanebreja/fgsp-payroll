@@ -101,6 +101,12 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="desc-info">
                         &#8369; <?php echo $payroll_row['earn_overtime']; ?>
                     </div>
+                       <div class="desc">
+                        OTHER
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_other']; ?>
+                    </div>
 
                     <div class="desc">
                         GROSS PAY
@@ -258,6 +264,14 @@ $user_row = mysqli_fetch_array($result_user);
                     <div class="desc-info">
                         &#8369; <?php echo $payroll_row['earn_overtime']; ?>
                     </div>
+
+                     <div class="desc">
+                        OTHER
+                    </div>
+                    <div class="desc-info">
+                        &#8369; <?php echo $payroll_row['earn_other']; ?>
+                    </div>
+                    
 
                     <div class="desc">
                         GROSS PAY

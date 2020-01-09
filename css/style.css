@@ -1,4 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +32,88 @@ body {
 
 .makeRed {
   border: 1px solid red; }
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.664);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s; }
+  .modal-window:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; }
+  .modal-window > div {
+    width: 400px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: #ffffff; }
+  .modal-window header {
+    font-weight: bold; }
+  .modal-window h1 {
+    font-size: 150%;
+    margin: 0 0 15px; }
+  .modal-window form {
+    text-align: center; }
+    .modal-window form .custom-file-input {
+      color: black; }
+    .modal-window form .custom-file-input::-webkit-file-upload-button {
+      visibility: hidden; }
+    .modal-window form .custom-file-input::before {
+      content: 'Select some files';
+      color: black;
+      display: inline-block;
+      background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+      border: 1px solid #999;
+      border-radius: 3px;
+      padding: 5px 8px;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      cursor: pointer;
+      text-shadow: 1px 1px #fff;
+      font-weight: 700;
+      font-size: 10pt; }
+    .modal-window form .custom-file-input:hover::before {
+      border-color: black; }
+    .modal-window form .custom-file-input:active {
+      outline: 0; }
+    .modal-window form .custom-file-input:active::before {
+      background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); }
+    .modal-window form .image-button {
+      padding-top: 3%; }
+      .modal-window form .image-button button {
+        border: 1px solid #f4f4f7;
+        background: #1a237e;
+        color: white;
+        cursor: default;
+        display: block;
+        width: 100%;
+        padding: .5rem 1rem;
+        font-size: .7rem;
+        line-height: 1.5; }
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none; }
+  .modal-close:hover {
+    color: black; }
 
 nav {
   width: 100%; }
@@ -41,6 +138,45 @@ nav {
         text-decoration: none;
         text-align: center;
         font-size: 12px; }
+
+.expenses-report .expenses-logo {
+  display: none;
+  text-align: center; }
+  .expenses-report .expenses-logo img {
+    width: 10%; }
+.expenses-report .expenses-title {
+  padding-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px; }
+.expenses-report .expenses-report-body {
+  padding: 2%;
+  max-width: 900px;
+  margin: 0 auto; }
+  .expenses-report .expenses-report-body .print-btn {
+    text-align: right;
+    padding-bottom: 2%; }
+    .expenses-report .expenses-report-body .print-btn button {
+      padding: 1%;
+      background: #45494b;
+      color: white;
+      font-size: 14px; }
+  .expenses-report .expenses-report-body table {
+    margin-left: auto;
+    margin-right: auto; }
+    .expenses-report .expenses-report-body table tr th {
+      border: 1px solid #45494b;
+      font-size: 8px;
+      width: 2%; }
+      .expenses-report .expenses-report-body table tr th.numberline {
+        width: .5%; }
+    .expenses-report .expenses-report-body table tr td {
+      padding-left: 2%;
+      border: 1px solid #45494b;
+      font-size: 8px; }
+  .expenses-report .expenses-report-body .other-expenses-text {
+    text-align: center;
+    font-size: 13px; }
 
 .login-section {
   max-width: 500px;
@@ -97,7 +233,7 @@ nav {
 .container-area {
   padding-top: 30px;
   display: flex;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto; }
   .container-area .sidebar {
     flex-basis: 25%; }
@@ -157,68 +293,6 @@ nav {
             margin-right: 5px; }
             .container-area .sidebar .sidebar-menu .menu-area .menu-icon span a {
               color: unset; }
-  .container-area .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: black;
-    background-color: rgba(0, 0, 0, 0.4); }
-    .container-area .modal .modal-content {
-      background-color: #fefefe;
-      margin: 10% auto;
-      /* 15% from the top and centered */
-      padding: 0px;
-      border: 1px solid #888;
-      width: 50%;
-      /* Could be more or less, depending on screen size */ }
-      .container-area .modal .modal-content .modal-header {
-        background: #1a237e;
-        height: 50px; }
-        .container-area .modal .modal-content .modal-header .header-title {
-          padding: 10px;
-          line-height: 1;
-          text-align: center;
-          color: white;
-          font-size: 25px; }
-        .container-area .modal .modal-content .modal-header .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold; }
-          .container-area .modal .modal-content .modal-header .close:hover {
-            color: #eee;
-            text-decoration: none;
-            cursor: pointer; }
-          .container-area .modal .modal-content .modal-header .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer; }
-      .container-area .modal .modal-content .modal-body {
-        padding: 20px; }
-        .container-area .modal .modal-content .modal-body .modal-content {
-          font-size: 17px; }
-      .container-area .modal .modal-content .modal-footer {
-        padding: 10px;
-        border-top: 1px solid #eee;
-        height: 50px; }
-        .container-area .modal .modal-content .modal-footer .modal-ft-cont {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-end; }
-          .container-area .modal .modal-content .modal-footer .modal-ft-cont .btn-danger {
-            padding: 10px 20px;
-            background: #008a00;
-            font-size: 12px;
-            color: white;
-            border-radius: 2px;
-            line-height: 1;
-            text-decoration: none; }
   .container-area .area-content {
     margin-left: 10px;
     flex-basis: 50%;
@@ -228,6 +302,150 @@ nav {
     box-shadow: 0px 1px 11px -6px #b8b8b8;
     padding: 10px;
     padding-bottom: 30px; }
+    .container-area .area-content .add-emp-area {
+      margin-left: 4%;
+      margin-right: 4%; }
+      .container-area .area-content .add-emp-area .emp-area-title {
+        padding-top: 2%;
+        font-weight: 600;
+        font-size: 14px; }
+        .container-area .area-content .add-emp-area .emp-area-title.other-title {
+          padding-top: 4%; }
+      .container-area .area-content .add-emp-area .add-emp-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; }
+        .container-area .area-content .add-emp-area .add-emp-flex .add-emp-image {
+          flex-basis: 25%;
+          position: relative; }
+          .container-area .area-content .add-emp-area .add-emp-flex .add-emp-image img {
+            border: 1px solid #eee;
+            width: 100%; }
+          .container-area .area-content .add-emp-area .add-emp-flex .add-emp-image .edit-pic {
+            position: absolute;
+            bottom: 5%;
+            right: 0%;
+            left: 0%;
+            background: #1a227ec4;
+            text-align: center;
+            opacity: 0;
+            transition: .5s all; }
+            .container-area .area-content .add-emp-area .add-emp-flex .add-emp-image .edit-pic a {
+              text-decoration: none;
+              text-align: center;
+              color: white;
+              font-size: 12px; }
+              .container-area .area-content .add-emp-area .add-emp-flex .add-emp-image .edit-pic a i {
+                padding-left: 2%;
+                text-align: right; }
+          .container-area .area-content .add-emp-area .add-emp-flex .add-emp-image:hover .edit-pic {
+            opacity: 1;
+            transition: .5s all; }
+        .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input {
+          flex-basis: 70%; }
+          .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input span {
+            font-size: 10px;
+            display: block; }
+          .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input input {
+            padding-left: 10px;
+            width: 100%;
+            border: 1px solid #ced4da;
+            height: calc(2rem + 2px);
+            border-radius: .3rem; }
+            .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input input.emp-no {
+              width: 30%; }
+          .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name {
+            padding-top: 2%;
+            display: flex;
+            justify-content: space-between; }
+            .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases {
+              flex-basis: 32%; }
+              .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases span {
+                font-size: 10px;
+                display: block; }
+              .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases input {
+                padding-left: 10px;
+                width: 100%;
+                border: 1px solid #ced4da;
+                height: calc(2rem + 2px);
+                border-radius: .3rem; }
+                .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases input.emp-name {
+                  width: 100%; }
+            .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases-list {
+              flex-basis: 100%; }
+              .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases-list input {
+                padding-left: 10px;
+                width: 100%;
+                border: 1px solid #ced4da;
+                height: calc(2rem + 2px);
+                border-radius: .3rem; }
+                .container-area .area-content .add-emp-area .add-emp-flex .add-emp-input .name .name-bases-list input.emp-name {
+                  width: 100%; }
+      .container-area .area-content .add-emp-area .add-emp-base {
+        margin-top: 1%;
+        flex-basis: 48%; }
+        .container-area .area-content .add-emp-area .add-emp-base span {
+          font-size: 10px;
+          display: block; }
+        .container-area .area-content .add-emp-area .add-emp-base input {
+          padding-left: 10px;
+          width: 100%;
+          border: 1px solid #ced4da;
+          height: calc(2rem + 2px);
+          border-radius: .3rem; }
+          .container-area .area-content .add-emp-area .add-emp-base input.emp-no {
+            width: 30%; }
+      .container-area .area-content .add-emp-area .form-button {
+        margin-top: 10%;
+        text-align: center; }
+        .container-area .area-content .add-emp-area .form-button .btn-add {
+          border: 1px solid #f4f4f7;
+          background: #1a237e;
+          color: white;
+          cursor: default;
+          display: block;
+          width: 50%;
+          margin: 0 auto;
+          padding: .6rem 1rem;
+          font-size: .5rem;
+          line-height: 1.5; }
+    .container-area .area-content .event-title-header {
+      font-size: 14px;
+      font-weight: 700; }
+    .container-area .area-content .event-body-area {
+      max-width: 500px;
+      margin: 0 auto; }
+      .container-area .area-content .event-body-area .event-label {
+        padding-top: 2%;
+        font-size: 10px; }
+      .container-area .area-content .event-body-area .event-input input {
+        padding-left: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+        height: calc(2rem + 2px);
+        border-radius: .3rem; }
+      .container-area .area-content .event-body-area .event-input textarea {
+        padding-top: 2%;
+        padding-left: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+        border-radius: .3rem;
+        resize: none; }
+      .container-area .area-content .event-body-area .event-button {
+        padding-top: 2%; }
+        .container-area .area-content .event-body-area .event-button button {
+          border: 1px solid #1a237e;
+          background: #1a237e;
+          color: white;
+          cursor: default;
+          display: block;
+          width: 50%;
+          margin: 0 auto;
+          padding: .6rem 1rem;
+          font-size: .5rem;
+          line-height: 1.5; }
     .container-area .area-content .add-emp {
       font-size: 14px;
       font-weight: 700; }
@@ -500,18 +718,192 @@ nav {
         margin-bottom: 10px; }
       .container-area .area-content .payroll-sec .transac-cnt .cont-date {
         font-size: 12px;
-        padding-left: 20px; }
+        padding-left: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; }
         .container-area .area-content .payroll-sec .transac-cnt .cont-date a {
+          flex-basis: 50%;
           text-decoration: none;
           color: #1a237e; }
           .container-area .area-content .payroll-sec .transac-cnt .cont-date a span {
             padding-right: 5px; }
+          .container-area .area-content .payroll-sec .transac-cnt .cont-date a:last-child {
+            margin-left: 3%;
+            padding-left: 3%;
+            border-left: 2px solid #45494b; }
     .container-area .area-content .trans-area {
       padding-top: 20px; }
       .container-area .area-content .trans-area .transac-list {
         font-size: 12px; }
         .container-area .area-content .trans-area .transac-list span {
           padding-right: 2px; }
+    .container-area .area-content .expense-title {
+      font-size: 14px;
+      font-weight: 700; }
+      .container-area .area-content .expense-title span {
+        float: right; }
+        .container-area .area-content .expense-title span a {
+          font-size: 13px;
+          color: #45494b;
+          text-decoration: none; }
+          .container-area .area-content .expense-title span a i {
+            padding-right: 5px; }
+    .container-area .area-content .expense-body-area {
+      max-width: 400px;
+      margin: 0 auto; }
+      .container-area .area-content .expense-body-area .expense-radio {
+        display: flex;
+        flex-direction: row; }
+        .container-area .area-content .expense-body-area .expense-radio .radio {
+          padding: 10px;
+          font-size: 12px; }
+      .container-area .area-content .expense-body-area .expense-label-input .expense-label {
+        padding-top: 5px;
+        font-size: 10px; }
+      .container-area .area-content .expense-body-area .expense-label-input .expense-input input {
+        padding-left: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+        height: calc(2rem + 2px);
+        border-radius: .3rem; }
+        .container-area .area-content .expense-body-area .expense-label-input .expense-input input.month {
+          width: 60%; }
+      .container-area .area-content .expense-body-area .expense-label-input .expense-input select {
+        padding-left: 10px;
+        width: 40%;
+        border: 1px solid #ced4da;
+        height: calc(2rem + 2px);
+        border-radius: .3rem; }
+      .container-area .area-content .expense-body-area .expense-button {
+        padding-top: 5%; }
+        .container-area .area-content .expense-body-area .expense-button button {
+          border: 1px solid #1a237e;
+          background: #1a237e;
+          color: white;
+          cursor: default;
+          display: block;
+          width: 50%;
+          margin: 0 auto;
+          padding: .6rem 1rem;
+          font-size: .5rem;
+          line-height: 1.5; }
+    .container-area .area-content .expenses-monthly {
+      padding-top: 5%;
+      padding-left: 5%; }
+      .container-area .area-content .expenses-monthly ul li {
+        list-style: none; }
+        .container-area .area-content .expenses-monthly ul li span {
+          padding-right: 2%; }
+          .container-area .area-content .expenses-monthly ul li span i {
+            font-size: 15px; }
+        .container-area .area-content .expenses-monthly ul li a {
+          text-decoration: none;
+          color: black; }
+          .container-area .area-content .expenses-monthly ul li a:hover {
+            color: #45494b; }
+        .container-area .area-content .expenses-monthly ul li.month-report {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center; }
+          .container-area .area-content .expenses-monthly ul li.month-report a {
+            flex-basis: 90%;
+            font-size: 14px; }
+            .container-area .area-content .expenses-monthly ul li.month-report a.print-anchor {
+              font-size: 12px;
+              flex-basis: 10%;
+              align-self: flex-end; }
+    .container-area .area-content .expenses-mnthly-tbl {
+      /* The Modal (background) */
+      /* The Close Button */ }
+      .container-area .area-content .expenses-mnthly-tbl .other-expenses-text {
+        margin-top: 6%;
+        background: #45494b;
+        color: white;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600; }
+      .container-area .area-content .expenses-mnthly-tbl table {
+        padding-top: 3%;
+        margin: 0 auto; }
+        .container-area .area-content .expenses-mnthly-tbl table tr {
+          margin: 0 !important; }
+          .container-area .area-content .expenses-mnthly-tbl table tr th {
+            padding: 5px;
+            font-size: 12px;
+            line-height: 1;
+            background-color: #eaebea;
+            color: black; }
+          .container-area .area-content .expenses-mnthly-tbl table tr td {
+            padding: 5px;
+            font-size: 10px;
+            line-height: 1; }
+            .container-area .area-content .expenses-mnthly-tbl table tr td a {
+              vertical-align: middle;
+              padding: 3px;
+              text-decoration: none; }
+              .container-area .area-content .expenses-mnthly-tbl table tr td a i {
+                font-size: 15px;
+                text-align: center; }
+                .container-area .area-content .expenses-mnthly-tbl table tr td a i.fa-pencil {
+                  color: blue; }
+                .container-area .area-content .expenses-mnthly-tbl table tr td a i.fa-trash {
+                  color: red; }
+      .container-area .area-content .expenses-mnthly-tbl .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: black;
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        /* Modal Content */ }
+        .container-area .area-content .expenses-mnthly-tbl .modal .modal-content {
+          position: relative;
+          background-color: #fefefe;
+          margin: auto;
+          padding: 0;
+          border: 1px solid #888;
+          width: 80%;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          -webkit-animation-name: animatetop;
+          -webkit-animation-duration: 0.4s;
+          animation-name: animatetop;
+          animation-duration: 0.4s; }
+      .container-area .area-content .expenses-mnthly-tbl .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold; }
+      .container-area .area-content .expenses-mnthly-tbl .close:hover,
+      .container-area .area-content .expenses-mnthly-tbl .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer; }
+      .container-area .area-content .expenses-mnthly-tbl .modal-header {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white; }
+      .container-area .area-content .expenses-mnthly-tbl .modal-body {
+        padding: 2px 16px; }
+      .container-area .area-content .expenses-mnthly-tbl .modal-footer {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white; }
   .container-area .area-event {
     margin-left: 10px;
     flex-basis: 25%; }
@@ -529,6 +921,37 @@ nav {
           .container-area .area-event .calendar table tr td a {
             color: unset;
             text-decoration: none; }
+    .container-area .area-event .event {
+      margin-top: 5%;
+      background: white;
+      -webkit-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      -moz-box-shadow: 0px 1px 11px -6px #b8b8b8;
+      box-shadow: 0px 1px 11px -6px #b8b8b8; }
+      .container-area .area-event .event .event-title {
+        margin-top: 10px;
+        border-left: 3px solid #45494b;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+        font-weight: 700;
+        font-size: 14px; }
+        .container-area .area-event .event .event-title span {
+          padding-right: 10px;
+          float: right; }
+      .container-area .area-event .event .event-body {
+        padding: 10px; }
+        .container-area .area-event .event .event-body ul li {
+          list-style: none;
+          font-size: 12px;
+          line-height: 2;
+          border-bottom: 1px solid #eee; }
+          .container-area .area-event .event .event-body ul li span {
+            padding-left: 2%;
+            font-size: 10px; }
+          .container-area .area-event .event .event-body ul li a {
+            float: right; }
     .container-area .area-event .up-events {
       margin-top: 10px;
       background: white;
@@ -659,9 +1082,74 @@ nav {
     height: 30px;
     line-height: 1; }
 
+.payroll-report-area {
+  margin: 5%; }
+  .payroll-report-area .report-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.5; }
+  .payroll-report-area .report-payroll-sched {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5; }
+    .payroll-report-area .report-payroll-sched span {
+      text-decoration: underline;
+      font-size: 13px;
+      font-weight: 500; }
+  .payroll-report-area .report-body-area {
+    padding-top: 2%; }
+    .payroll-report-area .report-body-area table {
+      width: 100%; }
+      .payroll-report-area .report-body-area table tr td {
+        padding-left: .2%;
+        padding-right: .5%;
+        text-align: right; }
+        .payroll-report-area .report-body-area table tr td.name {
+          text-align: left; }
+      .payroll-report-area .report-body-area table tr .total-area {
+        font-weight: 600; }
+
 @media print {
   body#dashboard {
     background: white; }
+
+  nav {
+    display: none; }
+
+  .print-btn {
+    display: none; }
+
+  .expenses-report .expenses-logo {
+    display: block;
+    text-align: center; }
+    .expenses-report .expenses-logo img {
+      width: 10%; }
+  .expenses-report .expenses-title {
+    padding-top: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px; }
+  .expenses-report .expenses-report-body {
+    padding: 2%; }
+    .expenses-report .expenses-report-body .print-btn {
+      text-align: right;
+      padding-bottom: 2%; }
+      .expenses-report .expenses-report-body .print-btn button {
+        padding: 1%;
+        background: #45494b;
+        color: white;
+        font-size: 14px; }
+    .expenses-report .expenses-report-body table {
+      margin-left: auto;
+      margin-right: auto; }
+      .expenses-report .expenses-report-body table tr th {
+        border: 1px solid #45494b;
+        font-size: 8px;
+        width: 2%; }
+      .expenses-report .expenses-report-body table tr td {
+        padding-left: 2%;
+        border: 1px solid #45494b;
+        font-size: 8px; }
 
   .button-print {
     display: none; }

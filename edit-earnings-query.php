@@ -6,10 +6,11 @@ if (isset($_POST['edit_earn'])) {
     $emp_allowance = $_POST['allowance'];
     $emp_incentives = $_POST['incentives'];
     $emp_reimburse = $_POST['reimburse'];
+    $emp_other = $_POST['other'];
     $emp_overtime = $_POST['overtime'];
-    $emp_total_earn = $_POST['salary'] + $_POST['overtime'] + $_POST['reimburse'] + $_POST['incentives'] + $_POST['allowance'];
+    $emp_total_earn = $_POST['salary'] + $_POST['overtime'] + $_POST['reimburse'] + $_POST['incentives'] + $_POST['allowance'] + $_POST['other'];
  
-    $result = mysqli_query($mysqli, "UPDATE tbl_overview SET earn_salary='$emp_salary', earn_allowance='$emp_allowance', earn_incentives='$emp_incentives', earn_reimburse='$emp_reimburse', earn_overtime='$emp_overtime', earn_total='$emp_total_earn' WHERE over_id='$over_id'");
+    $result = mysqli_query($mysqli, "UPDATE tbl_overview SET earn_salary='$emp_salary', earn_allowance='$emp_allowance', earn_incentives='$emp_incentives', earn_reimburse='$emp_reimburse', earn_overtime='$emp_overtime', earn_other='$emp_other', earn_total='$emp_total_earn' WHERE over_id='$over_id'");
 ?>
 <?php
 echo "<script>alert('Employee's earning is successfully updated!')</script>";

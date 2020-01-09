@@ -3,25 +3,36 @@ include_once 'dbcon.php';
 if (isset($_POST['add_emp'])) {
     $emp_code = $_POST['emp_no'];
     $emp_name = $_POST['fname'].' '. $_POST['mname']. ' ' . $_POST['lname'];
-    $emp_position = $_POST['position'];
-    $emp_dhire = $_POST['hire'];
-    $pays_sched = $_POST['payroll_scheds'];
-	$pay_cutoff = $_POST['cutoff_sched'];
+    $emp_email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $hire = $_POST['hire'];
+    $position = $_POST['position'];
+    $bday = $_POST['bday'];
+    $bdo = $_POST['bdo'];
+    $philhealth = $_POST['philhealth'];
+    $sss = $_POST['sss'];
+    $pagibig = $_POST['pagibig'];
+    $tin = $_POST['tin'];
+    $guardian = $_POST['guardian'];
+    $gphone = $_POST['gphone'];
 
-    $result_overview = mysqli_query($mysqli, "INSERT INTO tbl_overview (over_id, emp_no, salary_status)
-    VALUES('null', '$emp_code', 'Pending')");
-    
-    $last_id = mysqli_insert_id($mysqli);
-    $result_salary = mysqli_query($mysqli, "INSERT INTO tbl_salary (emp_no, over_id, salary_status, payroll_sched, cutoff_sched)
-    VALUES('$emp_code', '$last_id', 'Pending', '$pays_sched', '$pay_cutoff')");
+    $result_error = mysqli_query($mysqli, "SELECT * FROM tbl_employee WHERE emp_no='$emp_code'");
+    $count = mysqli_num_rows($result_error);
 
-    $result = mysqli_query($mysqli, "INSERT INTO tbl_employee (emp_no, emp_name, emp_position, emp_dhired)
-    VALUES('$emp_code', '$emp_name', '$emp_position', '$emp_dhire')");
-
+    if ($count  != 1){
+    $result = mysqli_query($mysqli, "INSERT INTO tbl_employee (emp_no, emp_name, emp_position, emp_dhired, emp_email, emp_contact, emp_bday, emp_philhealth, emp_sss, emp_pagibig, emp_tin, emp_ecp, emp_ecp_no, emp_bdo_account, emp_image)
+    VALUES('$emp_code', '$emp_name', '$position', '$hire', '$emp_email', '$phone', '$bday', '$philhealth', '$sss', '$pagibig', '$tin', '$guardian', '$gphone', '$bdo', 'upload/no_image.png')");
     echo "<script>alert('You successfully added one Employee!')</script>";
-    echo "<script>window.open('payroll.php','_self')</script>";
-    ?>
+    echo "<script>window.open('list-employee.php','_self')</script>";
+    }else{ ?>
+<script type="text/javascript">
+alert('Employee Already Exist');
+</script>
+<script>
+window.open('add-employee.php', '_self')
+</script>
 
 <?php
+}
 }
 ?>
