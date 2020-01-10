@@ -18,7 +18,6 @@ $user_row = mysqli_fetch_array($result_user);
 </head>
 
 <body id="dashboard">
-
     <?php include 'nav.php'; ?>
 
     <section>

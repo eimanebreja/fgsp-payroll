@@ -19,6 +19,12 @@
   margin: 0;
   padding: 0; }
 
+.pc {
+  display: block; }
+
+.sp {
+  display: none; }
+
 body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1251,5 +1257,21 @@ nav {
           font-size: 12px; }
           .payroll-view .signature .sig-cont .official span {
             font-weight: 700; } }
+@media only screen and (max-width: 767px) {
+  .pc {
+    display: none; }
+
+  .sp {
+    display: block; }
+
+  .title-support {
+    padding: 50% 2%;
+    text-align: center; }
+    .title-support h1 {
+      font-size: 20px;
+      line-height: 2; }
+    .title-support p {
+      line-height: 2;
+      font-size: 14px; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -32,6 +32,14 @@
     padding: 0;
 }
 
+.pc {
+    display: block;
+}
+
+.sp {
+    display: none;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -1237,8 +1245,6 @@ nav {
                         border-radius: .3rem;
                     }
                 }
-
-
             }
 
             .expense-button {
@@ -1674,9 +1680,7 @@ nav {
                         font-weight: 700;
                     }
                 }
-
             }
-
         }
 
         .signature {
@@ -1993,5 +1997,31 @@ nav {
             }
         }
 
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pc {
+        display: none;
+    }
+
+    .sp {
+        display: block
+    }
+
+    .title-support {
+
+        padding: 50% 2%;
+        text-align: center;
+
+        h1 {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+        p {
+            line-height: 2;
+            font-size: 14px;
+        }
     }
 }
