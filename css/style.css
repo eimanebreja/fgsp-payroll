@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Anton|Dosis:400,800|Lato&display=swap");
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
@@ -167,6 +168,13 @@ nav {
       background: #45494b;
       color: white;
       font-size: 14px; }
+    .expenses-report .expenses-report-body .print-btn .send-btn {
+      text-decoration: none;
+      line-height: 1;
+      padding: 1%;
+      background: #0D47A1;
+      color: white;
+      font-size: 14px; }
   .expenses-report .expenses-report-body table {
     margin-left: auto;
     margin-right: auto; }
@@ -183,6 +191,64 @@ nav {
   .expenses-report .expenses-report-body .other-expenses-text {
     text-align: center;
     font-size: 13px; }
+  .expenses-report .expenses-report-body .expenses-mail {
+    background: white;
+    padding: 4%;
+    width: 500px;
+    margin: 0 auto;
+    position: relative; }
+    .expenses-report .expenses-report-body .expenses-mail .back-btn {
+      position: absolute;
+      right: 0%;
+      top: 0%; }
+      .expenses-report .expenses-report-body .expenses-mail .back-btn a {
+        background-color: #1a237e;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: white;
+        font-size: 10px; }
+        .expenses-report .expenses-report-body .expenses-mail .back-btn a i {
+          padding-right: 5px;
+          transition: .5s; }
+        .expenses-report .expenses-report-body .expenses-mail .back-btn a:hover i {
+          padding-right: 10px;
+          transition: .5s; }
+    .expenses-report .expenses-report-body .expenses-mail #loader-icon {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start; }
+      .expenses-report .expenses-report-body .expenses-mail #loader-icon img {
+        width: 10%; }
+    .expenses-report .expenses-report-body .expenses-mail .ex-label {
+      padding-top: 2%;
+      font-size: 10px; }
+    .expenses-report .expenses-report-body .expenses-mail .ex-input .expenses-input {
+      padding-left: 10px;
+      width: 100%;
+      border: 1px solid #ced4da;
+      height: calc(2rem + 2px);
+      border-radius: .3rem; }
+    .expenses-report .expenses-report-body .expenses-mail .ex-input textarea {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ced4da;
+      border-radius: .3rem; }
+    .expenses-report .expenses-report-body .expenses-mail .ex-input .invalid {
+      border: 1px solid red; }
+    .expenses-report .expenses-report-body .expenses-mail .ex-button {
+      padding-top: 2%;
+      margin-top: 5%; }
+      .expenses-report .expenses-report-body .expenses-mail .ex-button button {
+        border: 1px solid #1a237e;
+        background: #1a237e;
+        color: white;
+        cursor: default;
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        padding: .6rem 1rem;
+        font-size: .5rem;
+        line-height: 1.5; }
 
 .login-section {
   max-width: 500px;
@@ -235,6 +301,230 @@ nav {
 
 #dashboard {
   background: #eee; }
+
+.invoice-view {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white; }
+  .invoice-view .invoice-btn {
+    float: right;
+    background-color: #1a237e;
+    color: white;
+    padding: 7px 10px;
+    border: none; }
+  .invoice-view .invoice-area {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    .invoice-view .invoice-area .invoice-company {
+      flex-basis: 50%; }
+      .invoice-view .invoice-area .invoice-company .comlogo {
+        margin-left: -10px; }
+        .invoice-view .invoice-area .invoice-company .comlogo img {
+          width: 80%; }
+      .invoice-view .invoice-area .invoice-company .cominfo {
+        margin-top: -5px;
+        padding-left: 30px; }
+        .invoice-view .invoice-area .invoice-company .cominfo p {
+          color: black;
+          line-height: 1.2;
+          font-size: 12px; }
+      .invoice-view .invoice-area .invoice-company .comlink {
+        padding-top: 10px;
+        padding-left: 30px; }
+        .invoice-view .invoice-area .invoice-company .comlink p {
+          color: #1a237e;
+          line-height: 1.2;
+          font-size: 12px; }
+      .invoice-view .invoice-area .invoice-company .remarks {
+        padding-left: 20px; }
+        .invoice-view .invoice-area .invoice-company .remarks p {
+          color: black;
+          line-height: 1.4;
+          font-size: 10px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center; }
+          .invoice-view .invoice-area .invoice-company .remarks p span {
+            flex-basis: 30%; }
+          .invoice-view .invoice-area .invoice-company .remarks p .remarks-input {
+            flex-basis: 70%; }
+        .invoice-view .invoice-area .invoice-company .remarks .remarks-area {
+          margin-top: 10px;
+          background: #1a237e;
+          color: white;
+          padding-left: 10px;
+          font-size: 12px; }
+        .invoice-view .invoice-area .invoice-company .remarks .remarks-textarea span {
+          font-size: 10px;
+          line-height: 1.5; }
+        .invoice-view .invoice-area .invoice-company .remarks .remarks-textarea textarea {
+          width: 100%; }
+    .invoice-view .invoice-area .invoice-information {
+      flex-basis: 30%; }
+      .invoice-view .invoice-area .invoice-information .total {
+        font-style: italic;
+        font-size: 11px;
+        color: #1a237e;
+        line-height: 1.4;
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        .invoice-view .invoice-area .invoice-information .total span {
+          flex-basis: 40%; }
+        .invoice-view .invoice-area .invoice-information .total .information-input {
+          flex-basis: 50%;
+          color: black;
+          font-style: normal !important; }
+          .invoice-view .invoice-area .invoice-information .total .information-input input {
+            margin-top: 2px;
+            width: 100%; }
+      .invoice-view .invoice-area .invoice-information .totals {
+        margin-top: 5px;
+        font-size: 11px;
+        color: black;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; }
+        .invoice-view .invoice-area .invoice-information .totals span {
+          flex-basis: 10%;
+          padding: 5px 10px;
+          line-height: 3;
+          display: block;
+          width: 100%;
+          background: #dad9e9; }
+          .invoice-view .invoice-area .invoice-information .totals span input {
+            width: 100%;
+            padding: 5px; }
+          .invoice-view .invoice-area .invoice-information .totals span:first-child {
+            margin-left: 10px; }
+        .invoice-view .invoice-area .invoice-information .totals .total-amount {
+          padding: 5px 10px;
+          flex-basis: 90%; }
+      .invoice-view .invoice-area .invoice-information hr {
+        width: 90%;
+        margin-top: 5px; }
+      .invoice-view .invoice-area .invoice-information .invoice-text h1 {
+        font-weight: 600;
+        line-height: 1.5;
+        font-size: 45px;
+        color: #1a237e; }
+      .invoice-view .invoice-area .invoice-information .info-desc {
+        padding-top: 10px; }
+        .invoice-view .invoice-area .invoice-information .info-desc p {
+          color: black;
+          font-size: 11px;
+          line-height: 1.4;
+          display: flex;
+          flex-direction: row;
+          align-items: center; }
+          .invoice-view .invoice-area .invoice-information .info-desc p span {
+            flex-basis: 50%; }
+            .invoice-view .invoice-area .invoice-information .info-desc p span input {
+              margin-top: 3px; }
+  .invoice-view .invoice-body {
+    padding: 20px; }
+    .invoice-view .invoice-body .invoice-table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #dddddd;
+      border-bottom: 0px solid #dddddd; }
+      .invoice-view .invoice-body .invoice-table td {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        border: 1px solid #dddddd;
+        font-size: 12px;
+        color: black;
+        background: #fafafa; }
+        .invoice-view .invoice-body .invoice-table td .invoice-body-info p {
+          display: flex;
+          flex-direction: row;
+          align-items: center; }
+          .invoice-view .invoice-body .invoice-table td .invoice-body-info p span {
+            flex-basis: 30%; }
+            .invoice-view .invoice-body .invoice-table td .invoice-body-info p span input {
+              width: 100%; }
+          .invoice-view .invoice-body .invoice-table td .invoice-body-info p .bill-to-input {
+            flex-basis: 50%; }
+      .invoice-view .invoice-body .invoice-table th {
+        padding-left: 10px;
+        background: #3e4c8a;
+        color: white;
+        text-align: left;
+        font-size: 14px;
+        border: 1px solid #dddddd; }
+    .invoice-view .invoice-body .button-add {
+      padding-top: 10px;
+      text-align: right; }
+    .invoice-view .invoice-body .invoice-table-bottom {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #dddddd;
+      border-top: 0px solid #dddddd !important; }
+      .invoice-view .invoice-body .invoice-table-bottom .td-print {
+        padding: 0 5px;
+        margin: 0;
+        font-size: 10px; }
+      .invoice-view .invoice-body .invoice-table-bottom td {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        border: 1px solid #dddddd;
+        font-size: 12px;
+        color: black;
+        background: #fafafa; }
+        .invoice-view .invoice-body .invoice-table-bottom td input {
+          width: 100%; }
+        .invoice-view .invoice-body .invoice-table-bottom td .add {
+          background-color: transparent !important;
+          border: 0;
+          outline: none; }
+          .invoice-view .invoice-body .invoice-table-bottom td .add i {
+            color: #1a237e;
+            font-size: 17px; }
+        .invoice-view .invoice-body .invoice-table-bottom td .remove {
+          background-color: transparent !important;
+          border: 0;
+          outline: none; }
+          .invoice-view .invoice-body .invoice-table-bottom td .remove i {
+            color: red;
+            font-size: 17px; }
+      .invoice-view .invoice-body .invoice-table-bottom th {
+        padding-left: 10px;
+        background: #3e4c8a;
+        color: white;
+        text-align: center;
+        font-size: 12px;
+        border: 1px solid #dddddd; }
+  .invoice-view .invoice-question {
+    margin-top: 40px;
+    text-align: center; }
+    .invoice-view .invoice-question .ques {
+      font-size: 10px;
+      line-height: 1.4; }
+    .invoice-view .invoice-question .ceo {
+      font-size: 12px;
+      line-height: 1.4;
+      color: black; }
+    .invoice-view .invoice-question .email {
+      font-size: 12px;
+      line-height: 1.4;
+      color: black; }
+    .invoice-view .invoice-question .thankyou {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #1a237e; }
 
 .container-area {
   padding-top: 30px;
@@ -781,6 +1071,79 @@ nav {
         border: 1px solid #ced4da;
         height: calc(2rem + 2px);
         border-radius: .3rem; }
+      .container-area .area-content .expense-body-area .expense-label-input .sharing-items {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap; }
+        .container-area .area-content .expense-body-area .expense-label-input .sharing-items .sharing-expense-input {
+          flex-basis: 60%; }
+          .container-area .area-content .expense-body-area .expense-label-input .sharing-items .sharing-expense-input input {
+            padding-left: 10px;
+            width: 100%;
+            border: 1px solid #ced4da;
+            height: calc(2rem + 2px);
+            border-radius: .3rem; }
+            .container-area .area-content .expense-body-area .expense-label-input .sharing-items .sharing-expense-input input.month {
+              width: 60%; }
+        .container-area .area-content .expense-body-area .expense-label-input .sharing-items .price-expense-input {
+          flex-basis: 30%; }
+          .container-area .area-content .expense-body-area .expense-label-input .sharing-items .price-expense-input input {
+            padding-left: 10px;
+            width: 100%;
+            border: 1px solid #ced4da;
+            height: calc(2rem + 2px);
+            border-radius: .3rem; }
+        .container-area .area-content .expense-body-area .expense-label-input .sharing-items .sharing-add-button {
+          flex-basis: 5%; }
+          .container-area .area-content .expense-body-area .expense-label-input .sharing-items .sharing-add-button .btn-shared {
+            outline: none;
+            border: 0;
+            background-color: transparent !important; }
+            .container-area .area-content .expense-body-area .expense-label-input .sharing-items .sharing-add-button .btn-shared i {
+              font-size: 18px; }
+        .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content {
+          margin-top: 10px;
+          flex-basis: 100%; }
+          .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap; }
+            .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-expense-input {
+              flex-basis: 60%; }
+              .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-expense-input input {
+                padding-left: 10px;
+                width: 100%;
+                border: 1px solid #ced4da;
+                height: calc(2rem + 2px);
+                border-radius: .3rem; }
+                .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-expense-input input.month {
+                  width: 60%; }
+            .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .price-expense-input {
+              flex-basis: 30%; }
+              .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .price-expense-input input {
+                padding-left: 10px;
+                width: 100%;
+                border: 1px solid #ced4da;
+                height: calc(2rem + 2px);
+                border-radius: .3rem; }
+            .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-add-button {
+              flex-basis: 5%; }
+              .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-add-button .btn-shared {
+                outline: none;
+                border: 0; }
+                .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-add-button .btn-shared i {
+                  font-size: 18px; }
+              .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-add-button .btn-shared-delete {
+                background-color: transparent !important;
+                outline: none;
+                border: 0;
+                color: red; }
+                .container-area .area-content .expense-body-area .expense-label-input .sharing-items .remove-content .sharing-items .sharing-add-button .btn-shared-delete i {
+                  font-size: 18px; }
       .container-area .area-content .expense-body-area .expense-button {
         padding-top: 5%; }
         .container-area .area-content .expense-body-area .expense-button button {
@@ -830,31 +1193,31 @@ nav {
         text-align: center;
         font-size: 15px;
         font-weight: 600; }
-      .container-area .area-content .expenses-mnthly-tbl table {
+      .container-area .area-content .expenses-mnthly-tbl .check-expenses-table {
         padding-top: 3%;
         margin: 0 auto; }
-        .container-area .area-content .expenses-mnthly-tbl table tr {
+        .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr {
           margin: 0 !important; }
-          .container-area .area-content .expenses-mnthly-tbl table tr th {
+          .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr th {
             padding: 5px;
             font-size: 12px;
             line-height: 1;
             background-color: #eaebea;
             color: black; }
-          .container-area .area-content .expenses-mnthly-tbl table tr td {
+          .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr td {
             padding: 5px;
             font-size: 10px;
             line-height: 1; }
-            .container-area .area-content .expenses-mnthly-tbl table tr td a {
+            .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr td a {
               vertical-align: middle;
               padding: 3px;
               text-decoration: none; }
-              .container-area .area-content .expenses-mnthly-tbl table tr td a i {
+              .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr td a i {
                 font-size: 15px;
                 text-align: center; }
-                .container-area .area-content .expenses-mnthly-tbl table tr td a i.fa-pencil {
+                .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr td a i.fa-pencil {
                   color: blue; }
-                .container-area .area-content .expenses-mnthly-tbl table tr td a i.fa-trash {
+                .container-area .area-content .expenses-mnthly-tbl .check-expenses-table tr td a i.fa-trash {
                   color: red; }
       .container-area .area-content .expenses-mnthly-tbl .modal {
         display: none;
@@ -910,6 +1273,29 @@ nav {
         padding: 2px 16px;
         background-color: #5cb85c;
         color: white; }
+    .container-area .area-content .invoice-body-area {
+      padding-left: 3%;
+      padding-right: 3%;
+      padding-top: 3%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; }
+      .container-area .area-content .invoice-body-area .invoice-name {
+        flex-basis: 50%; }
+        .container-area .area-content .invoice-body-area .invoice-name a {
+          text-decoration: none;
+          color: black; }
+      .container-area .area-content .invoice-body-area .invoice-action {
+        flex-basis: 50%; }
+        .container-area .area-content .invoice-body-area .invoice-action span a {
+          vertical-align: middle;
+          padding-left: 2%; }
+          .container-area .area-content .invoice-body-area .invoice-action span a.report {
+            color: black; }
+          .container-area .area-content .invoice-body-area .invoice-action span a.delete {
+            color: red; }
   .container-area .area-event {
     margin-left: 10px;
     flex-basis: 25%; }
@@ -1090,6 +1476,21 @@ nav {
 
 .payroll-report-area {
   margin: 5%; }
+  .payroll-report-area .report-btn .btn-area-btn {
+    text-align: right;
+    padding-bottom: 2%; }
+    .payroll-report-area .report-btn .btn-area-btn button {
+      padding: 1%;
+      background: #45494b;
+      color: white;
+      font-size: 14px; }
+    .payroll-report-area .report-btn .btn-area-btn .send-btn {
+      text-decoration: none;
+      line-height: 1;
+      padding: 1%;
+      background: #0D47A1;
+      color: white;
+      font-size: 14px; }
   .payroll-report-area .report-title {
     font-weight: 600;
     font-size: 20px;
@@ -1122,7 +1523,22 @@ nav {
   nav {
     display: none; }
 
+  .invoice-view {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white; }
+    .invoice-view .invoice-btn {
+      display: none;
+      float: right;
+      background-color: #1a237e;
+      color: white;
+      padding: 7px 10px;
+      border: none; }
+
   .print-btn {
+    display: none; }
+
+  .report-btn {
     display: none; }
 
   .expenses-report .expenses-logo {
@@ -1257,6 +1673,127 @@ nav {
           font-size: 12px; }
           .payroll-view .signature .sig-cont .official span {
             font-weight: 700; } }
+.db-area .db-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap; }
+  .db-area .db-content .db-body {
+    padding-top: 5%;
+    flex-basis: 45%;
+    position: relative;
+    border-radius: 6px;
+    transition: .5s;
+    margin-top: 3%; }
+    .db-area .db-content .db-body.emp-color {
+      background-color: #E57373; }
+      .db-area .db-content .db-body.emp-color::after {
+        position: absolute;
+        font-family: FontAwesome;
+        content: "\f0c0";
+        top: 30%;
+        right: 7%;
+        color: white;
+        font-size: 70px;
+        opacity: .5;
+        transition: transform .2s; }
+    .db-area .db-content .db-body.pay-color {
+      background-color: #26C6DA; }
+      .db-area .db-content .db-body.pay-color::after {
+        position: absolute;
+        font-family: FontAwesome;
+        content: "\f0d6";
+        top: 30%;
+        right: 7%;
+        color: white;
+        font-size: 70px;
+        opacity: .5;
+        transition: transform .2s; }
+    .db-area .db-content .db-body.event-color {
+      background-color: #FFD54F; }
+      .db-area .db-content .db-body.event-color::after {
+        position: absolute;
+        font-family: FontAwesome;
+        content: "\f133";
+        top: 30%;
+        right: 7%;
+        color: white;
+        font-size: 70px;
+        opacity: .5;
+        transition: transform .2s; }
+    .db-area .db-content .db-body.expense-color {
+      background-color: #7986CB; }
+      .db-area .db-content .db-body.expense-color::after {
+        position: absolute;
+        font-family: FontAwesome;
+        content: "\f2b6";
+        top: 30%;
+        right: 7%;
+        color: white;
+        font-size: 70px;
+        opacity: .5;
+        transition: transform .2s; }
+    .db-area .db-content .db-body.invoice-color {
+      background-color: #9CCC65; }
+      .db-area .db-content .db-body.invoice-color::after {
+        position: absolute;
+        font-family: FontAwesome;
+        content: "\f2b6";
+        top: 30%;
+        right: 7%;
+        color: white;
+        font-size: 70px;
+        opacity: .5;
+        transition: transform .2s; }
+    .db-area .db-content .db-body .body-title {
+      padding: 7% 2% 15% 4%; }
+      .db-area .db-content .db-body .body-title h1 {
+        font-family: 'Anton', sans-serif;
+        font-family: 'Lato', sans-serif;
+        font-family: 'Dosis', sans-serif;
+        font-size: 38px;
+        color: white;
+        line-height: 1.5;
+        opacity: .7; }
+    .db-area .db-content .db-body .body-link {
+      text-align: center;
+      position: relative; }
+      .db-area .db-content .db-body .body-link a {
+        width: 100%;
+        text-decoration: none;
+        color: white;
+        font-size: 10px; }
+        .db-area .db-content .db-body .body-link a .link {
+          border-top: 1px solid white;
+          padding-top: 1%;
+          padding-bottom: 1%; }
+      .db-area .db-content .db-body .body-link::after {
+        top: 7%;
+        right: 15%;
+        content: "\f178";
+        color: #eee;
+        text-align: right;
+        position: absolute;
+        font-family: FontAwesome;
+        transition: .5s; }
+      .db-area .db-content .db-body .body-link:hover::after {
+        right: 10%;
+        transition: .5s; }
+    .db-area .db-content .db-body:hover {
+      border-radius: 0px;
+      -webkit-box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.54);
+      -moz-box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.54);
+      box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.54);
+      transition: .5s; }
+      .db-area .db-content .db-body:hover::after {
+        position: absolute;
+        top: 30%;
+        right: 7%;
+        color: white;
+        font-size: 70px;
+        opacity: .5;
+        transform: scale(1.2); }
+
 @media only screen and (max-width: 767px) {
   .pc {
     display: none; }

@@ -10,7 +10,7 @@ $user_row = mysqli_fetch_array($result_user);
 $result_months = mysqli_query($mysqli, "SELECT DISTINCT(expenses_month) FROM tbl_expenses WHERE expenses_month = '$get_id'");
 $result_report_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '2' AND expenses_month = '$get_id'");
 $result_report_other_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '3' AND expenses_month = '$get_id'");
-
+$result_report_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '4' AND expenses_month = '$get_id'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,9 +42,10 @@ $result_report_other_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
 
         <div class="expenses-report-body">
             <div class="print-btn">
-                <button onclick="myFunction()">PRINT</button>
+                <button onclick="myFunction()"><i class="fa fa-print" aria-hidden="true"></i> PRINT</button>
+                <a class="send-btn" href="mail.php"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    SEND</a>
             </div>
-
             <table cellspacing="0" cellpadding="0">
                 <tr>
                     <th class="numberline">No.</th>
@@ -70,11 +71,39 @@ $result_report_other_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                 </tr>
                 <?php $i++; } ?>
             </table>
+            <div class="other-expenses-text">
+                CASH EXPENSES
+            </div>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <th class="numberline">No.</th>
+                    <th>DATE</th>
+                    <th>PURPOSE</th>
+                    <th>PAYABLE TO</th>
+                    <th>QUANTITY</th>
+                    <th>TIN NUMBER</th>
+                    <th>TOTAL</th>
+                </tr>
+                <?php  
+                $i=1;       
+                while ($months_other_expenses = mysqli_fetch_array($result_report_other_expenses)) {
+                    ?>
+                <tr>
+                    <td><?php echo "$i."; ?></td>
+                    <td><?php echo $months_other_expenses['expenses_date']; ?></td>
+                    <td><?php echo $months_other_expenses['expenses_name']; ?></td>
+                    <td><?php echo $months_other_expenses['expenses_payable_to']; ?></td>
+                    <td><?php echo $months_other_expenses['expenses_quantity']; ?></td>
+                    <td><?php echo $months_other_expenses['expenses_tin_number']; ?></td>
+                    <td><?php echo $months_other_expenses['expenses_amount']; ?></td>
+                </tr>
+                </tr>
+                <?php $i++;} ?>
+            </table>
 
             <div class="other-expenses-text">
-                OTHER EXPENSES
+                CHECK EXPENSES
             </div>
-
             <table cellspacing="0" cellpadding="0">
                 <tr>
                     <th class="numberline">No.</th>
@@ -89,17 +118,17 @@ $result_report_other_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                 </tr>
                 <?php  
                           $i=1;       
-                while ($months_other_expenses = mysqli_fetch_array($result_report_other_expenses)) {
+                while ($months_check_expenses = mysqli_fetch_array($result_report_check_expenses)) {
                     ?>
                 <tr>
                     <td><?php echo "$i."; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_date']; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_name']; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_payable_to']; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_quantity']; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_check_number']; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_tin_number']; ?></td>
-                    <td><?php echo $months_other_expenses['expenses_amount']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_date']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_name']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_payable_to']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_quantity']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_check_number']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_tin_number']; ?></td>
+                    <td><?php echo $months_check_expenses['expenses_amount']; ?></td>
                 </tr>
 
                 </tr>

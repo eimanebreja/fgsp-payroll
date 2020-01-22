@@ -5,7 +5,6 @@ if (isset($_POST['event_btn'])) {
     $event_date = $_POST['event_date'];
     $event_desc = $_POST['event_desc'];
 
-
     $sendsql = "SELECT * FROM tbl_employee";
     $send_query = mysqli_query($mysqli, $sendsql);
     $mail_body = '';

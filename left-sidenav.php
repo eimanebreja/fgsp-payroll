@@ -62,5 +62,15 @@
                 <span><a href="add-expenses.php"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
             </div>
         </div>
+        <div class="sidebar-title">
+            INVOICE
+        </div>
+        <div class="menu-area">
+            <div class="menu-title">List/Add Invoice</div>
+            <div class="menu-icon">
+                <span><a href="invoice-list.php"><i class="fa fa-list" aria-hidden="true"></i></a></span>
+                <span><a href="add-invoice.php"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
     </div>
 </div>

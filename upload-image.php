@@ -14,6 +14,6 @@
 
 <?php
       echo "<script>alert('You successfully edit one Employee!')</script>";
-      echo "<script>window.open('list-employee.php','_self')</script>";
+      echo "<script>window.open('list-employee-view.php?id=$emp_id','_self')</script>";
 }
 ?>

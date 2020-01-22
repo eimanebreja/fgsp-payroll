@@ -5,7 +5,7 @@ include_once "dbcon.php";
 
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
-$result_month_date = mysqli_query($mysqli, "SELECT DISTINCT(expenses_month) FROM tbl_expenses ORDER BY expenses_id DESC ");
+
 
 ?>
 <!DOCTYPE html>
@@ -30,25 +30,26 @@ $result_month_date = mysqli_query($mysqli, "SELECT DISTINCT(expenses_month) FROM
             <?php include('left-sidenav.php') ?>
             <div class="area-content">
                 <div class="expense-title">
-                    Monthly Expenses
+                    Invoice List
                 </div>
-                <div class="expenses-monthly">
-                    <ul>
-                        <?php
-                            while ($month_row = mysqli_fetch_array($result_month_date)) {
-                            $months = $month_row['expenses_month']; 
-                            ?>
-                        <li class="month-report"><a id="<?php echo $months; ?>"
-                                href="expenses-list-view.php<?php echo '?months=' . $months; ?>">
-                                <span><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                <?php echo $month_row['expenses_month']; ?></a>
-
-                            <a class="print-anchor" id="<?php echo $months; ?>"
-                                href="expenses-list-report.php<?php echo '?months=' . $months; ?>">
-                                <span><i class="fa fa-eye" aria-hidden="true"></i></span></a>
-                        </li>
-                        <?php } ?>
-                    </ul>
+                <div class="invoice-body-area">
+                    <?php
+                    $result_invoice = mysqli_query($mysqli, "SELECT * FROM tbl_invoice");
+                    while ($invoice_row = mysqli_fetch_array($result_invoice)) {$id = $invoice_row['invoice_number'];
+                     ?>
+                    <div class="invoice-name">
+                        <a id="<?php echo $id; ?>" href="invoice-list-view.php<?php echo '?id=' . $id; ?>"> <span><i
+                                    class="fa fa-credit-card" aria-hidden="true"></i></span>
+                            <?php echo $invoice_row['invoice_number']; ?> </a>
+                    </div>
+                    <div class="invoice-action">
+                        <span><a id="<?php echo $id; ?>" href="invoice-delete.php<?php echo '?id=' . $id; ?>"
+                                class="delete" onclick="return confirm('Are you sure you want to delete?');"><i
+                                    class="fa fa-trash" aria-hidden="true"></i></a>
+                        </span><span><a id="<?php echo $id; ?>" href="invoice-list-view.php<?php echo '?id=' . $id; ?>"
+                                class="report"><i class="fa fa-list-alt" aria-hidden="true"></i></a></span>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <?php include('right-sidenav.php') ?>

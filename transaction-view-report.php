@@ -42,6 +42,13 @@ FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_n
 
     <section>
         <div class="payroll-report-area">
+            <div class="report-btn">
+                <div class="btn-area-btn">
+                    <button onclick="myFunction()"><i class="fa fa-print" aria-hidden="true"></i> PRINT</button>
+                    <a class="send-btn" href="mail.php"> <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        SEND</a>
+                </div>
+            </div>
             <div class="report-title">
                 FEEMO GLOBAL SOLUTIONS PHILIPPINES
             </div>
@@ -136,10 +143,13 @@ FROM tbl_salary LEFT JOIN tbl_employee on tbl_salary.emp_no = tbl_employee.emp_n
 
 
 
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/payroll.js"></script>
+    <script>
+    function myFunction() {
+        window.print();
+    }
+    </script>
 
     <!-- <script>
     $(document).ready(function() {
