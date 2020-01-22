@@ -221,8 +221,13 @@ $user_row = mysqli_fetch_array($result_user);
                             $reference = $ref_row['expenses_reference'];
                          
                             ?>
+                                    <?php if(empty($ref_row['expenses_reference'])) { ?>
+
+                                    <?php } else {  ?>
                                     <option value=""><?php echo $reference; ?></option>
-                                    <?php } ?>
+                                    <?php }?>
+                                    <?php }?>
+
                                 </select>
                             </div>
 
@@ -376,7 +381,7 @@ $user_row = mysqli_fetch_array($result_user);
         });
 
         $('#submit').click(function() {
-            e.preventDeafault();
+
             $.ajax({
                 async: true,
                 url: "add-expenses-other-query.php",
