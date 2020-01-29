@@ -32,6 +32,8 @@ $result_convert = mysqli_query($mysqli, "SELECT * FROM tbl_convert WHERE invoice
         <div class="invoice-view">
             <button class="invoice-btn" onclick="myFunction()"><i class="fa fa-print" aria-hidden="true"></i>
                 PRINT</button>
+            <a class="sending-btn" href="mail.php"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                SEND</a>
             <div class="invoice-area">
                 <div class="invoice-company">
                     <div class="comlogo">
@@ -65,11 +67,13 @@ $result_convert = mysqli_query($mysqli, "SELECT * FROM tbl_convert WHERE invoice
                     <tr>
                         <td>
                             <div class="invoice-body-info">
-                                <p><span>Company Name : </span><span><?php echo $invoice_row['company_name']; ?></span>
+                                <p><span>Company Name :
+                                    </span><span><?php echo $invoice_row['company_name']; ?></span>
                                 </p>
                             </div>
                             <div class="invoice-body-info">
-                                <p><span>Address : </span><span><?php echo $invoice_row['company_address']; ?></span>
+                                <p><span>Address :
+                                    </span><span><?php echo $invoice_row['company_address']; ?></span>
                                 </p>
                             </div>
                             <div class="invoice-body-info">
@@ -77,7 +81,8 @@ $result_convert = mysqli_query($mysqli, "SELECT * FROM tbl_convert WHERE invoice
                                     </span><span><?php echo $invoice_row['company_contact']; ?></span></p>
                             </div>
                             <div class="invoice-body-info">
-                                <p><span>Attention to : </span><span><?php echo $invoice_row['attention_to']; ?></span>
+                                <p><span>Attention to :
+                                    </span><span><?php echo $invoice_row['attention_to']; ?></span>
                                 </p>
                             </div>
                             <div class="invoice-body-info">
@@ -118,7 +123,7 @@ $result_convert = mysqli_query($mysqli, "SELECT * FROM tbl_convert WHERE invoice
                             REMARKS
                         </div>
                         <div class="remarks-textarea">
-                            <span><?php echo $invoice_row['ttsr_remarks']; ?></span>
+                            <p><?php echo $invoice_row['ttsr_remarks']; ?></p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,57 @@
+I, [2020-01-23T04:05:00.120003 #1442]  INFO -- : [62521dc7-9923-476f-be25-1aed02ab984e] Started POST "/api/super_administrators" for 209.146.29.2 at 2020-01-23 04:05:00 +0000
+I, [2020-01-23T04:05:00.121049 #1442]  INFO -- : [62521dc7-9923-476f-be25-1aed02ab984e] Processing by Api::SuperAdministratorsController#create as JSON
+I, [2020-01-23T04:05:00.121170 #1442]  INFO -- : [62521dc7-9923-476f-be25-1aed02ab984e]   Parameters: {"email"=>"nimuelbreja@gmail.com"}
+D, [2020-01-23T04:05:00.141257 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e]    (16.1ms)  BEGIN
+D, [2020-01-23T04:05:00.295991 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e]   Administrator Exists (3.1ms)  SELECT  1 AS one FROM `administrators` WHERE `administrators`.`email` = BINARY 'nimuelbreja@gmail.com' LIMIT 1
+D, [2020-01-23T04:05:00.300637 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e]   SQL (2.8ms)  INSERT INTO `administrator_groups` (`name`, `created_at`, `updated_at`, `role_type`) VALUES ('nimuelbreja@gmail.com', '2020-01-23 04:05:00', '2020-01-23 04:05:00', 1)
+D, [2020-01-23T04:05:00.304682 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e]   SQL (2.8ms)  INSERT INTO `shop_accounts` (`administrator_group_id`, `auth_token`, `created_at`, `updated_at`) VALUES (162, '8kj5ayPY6jvZGvU9HphU', '2020-01-23 04:05:00', '2020-01-23 04:05:00')
+D, [2020-01-23T04:05:00.309143 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e]   SQL (2.8ms)  INSERT INTO `administrators` (`email`, `display_name`, `encrypted_password`, `created_at`, `updated_at`, `role`, `administrator_group_id`, `confirmation_token`, `confirmation_sent_at`) VALUES ('nimuelbreja@gmail.com', 'nimuelbreja@gmail.com', '$2a$11$Fz0aIeB/jyPIe25VrCaIneE4KN/ycirAxQANyfPxP/zuynGCCA4nK', '2020-01-23 04:05:00', '2020-01-23 04:05:00', 0, 162, 'dWWt6VrCvSURdR_uzLxi', '2020-01-23 04:05:00')
+D, [2020-01-23T04:05:00.315878 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e]    (6.1ms)  COMMIT
+I, [2020-01-23T04:05:00.317051 #1442]  INFO -- : [62521dc7-9923-476f-be25-1aed02ab984e]   Rendering selforder_mailer/confirmation_instructions.text.erb within layouts/mailer
+I, [2020-01-23T04:05:00.317452 #1442]  INFO -- : [62521dc7-9923-476f-be25-1aed02ab984e]   Rendered selforder_mailer/confirmation_instructions.text.erb within layouts/mailer (0.3ms)
+D, [2020-01-23T04:05:00.318046 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e] SelforderMailer#confirmation_instructions: processed outbound mail in 1.7ms
+I, [2020-01-23T04:05:00.643031 #1442]  INFO -- : [a7a06790-6ae7-4176-b9bc-c80671d578ca] Started GET "/" for 172.31.47.67 at 2020-01-23 04:05:00 +0000
+I, [2020-01-23T04:05:00.644242 #1442]  INFO -- : [a7a06790-6ae7-4176-b9bc-c80671d578ca] Processing by ItemsController#index as HTML
+I, [2020-01-23T04:05:00.644921 #1442]  INFO -- : [a7a06790-6ae7-4176-b9bc-c80671d578ca] Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+I, [2020-01-23T04:05:03.400559 #1442]  INFO -- : [62521dc7-9923-476f-be25-1aed02ab984e] Sent mail to nimuelbreja@gmail.com (3082.3ms)
+D, [2020-01-23T04:05:03.400781 #1442] DEBUG -- : [62521dc7-9923-476f-be25-1aed02ab984e] Date: Thu, 23 Jan 2020 04:05:00 +0000
+From: no-reply@gotchareji.com
+To: nimuelbreja@gmail.com
+Message-ID: <5e291b6c4ddac_5a23fd36254a8109575f@ip-172-31-38-224.mail>
+Subject: =?UTF-8?Q?[GotchaReji]?=
+ =?UTF-8?Q?_=E6=9C=AC=E7=99=BB=E9=8C=B2=E3=81=AE=E3=81=94=E6=A1=88=E5=86=85?=
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+bmltdWVsYnJlamFAZ21haWwuY29tIOanmA0KDQrjgZTnmbvpjLLjgYTjgZ/j
+gaDjgY3oqqDjgavjgYLjgorjgYzjgajjgYbjgZTjgZbjgYTjgb7jgZnjgIIN
+Cg0K54++5Zyo44Gv5Luu55m76Yyy44Gu54q25oWL44Gn44GZ44CCDQrkuIvo
+qJhVUkzjgbjjgqLjgq/jgrvjgrnjgZfjgIHmnKznmbvpjLLjgpLlrozkuobj
+gZXjgZvjgabkuIvjgZXjgYTjgIINCuKAuyDku6XkuIvjga5VUkzjga/ku67n
+mbvpjLLjgZfjgZ9pUGFk77yI44G+44Gf44GvaVBvZO+8ieOBi+OCieOCr+OD
+quODg+OCr+OBl+OBpuOBj+OBoOOBleOBhA0KDQotLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLQ0KDQrilrzmnKznmbvpjLJVUkwNCmh0dHBz
+Oi8vZGV2ZWwuZ290Y2hhcmVqaS5jb20vc2VsZm9yZGVyX2FjY291bnRzL2Nv
+bmZpcm1hdGlvbj9jb25maXJtYXRpb25fdG9rZW49ZFdXdDZWckN2U1VSZFJf
+dXpMeGkNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0N
+Cg0K4oC75pysVVJM44GvMjTmmYLplpPmnInlirnjgafjgZnjgIINCg0K4oC7
+44Kv44Oq44OD44Kv44Gn44GN44Gq44GE5aC05ZCI44Gv44CB5pysVVJM44KS
+44Kz44OU44O844GX44Gm44OW44Op44Km44K244Gu44Ki44OJ44Os44K55qyE
+44G46LK844KK5LuY44GR44Gm44GP44Gg44GV44GE44CCDQoNCuKAu+acrOOD
+oeODvOODq+OBr+mAgeS/oeWwgueUqOODoeODvOODq+OCouODieODrOOCueOB
+i+OCiemFjeS/oeOBleOCjOOBpuOBhOOBvuOBmeOAgg0K44CA44GT44Gu44G+
+44G+44GU6L+U5L+h44GE44Gf44Gg44GE44Gm44KC44GK562U44GI44Gn44GN
+44G+44Gb44KT44Gu44Gn44GU5LqG5om/44GP44Gg44GV44GE44CCDQoNCuKA
+u+acrOODoeODvOODq+OBq+W/g+W9k+OBn+OCiuOBrueEoeOBhOWgtOWQiOOB
+r+OAgeaBkOOCjOWFpeOCiuOBvuOBmeOBjOegtOajhOmhmOOBhOOBvuOBmeOA
+gg0KDQrigLvmnKzjg6Hjg7zjg6vjgavplqLjgZfjgabjgZTkuI3mmI7jgarn
+grnjgYzjgZTjgZbjgYTjgb7jgZfjgZ/jgonjgIENCuOAgOOAkOWVj+WQiOOB
+m+eUqOODoeODvOODq+OCouODieODrOOCueOAkQ0K44CA44G+44Gn44GK5ZWP
+5ZCI44Gb44GP44Gg44GV44GE44CCDQoNCu+8ne+8ne+8ne+8ne+8ne+8ne+8
+ne+8ne+8ne+8ne+8ne+8ne+8ne+8nQ0K6YGL5Za25Lya56S+77ya5qCq5byP
+5Lya56S+IE9SICjjgqrjg7zjgqLjg7zjg6spDQpodHRwczovL29yLXRlY2gu
+anANCg0K

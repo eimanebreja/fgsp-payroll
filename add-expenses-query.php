@@ -14,11 +14,9 @@ if (isset($_POST['expense_btn'])) {
     $result_expenses = mysqli_query($mysqli, "INSERT INTO tbl_expenses (expenses_reference, expenses_category, expenses_month, expenses_date, expenses_name, expenses_payable_to, expenses_amount, expenses_check_number, check_payment_date)
     VALUES('$expense_ref','$expense_category', '$month', '$due_date', '$expenses', '$payable', '$amount', '$check_number', '$payment_date')");
 
-    
-    
 
     echo "<script>alert('You successfully add expenses!')</script>";
-    echo "<script>window.open('expenses-list.php','_self')</script>";
+    echo "<script>window.open('expenses-list-view.php?months=$month','_self')</script>";
     ?>
 
 <?php

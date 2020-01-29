@@ -17,7 +17,7 @@ if (isset($_POST['check_expense_btn_other'])) {
     
 
     echo "<script>alert('You successfully add expenses!')</script>";
-    echo "<script>window.open('expenses-list.php','_self')</script>";
+    echo "<script>window.open('expenses-list-view.php?months=$months','_self')</script>";
     ?>
 
 <?php

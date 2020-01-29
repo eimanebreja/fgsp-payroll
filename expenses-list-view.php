@@ -72,6 +72,8 @@ $result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                             <td><?php echo $months_expenses['expenses_amount']; ?></td>
                             <td><a id="<?php echo $id; ?>" href="expenses-delete.php<?php echo '?id=' . $id; ?>"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a>
+                                <a id="<?php echo $id; ?>" href="expenses-edit.php<?php echo '?id=' . $id; ?>"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         <?php $i++;} ?>
@@ -111,8 +113,9 @@ $result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                             <td><a id="<?php echo $refer; ?>"
                                     href="expenses-other-item-delete.php<?php echo '?id=' . $refer; ?>"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a>
-                                <!-- <a id="<?php echo $id_check; ?>" href=""><i class="fa fa-chevron-right"
-                                        aria-hidden="true"></i></a> -->
+                                <a id="<?php echo $id_other; ?>"
+                                    href="expenses-cash-edit.php<?php echo '?id=' . $id_other; ?>"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></a>
                             </td>
                         </tr>
 
@@ -167,6 +170,9 @@ $result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                             <td><a id="<?php echo $id_check; ?>"
                                     href="expenses-other-delete.php<?php echo '?id=' . $id_other; ?>"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a>
+                                <a id="<?php echo $id_other; ?>"
+                                    href="expenses-check-edit.php<?php echo '?id=' . $id_check; ?>"><i
+                                        class="fa fa-pencil" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         <?php $i++;} ?>

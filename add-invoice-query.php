@@ -30,9 +30,9 @@ $convert_peso = mysqli_real_escape_string($mysqli, $_POST['convert_peso'][$i]);
         continue;
     }
 
-$result_items = "INSERT INTO tbl_convert (convert_date, convert_description, convert_yen, convert_peso, invoice_number)
+$result_convert = "INSERT INTO tbl_convert (convert_date, convert_description, convert_yen, convert_peso, invoice_number)
 VALUES('$convert_date', '$convert_description', '$convert_yen', '$convert_peso', '$invoice_number')";
-mysqli_query($mysqli, $result_items);
+mysqli_query($mysqli, $result_convert);
 
 }
 
@@ -43,7 +43,7 @@ mysqli_query($mysqli, $result_invoice);
 if (mysqli_error($mysqli)) {
     echo "Data base error occured";
 } else {
-    echo $i . " rows added, Successful";
+    echo "Successfully added One Invoice!";
    
 }
 

@@ -312,6 +312,14 @@ nav {
     color: white;
     padding: 7px 10px;
     border: none; }
+  .invoice-view .sending-btn {
+    float: right;
+    background-color: #00a300;
+    color: white;
+    padding: 7.5px 10px;
+    text-decoration: none;
+    line-height: 1;
+    font-size: 12px; }
   .invoice-view .invoice-area {
     padding: 5px;
     display: flex;
@@ -360,9 +368,13 @@ nav {
           font-size: 12px; }
         .invoice-view .invoice-area .invoice-company .remarks .remarks-textarea span {
           font-size: 10px;
-          line-height: 1.5; }
+          line-height: 1; }
         .invoice-view .invoice-area .invoice-company .remarks .remarks-textarea textarea {
           width: 100%; }
+        .invoice-view .invoice-area .invoice-company .remarks .remarks-textarea p {
+          margin-top: 5px;
+          font-size: 10px;
+          line-height: 1.2; }
     .invoice-view .invoice-area .invoice-information {
       flex-basis: 30%; }
       .invoice-view .invoice-area .invoice-information .total {
@@ -730,7 +742,10 @@ nav {
         border-radius: .3rem;
         resize: none; }
       .container-area .area-content .event-body-area .event-button {
-        padding-top: 2%; }
+        padding-top: 2%;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
         .container-area .area-content .event-body-area .event-button button {
           border: 1px solid #1a237e;
           background: #1a237e;
@@ -742,6 +757,19 @@ nav {
           padding: .6rem 1rem;
           font-size: .5rem;
           line-height: 1.5; }
+        .container-area .area-content .event-body-area .event-button a {
+          text-decoration: none;
+          border: 1px solid #1a237e;
+          background: white;
+          color: #1a237e;
+          cursor: default;
+          display: block;
+          width: 20%;
+          padding: .6rem 1rem;
+          font-size: .5rem;
+          line-height: 1.5;
+          text-align: center;
+          border-radius: 15px; }
     .container-area .area-content .add-emp {
       font-size: 14px;
       font-weight: 700; }

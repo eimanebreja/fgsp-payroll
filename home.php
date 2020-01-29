@@ -53,7 +53,7 @@
                 <h1>INVOICE</h1>
             </div>
             <div class="body-link">
-                <a href="add-event.php">
+                <a href="add-invoice.php">
                     <div class="link">
                         GO TO LINK
                     </div>

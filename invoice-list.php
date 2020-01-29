@@ -38,7 +38,7 @@ $user_row = mysqli_fetch_array($result_user);
                     while ($invoice_row = mysqli_fetch_array($result_invoice)) {$id = $invoice_row['invoice_number'];
                      ?>
                     <div class="invoice-name">
-                        <a id="<?php echo $id; ?>" href="invoice-list-view.php<?php echo '?id=' . $id; ?>"> <span><i
+                        <a id="<?php echo $id; ?>" href="invoice-edit.php<?php echo '?id=' . $id; ?>"> <span><i
                                     class="fa fa-credit-card" aria-hidden="true"></i></span>
                             <?php echo $invoice_row['invoice_number']; ?> </a>
                     </div>

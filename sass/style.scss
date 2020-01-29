@@ -469,6 +469,17 @@ nav {
 
     }
 
+    .sending-btn {
+        float: right;
+        background-color: #00a300;
+        color: white;
+        padding: 7.5px 10px;
+        text-decoration: none;
+        line-height: 1;
+        font-size: 12px;
+
+    }
+
 
     .invoice-area {
         padding: 5px;
@@ -544,12 +555,18 @@ nav {
                 .remarks-textarea {
                     span {
                         font-size: 10px;
-                        line-height: 1.5;
+                        line-height: 1;
                     }
 
                     textarea {
                         width: 100%;
 
+                    }
+
+                    p {
+                        margin-top: 5px;
+                        font-size: 10px;
+                        line-height: 1.2;
                     }
                 }
             }
@@ -1136,6 +1153,9 @@ nav {
 
             .event-button {
                 padding-top: 2%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
                 button {
                     border: 1px solid #1a237e;
@@ -1148,6 +1168,21 @@ nav {
                     padding: .6rem 1rem;
                     font-size: .5rem;
                     line-height: 1.5;
+                }
+
+                a {
+                    text-decoration: none;
+                    border: 1px solid #1a237e;
+                    background: white;
+                    color: #1a237e;
+                    cursor: default;
+                    display: block;
+                    width: 20%;
+                    padding: .6rem 1rem;
+                    font-size: .5rem;
+                    line-height: 1.5;
+                    text-align: center;
+                    border-radius: 15px;
                 }
             }
         }

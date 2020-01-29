@@ -116,7 +116,7 @@ $user_row = mysqli_fetch_array($result_user);
                         </form>
                     </div>
                     <div id="Expense3" class="expense-label-input desc" style="display:none">
-                        <form id="add_sharings">
+                        <form action="add-expenses-other-query.php" method="POST">
                             <input type="hidden" name="expense_categories" value="3" />
                             <?php
                             include_once "dbcon.php";
@@ -181,7 +181,7 @@ $user_row = mysqli_fetch_array($result_user);
                                 <input placeholder="Enter total..." name="amounts" type="text" required>
 
                             </div>
-                            <div class="expense-label">
+                            <!-- <div class="expense-label">
                                 Shared Items
                             </div>
                             <div class="sharing-items" id="dynamic_field">
@@ -197,7 +197,7 @@ $user_row = mysqli_fetch_array($result_user);
                                             class="fa fa-plus-circle" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="expense-button">
                                 <button id="submit" name="expense_btn_other">SUBMIT</button>
                             </div>
@@ -213,6 +213,7 @@ $user_row = mysqli_fetch_array($result_user);
                             </div>
                             <div class="expense-input">
                                 <select name="reference" id="" class="month" required>
+                                    <option value=""></option>
                                     <?php
                             include_once "dbcon.php";
                             $result_expenses_ref = mysqli_query($mysqli, "SELECT expenses_reference FROM tbl_expenses");
@@ -224,7 +225,7 @@ $user_row = mysqli_fetch_array($result_user);
                                     <?php if(empty($ref_row['expenses_reference'])) { ?>
 
                                     <?php } else {  ?>
-                                    <option value=""><?php echo $reference; ?></option>
+                                    <option value="<?php echo $reference; ?>"><?php echo $reference; ?></option>
                                     <?php }?>
                                     <?php }?>
 
@@ -380,19 +381,6 @@ $user_row = mysqli_fetch_array($result_user);
             $(this).closest('.remove-content').remove();
         });
 
-        $('#submit').click(function() {
-
-            $.ajax({
-                async: true,
-                url: "add-expenses-other-query.php",
-                method: "POST",
-                data: $('#add_sharings').serialize(),
-                success: function(rt) {
-                    alert(rt);
-                    $('#add_sharings')[0].reset();
-                }
-            });
-        });
     });
     </script>
 
