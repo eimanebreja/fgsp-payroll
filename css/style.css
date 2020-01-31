@@ -1562,6 +1562,8 @@ nav {
       color: white;
       padding: 7px 10px;
       border: none; }
+    .invoice-view .sending-btn {
+      display: none; }
 
   .print-btn {
     display: none; }

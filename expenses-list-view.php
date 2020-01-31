@@ -8,9 +8,9 @@ $get_id = $_GET['months'];
 $result_user = mysqli_query($mysqli, "SELECT * FROM tbl_user where user_id='$session_id'");
 $user_row = mysqli_fetch_array($result_user);
 $result_months = mysqli_query($mysqli, "SELECT DISTINCT(expenses_month) FROM tbl_expenses WHERE expenses_month = '$get_id'");
-$result_months_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '2' AND expenses_month = '$get_id'");
-$result_months_other_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '3' AND expenses_month = '$get_id'");
-$result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '4' AND expenses_month = '$get_id'");
+$result_months_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '2' AND expenses_month = '$get_id' ORDER BY expenses_date ASC");
+$result_months_other_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '3' AND expenses_month = '$get_id' ORDER BY expenses_date ASC");
+$result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expenses WHERE expenses_category = '4' AND expenses_month = '$get_id' ORDER BY expenses_date ASC");
 
 ?>
 <!DOCTYPE html>
@@ -118,21 +118,6 @@ $result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                                         class="fa fa-pencil" aria-hidden="true"></i></a>
                             </td>
                         </tr>
-
-                        <?php
-                        $result_items = mysqli_query($mysqli, "SELECT * FROM tbl_items WHERE expenses_reference = '$refer'");
-                        while ($items_row = mysqli_fetch_array($result_items)) {
-                            $id_items = $items_row['item_id']; 
-                         ?>
-                        <tr>
-                            <td></td>
-                            <td>></td>
-                            <td><?php echo $items_row['item_name']; ?></td>
-                            <td><?php echo $items_row['item_price']; ?></td>
-                        </tr>
-                        <?php } ?>
-
-
                         <?php $i++;} ?>
                     </table>
                     <div class="other-expenses-text">
@@ -168,7 +153,7 @@ $result_months_check_expenses = mysqli_query($mysqli, "SELECT * FROM tbl_expense
                             <td><?php echo $months_check_expenses['expenses_tin_number']; ?></td>
                             <td><?php echo $months_check_expenses['expenses_amount']; ?></td>
                             <td><a id="<?php echo $id_check; ?>"
-                                    href="expenses-other-delete.php<?php echo '?id=' . $id_other; ?>"><i
+                                    href="expenses-other-delete.php<?php echo '?id=' . $id_check; ?>"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a>
                                 <a id="<?php echo $id_other; ?>"
                                     href="expenses-check-edit.php<?php echo '?id=' . $id_check; ?>"><i

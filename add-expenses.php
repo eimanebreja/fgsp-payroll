@@ -212,7 +212,7 @@ $user_row = mysqli_fetch_array($result_user);
                                 Reference No
                             </div>
                             <div class="expense-input">
-                                <select name="reference" id="" class="month" required>
+                                <select name="reference" id="" class="month">
                                     <option value=""></option>
                                     <?php
                             include_once "dbcon.php";

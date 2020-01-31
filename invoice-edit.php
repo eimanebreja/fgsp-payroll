@@ -56,11 +56,11 @@ $result_convert = mysqli_query($mysqli, "SELECT * FROM tbl_convert where invoice
             <?php include('left-sidenav.php') ?>
             <div class="area-content">
                 <div class="expense-title">
-                    Add New Invoice
+                    Edit Invoice
                 </div>
-                <form id="invoice-form">
+                <form id="invoice-form" method="POST" action="invoice-edit-query.php">
                     <div class="invoice-view">
-                        <button class="invoice-btn" type="submit" id="submits" name="invoice_send"><i class="fa fa-send"
+                        <button class="invoice-btn" type="submit" id="submits" name="invoice_edit"><i class="fa fa-send"
                                 aria-hidden="true"></i>
                             SAVE</button>
                         <div class="invoice-area">
@@ -82,8 +82,10 @@ $result_convert = mysqli_query($mysqli, "SELECT * FROM tbl_convert where invoice
                                     <h1>INVOICE</h1>
                                 </div>
                                 <div class="info-desc">
-                                    <p><span>DATE</span><span><input type="text" name="invoice_date"
-                                                placeholder="Invoice Date" value="<?php
+                                    <p><span>DATE</span><span>
+                                            <input type="hidden" name="invoice_id" placeholder="Invoice Date" value="<?php
+echo $invoice_id; ?>">
+                                            <input type="text" name="invoice_date" placeholder="Invoice Date" value="<?php
 echo $invoice_date; ?>"></span></p>
                                     <p><span>INVOICE #</span><span><input type="text" name="invoice_number"
                                                 placeholder="Invoice Number" value="<?php echo $id; ?>"></span>
@@ -151,9 +153,12 @@ echo $attention_position; ?>"></span></p>
                                         $convert_description = $convert_row['convert_description'];
                                         $convert_yen = $convert_row['convert_yen'];
                                         $convert_peso = $convert_row['convert_peso'];
+                                  
                                         ?>
                                 <tr>
                                     <td>
+                                        <input type="hidden" class="date-converts" name="convert_id[]"
+                                            value="<?php echo $convert_id; ?>">
                                         <input type="text" class="date-converts" name="convert_date[]"
                                             placeholder="Date..." value="<?php echo $convert_date; ?>"> </td>
                                     <td><input type="text" name="convert_description[]" placeholder="Description..."
@@ -174,6 +179,12 @@ echo $attention_position; ?>"></span></p>
                         <div class="invoice-area">
                             <div class="invoice-company">
                                 <div class="remarks">
+                                    <?php 
+                                    $result=mysqli_query($mysqli, "SELECT COUNT(invoice_number) as total from tbl_convert WHERE invoice_number='$id'");
+                                    $data = mysqli_fetch_assoc($result);
+                                    echo $data['total'];
+
+                                    ?>
                                     <p><span>Telegraphic Transfer Selling Rate (TTSR) :</span><span
                                             class="remarks-input"><input type="text" name="ttsr_number" value="<?php
 echo $ttsr_number; ?>"></span></p>
@@ -284,21 +295,7 @@ echo $invoice_total; ?>"></span></p>
             $(this).closest('.remove-content').remove();
         });
 
-        $('#submits').click(function() {
 
-            $.ajax({
-                async: true,
-                url: "add-invoice-query.php",
-                method: "POST",
-                data: $('#invoice-form').serialize(),
-                success: function(rt) {
-                    alert(rt);
-                    $('#invoice-form')[0].reset();
-                }
-            });
-        });
-
-        init();
     });
     </script>
 
